@@ -1,0 +1,3 @@
+
+https://cxf.apache.org/javadoc/latest/org/apache/cxf/ws/security/sts/provider/model/xmldsig/
+https://www.fpml.org/spec/fpml-5-5-4-tr-1/html/reporting/schemaDocumentation/schemas/xmldsig-core-schema_xsd/schema-overview.html

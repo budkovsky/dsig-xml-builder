@@ -1,0 +1,10 @@
+<ds:SignatureProperty
+	xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+	xmlns:other="http://other.namespace.com"
+	Target="http://aaa.com/bbb#ccc">
+	<other:AnyElement
+		xmlns:other="http://other.namespace.com">
+		<other:SubElement1>tcKL2Ihvs6jZg0Q9</other:SubElement1>
+		<other:SubElement2>hGQnRxe89NSjPI7U</other:SubElement2>
+	</other:AnyElement>
+</ds:SignatureProperty>

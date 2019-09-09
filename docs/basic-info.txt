@@ -1,0 +1,20 @@
+XML digital signatures are represented by the Signature element 
+which has the following structure 
+(where "?" denotes zero or one occurrence; 
+"+" denotes one or more occurrences; 
+and "*" denotes zero or more occurrences):
+
+<Signature ID?> 
+  <SignedInfo>
+    <CanonicalizationMethod />
+    <SignatureMethod />
+   (<Reference URI? >
+     (<Transforms>)?
+      <DigestMethod>
+      <DigestValue>
+    </Reference>)+
+  </SignedInfo>
+  <SignatureValue> 
+ (<KeyInfo>)?
+ (<Object ID?>)*
+</Signature>

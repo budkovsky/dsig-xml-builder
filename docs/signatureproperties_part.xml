@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ds:SignatureProperties
+	xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+	xmlns:otherns="http:www.other.com/ns">
+	<ds:SignatureProperty
+		xmlns:otherns="http:www.other.com/ns" Target="http://aaa.com/bbb#ccc">
+		<otherns:AnyElement
+			xmlns:otherns="http:www.other.com/ns">
+			<otherns:SubElement1>Jnb0DdzQLcwZRKvU</otherns:SubElement1>
+			<otherns:SubElement2>MOuYem4fXt15UR8F</otherns:SubElement2>
+		</otherns:AnyElement>
+	</ds:SignatureProperty>
+</ds:SignatureProperties>
