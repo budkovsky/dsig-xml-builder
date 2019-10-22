@@ -5,6 +5,9 @@ use Budkovsky\Aid\Abstraction\StaticFactoryInterface;
 use Budkovsky\DsigXmlBuilder\Abstraction\DSigTypeInterface;
 use Budkovsky\DsigXmlBuilder\Partial\AlgorithmAttributeTrait;
 use Budkovsky\DsigXmlBuilder\Partial\ChildrenTrait;
+use Budkovsky\DsigXmlBuilder\Partial\EntityAdapterTrait;
+use Budkovsky\DsigXmlBuilder\Adapter\DOMDocument\CanonicalizationMethodAdapter;
+use Budkovsky\DsigXmlBuilder\Abstraction\AdapterInterface;
 
 /**
  * CanoncalizationMethodType entity
@@ -21,6 +24,7 @@ use Budkovsky\DsigXmlBuilder\Partial\ChildrenTrait;
  */
 class CanonicalizationMethodType implements DSigTypeInterface, StaticFactoryInterface
 {
+    use EntityAdapterTrait;
     use AlgorithmAttributeTrait;
     use ChildrenTrait;
 
@@ -31,5 +35,10 @@ class CanonicalizationMethodType implements DSigTypeInterface, StaticFactoryInte
     public static function create(): CanonicalizationMethodType
     {
         return new static;
+    }
+
+    protected function getDefaultAdapter(): AdapterInterface
+    {
+        return new CanonicalizationMethodAdapter();
     }
 }

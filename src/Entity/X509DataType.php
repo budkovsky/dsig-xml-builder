@@ -4,9 +4,12 @@ declare(strict_types = 1);
 namespace Budkovsky\DsigXmlBuilder\Entity;
 
 use Budkovsky\Aid\Abstraction\StaticFactoryInterface;
+use Budkovsky\DsigXmlBuilder\Abstraction\AdapterInterface;
 use Budkovsky\DsigXmlBuilder\Abstraction\DSigTypeInterface;
 use Budkovsky\DsigXmlBuilder\Abstraction\KeyInfoChildInterface;
 use Budkovsky\DsigXmlBuilder\Partial\ChildrenTrait;
+use Budkovsky\DsigXmlBuilder\Partial\EntityAdapterTrait;
+use Budkovsky\DsigXmlBuilder\Adapter\DOMDocument\X509DataAdapter;
 
 /**
  * X509DataType entity
@@ -29,9 +32,16 @@ use Budkovsky\DsigXmlBuilder\Partial\ChildrenTrait;
 class X509DataType implements DSigTypeInterface, StaticFactoryInterface, KeyInfoChildInterface
 {
     use ChildrenTrait;
+    use EntityAdapterTrait;
 
     public static function create(): X509DataType
     {
         return new static;
     }
+
+    protected function getDefaultAdapter(): AdapterInterface
+    {
+        return new X509DataAdapter();
+    }
+
 }

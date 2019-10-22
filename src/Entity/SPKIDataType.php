@@ -4,9 +4,12 @@ declare(strict_types = 1);
 namespace Budkovsky\DsigXmlBuilder\Entity;
 
 use Budkovsky\Aid\Abstraction\StaticFactoryInterface;
+use Budkovsky\DsigXmlBuilder\Abstraction\AdapterInterface;
 use Budkovsky\DsigXmlBuilder\Abstraction\DSigTypeInterface;
 use Budkovsky\DsigXmlBuilder\Abstraction\KeyInfoChildInterface;
 use Budkovsky\DsigXmlBuilder\Partial\ChildrenTrait;
+use Budkovsky\DsigXmlBuilder\Partial\EntityAdapterTrait;
+use Budkovsky\DsigXmlBuilder\Adapter\DOMDocument\SPKIDataAdapter;
 
 /**
  * SPKIDataType entity
@@ -23,6 +26,7 @@ use Budkovsky\DsigXmlBuilder\Partial\ChildrenTrait;
 class SPKIDataType implements DSigTypeInterface, StaticFactoryInterface, KeyInfoChildInterface
 {
     use ChildrenTrait;
+    use EntityAdapterTrait;
 
     /**
      * SPKIDataType entity static factory
@@ -30,5 +34,9 @@ class SPKIDataType implements DSigTypeInterface, StaticFactoryInterface, KeyInfo
     public static function create(): SPKIDataType
     {
         return new static;
+    }
+    protected function getDefaultAdapter(): AdapterInterface
+    {
+        return new SPKIDataAdapter();
     }
 }

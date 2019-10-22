@@ -4,11 +4,14 @@ declare(strict_types = 1);
 namespace Budkovsky\DsigXmlBuilder\Entity;
 
 use Budkovsky\Aid\Abstraction\StaticFactoryInterface;
+use Budkovsky\DsigXmlBuilder\Abstraction\AdapterInterface;
 use Budkovsky\DsigXmlBuilder\Abstraction\DSigTypeInterface;
 use Budkovsky\DsigXmlBuilder\Abstraction\KeyInfoChildInterface;
 use Budkovsky\DsigXmlBuilder\Exception\RestrictionException;
 use Budkovsky\DsigXmlBuilder\Helper\RestrictionHelper;
 use Budkovsky\DsigXmlBuilder\Partial\ChildrenTrait;
+use Budkovsky\DsigXmlBuilder\Partial\EntityAdapterTrait;
+use Budkovsky\DsigXmlBuilder\Adapter\DOMDocument\PGPDataAdapter;
 
 /**
  * PGPDataType entity
@@ -32,6 +35,7 @@ use Budkovsky\DsigXmlBuilder\Partial\ChildrenTrait;
 class PGPDataType implements DSigTypeInterface, StaticFactoryInterface, KeyInfoChildInterface
 {
     use ChildrenTrait;
+    use EntityAdapterTrait;
 
     /** @var string */
     private $pgpKeyId;
@@ -92,4 +96,8 @@ class PGPDataType implements DSigTypeInterface, StaticFactoryInterface, KeyInfoC
         return $this;
     }
 
+    protected function getDefaultAdapter(): AdapterInterface
+    {
+        return new PGPDataAdapter();
+    }
 }

@@ -5,12 +5,15 @@ namespace Budkovsky\DsigXmlBuilder\Entity;
 
 use Budkovsky\Aid\Abstraction\StaticFactoryInterface;
 use Budkovsky\DsigXmlBuilder\Abstraction\DSigTypeInterface;
+use Budkovsky\DsigXmlBuilder\Abstraction\SimpleContentInterface;
 use Budkovsky\DsigXmlBuilder\Exception\RestrictionException;
 use Budkovsky\DsigXmlBuilder\Helper\RestrictionHelper;
 use Budkovsky\DsigXmlBuilder\Partial\ChildrenTrait;
+use Budkovsky\DsigXmlBuilder\Partial\EntityAdapterTrait;
 use Budkovsky\DsigXmlBuilder\Partial\IdAttributeTrait;
-use Budkovsky\DsigXmlBuilder\Abstraction\SimpleContentInterface;
 use Budkovsky\DsigXmlBuilder\Partial\SimpleContentTrait;
+use Budkovsky\DsigXmlBuilder\Abstraction\AdapterInterface;
+use Budkovsky\DsigXmlBuilder\Adapter\DOMDocument\ObjectAdapter;
 
 /**
  * ObjectType entity
@@ -31,6 +34,7 @@ class ObjectType implements DSigTypeInterface, StaticFactoryInterface, SimpleCon
     use IdAttributeTrait;
     use ChildrenTrait;
     use SimpleContentTrait;
+    use EntityAdapterTrait;
 
     /** @var string */
     private $mimeType;
@@ -88,5 +92,10 @@ class ObjectType implements DSigTypeInterface, StaticFactoryInterface, SimpleCon
         $this->encoding = $encoding;
 
         return $this;
+    }
+
+    protected function getDefaultAdapter(): AdapterInterface
+    {
+        return new ObjectAdapter();
     }
 }

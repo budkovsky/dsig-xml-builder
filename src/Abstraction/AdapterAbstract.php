@@ -115,9 +115,9 @@ abstract class AdapterAbstract implements AdapterInterface
         ;
     }
 
-    protected function getNewElementByAdapter(EntityInterface $entity, AdapterInterface $adapter): \DOMElement
+    protected function getNewElementFromEntity(DSigTypeInterface $entity): \DOMElement
     {
-        return $adapter
+        return $entity->getAdapter()
             ->setDocument($this->getDOMDocument())
             ->setEntity($entity)
             ->generate()

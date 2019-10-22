@@ -7,6 +7,9 @@ use Budkovsky\Aid\Abstraction\StaticFactoryInterface;
 use Budkovsky\DsigXmlBuilder\Abstraction\DSigTypeInterface;
 use Budkovsky\DsigXmlBuilder\Abstraction\KeyInfoChildInterface;
 use Budkovsky\DsigXmlBuilder\Partial\AnyTrait;
+use Budkovsky\DsigXmlBuilder\Partial\EntityAdapterTrait;
+use Budkovsky\DsigXmlBuilder\Adapter\DOMDocument\KeyValueAdapter;
+use Budkovsky\DsigXmlBuilder\Abstraction\AdapterInterface;
 
 /**
  * KeyValueType entity
@@ -24,20 +27,13 @@ use Budkovsky\DsigXmlBuilder\Partial\AnyTrait;
 class KeyValueType implements DSigTypeInterface, StaticFactoryInterface, KeyInfoChildInterface
 {
     use AnyTrait;
+    use EntityAdapterTrait;
 
     /** @var DSAKeyValueType */
     protected $dsaKeyValue;
 
     /** @var RSAKeyValueType */
     protected $rsaKeyValue;
-
-    /**
-     * KeyValueType entity constructor
-     * @param string $choice
-     */
-    public function __construct()
-    {
-    }
 
     /**
      * KeyValueType entity static factory
@@ -84,5 +80,10 @@ class KeyValueType implements DSigTypeInterface, StaticFactoryInterface, KeyInfo
         $this->rsaKeyValue = $rsaKeyValue;
 
         return $this;
+    }
+
+    protected function getDefaultAdapter(): AdapterInterface
+    {
+        return new KeyValueAdapter();
     }
 }

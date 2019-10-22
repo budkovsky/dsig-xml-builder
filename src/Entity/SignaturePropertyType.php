@@ -4,9 +4,12 @@ declare(strict_types = 1);
 namespace Budkovsky\DsigXmlBuilder\Entity;
 
 use Budkovsky\Aid\Abstraction\StaticFactoryInterface;
+use Budkovsky\DsigXmlBuilder\Abstraction\AdapterInterface;
 use Budkovsky\DsigXmlBuilder\Abstraction\DSigTypeInterface;
 use Budkovsky\DsigXmlBuilder\Partial\ChildrenTrait;
 use Budkovsky\DsigXmlBuilder\Partial\IdAttributeTrait;
+use Budkovsky\DsigXmlBuilder\Partial\EntityAdapterTrait;
+use Budkovsky\DsigXmlBuilder\Adapter\DOMDocument\SignaturePropertyAdapter;
 
 /**
  * SignaturePropertyType entity
@@ -26,6 +29,7 @@ class SignaturePropertyType implements DSigTypeInterface, StaticFactoryInterface
 {
     use ChildrenTrait;
     use IdAttributeTrait;
+    use EntityAdapterTrait;
 
     /** @var string */
     private $targetAttribute;
@@ -57,4 +61,10 @@ class SignaturePropertyType implements DSigTypeInterface, StaticFactoryInterface
 
         return $this;
     }
+
+    protected function getDefaultAdapter(): AdapterInterface
+    {
+        return new SignaturePropertyAdapter();
+    }
+
 }

@@ -3,7 +3,6 @@ declare(strict_types = 1);
 
 namespace Budkovsky\DsigXmlBuilder\Adapter\DOMDocument;
 
-use Budkovsky\Aid\Abstraction\EntityInterface;
 use Budkovsky\DsigXmlBuilder\Abstraction\AdapterAbstract;
 use Budkovsky\DsigXmlBuilder\Abstraction\AdapterInterface;
 use Budkovsky\DsigXmlBuilder\Entity\CanonicalizationMethodType;
@@ -22,11 +21,6 @@ class CanonicalizationMethodAdapter extends AdapterAbstract
         $this->generateChildren();
 
         return $this;
-    }
-
-    protected function getNewElementFromEntity(EntityInterface $entity): \DOMElement
-    {
-        return $this->getNewElementByAdapter($entity, static::$anyAdapter);
     }
 
     public function getEntity(): CanonicalizationMethodType

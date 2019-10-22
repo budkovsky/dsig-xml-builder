@@ -16,15 +16,13 @@ class SignedInfoAdapter extends AdapterAbstract
     {
         $this->generateMainElement(Tag::SIGNED_INFO_ELEMENT);
         $this->element->appendChild(
-            $this->getNewElementByAdapter(
-                $this->getEntity()->getCanonicalizationMethod(),
-                new CanonicalizationMethodAdapter()
+            $this->getNewElementFromEntity(
+                $this->getEntity()->getCanonicalizationMethod()
             )
         );
         $this->element->appendChild(
-            $this->getNewElementByAdapter(
-                $this->getEntity()->getSignatureMethod(),
-                new SignatureMethodAdapter()
+            $this->getNewElementFromEntity(
+                $this->getEntity()->getSignatureMethod()
             )
         );
         $this->generateReferenceElements($this->getEntity()->getReferences());
@@ -45,4 +43,3 @@ class SignedInfoAdapter extends AdapterAbstract
         $this->entityType = SignedInfoType::class;
     }
 }
-

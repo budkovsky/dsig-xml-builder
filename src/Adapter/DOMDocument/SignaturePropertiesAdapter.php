@@ -4,8 +4,8 @@ namespace Budkovsky\DsigXmlBuilder\Adapter\DOMDocument;
 use Budkovsky\DsigXmlBuilder\Abstraction\AdapterAbstract;
 use Budkovsky\DsigXmlBuilder\Abstraction\AdapterInterface;
 use Budkovsky\DsigXmlBuilder\Entity\SignaturePropertiesType;
-use Budkovsky\DsigXmlBuilder\Enum\Tag;
 use Budkovsky\DsigXmlBuilder\Enum\Attribute;
+use Budkovsky\DsigXmlBuilder\Enum\Tag;
 
 class SignaturePropertiesAdapter extends AdapterAbstract
 {
@@ -16,10 +16,7 @@ class SignaturePropertiesAdapter extends AdapterAbstract
             $this->generateAttribute(Attribute::ID, $this->getEntity()->getIdAttribute());
         }
         foreach ($this->getEntity()->getSignatureProperties() as $signatureProperty) {
-            $this->element->appendChild($this->getNewElementByAdapter(
-                $signatureProperty,
-                SignaturePropertyAdapter::create()
-            ));
+            $this->element->appendChild($this->getNewElementFromEntity($signatureProperty));
         }
 
         return $this;

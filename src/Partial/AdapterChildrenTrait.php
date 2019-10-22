@@ -3,21 +3,18 @@ declare(strict_types = 1);
 
 namespace Budkovsky\DsigXmlBuilder\Partial;
 
-use Budkovsky\Aid\Abstraction\EntityInterface;
-use Budkovsky\DsigXmlBuilder\Abstraction\AdapterInterface;
+use Budkovsky\DsigXmlBuilder\Abstraction\DSigTypeInterface;
 
 trait AdapterChildrenTrait
 {
-    use AnyAdapterTrait;
-
     protected function generateChildren(): self
     {
         $children = $this->getEntity()->getChildren();
 
         if ($children) {
-            foreach ($children as $anyEntity) {
+            foreach ($children as $childEntity) {
                 $this->getDOMElement()->appendChild(
-                    $this->getNewElementFromEntity($anyEntity)
+                    $this->getNewElementFromEntity($childEntity)
                 );
             }
         }
@@ -25,11 +22,7 @@ trait AdapterChildrenTrait
         return $this;
     }
 
-    abstract protected function getNewElementFromEntity(EntityInterface $entity): \DOMElement;
-
-    abstract protected function getNewElementByAdapter(EntityInterface $entity, AdapterInterface $adapter): \DOMElement;
-
-    abstract public function getDOMDocument(): \DOMDocument;
+    abstract protected function getNewElementFromEntity(DSigTypeInterface $entity): \DOMElement;
 
     abstract public function getDOMElement(): \DOMElement;
 

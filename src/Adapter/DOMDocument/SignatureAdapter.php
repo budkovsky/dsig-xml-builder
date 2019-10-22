@@ -19,30 +19,26 @@ class SignatureAdapter extends AdapterAbstract
 
         // SignedInfo element
         $this->element->appendChild(
-            $this->getNewElementByAdapter(
-                $this->getEntity()->getSignedInfo(),
-                new SignedInfoAdapter()
+            $this->getNewElementFromEntity(
+                $this->getEntity()->getSignedInfo()
             )
         );
 
         // SignatureValue element
         $this->element->appendChild(
-            $this->getNewElementByAdapter(
-                $this->getEntity()->getSignatureValue(),
-                new SignatureValueAdapter()
+            $this->getNewElementFromEntity(
+                $this->getEntity()->getSignatureValue()
             )
         );
 
         // KeyInfo elements
         $this->generateElementsFromCollection(
-            $this->getEntity()->getKeyInfoCollection(),
-            KeyInfoAdapter::class
+            $this->getEntity()->getKeyInfoCollection()
         );
 
         //Object elements
         $this->generateElementsFromCollection(
-            $this->getEntity()->getObjects(),
-            ObjectAdapter::class
+            $this->getEntity()->getObjects()
         );
 
         // Id attribute
@@ -53,12 +49,12 @@ class SignatureAdapter extends AdapterAbstract
         return $this;
     }
 
-    protected function generateElementsFromCollection(?CollectionAbstract $collection, string $adapterClass): SignatureAdapter
+    protected function generateElementsFromCollection(?CollectionAbstract $collection): SignatureAdapter
     {
         if ($collection !== null) {
             foreach ($collection as $entity) {
                 $this->element->appendChild(
-                    $this->getNewElementByAdapter($entity, new $adapterClass())
+                    $this->getNewElementFromEntity($entity)
                 );
             }
         }

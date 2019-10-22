@@ -30,8 +30,8 @@ class ReferenceAdapter extends AdapterAbstract
 
         // DigestMethod
         $this->element->appendChild(
-            $this->getNewElementByAdapter(
-                $this->getEntity()->getDigestMethod(), new DigestMethodAdapter()
+            $this->getNewElementFromEntity(
+                $this->getEntity()->getDigestMethod()
             )
         );
 
@@ -60,7 +60,6 @@ class ReferenceAdapter extends AdapterAbstract
     {
         return $this->entity;
     }
-
 
     protected function setEntityType(): void
     {

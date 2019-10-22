@@ -4,9 +4,12 @@ declare(strict_types = 1);
 namespace Budkovsky\DsigXmlBuilder\Entity;
 
 use Budkovsky\Aid\Abstraction\StaticFactoryInterface;
+use Budkovsky\DsigXmlBuilder\Abstraction\AdapterInterface;
 use Budkovsky\DsigXmlBuilder\Abstraction\DSigTypeInterface;
 use Budkovsky\DsigXmlBuilder\Partial\AlgorithmAttributeTrait;
 use Budkovsky\DsigXmlBuilder\Partial\ChildrenTrait;
+use Budkovsky\DsigXmlBuilder\Partial\EntityAdapterTrait;
+use Budkovsky\DsigXmlBuilder\Adapter\DOMDocument\SignatureMethodAdapter;
 
 /**
  * SignatureMethodType entity
@@ -26,6 +29,7 @@ class SignatureMethodType implements DSigTypeInterface, StaticFactoryInterface
 {
     use AlgorithmAttributeTrait;
     use ChildrenTrait;
+    use EntityAdapterTrait;
 
     /** @var int */
     protected $hmacOutputLength;
@@ -56,4 +60,10 @@ class SignatureMethodType implements DSigTypeInterface, StaticFactoryInterface
 
         return $this;
     }
+
+    protected function getDefaultAdapter(): AdapterInterface
+    {
+        return new SignatureMethodAdapter();
+    }
+
 }

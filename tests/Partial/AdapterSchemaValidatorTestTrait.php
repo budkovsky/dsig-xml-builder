@@ -27,8 +27,6 @@ trait AdapterSchemaValidatorTestTrait
         ;
         $document->appendChild($element);
 
-        echo $document->saveXML();
-
         return $document->schemaValidate($this->schemaPath) === true ?? false;
     }
 

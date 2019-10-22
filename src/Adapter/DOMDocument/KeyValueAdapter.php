@@ -7,32 +7,27 @@ use Budkovsky\DsigXmlBuilder\Abstraction\AdapterAbstract;
 use Budkovsky\DsigXmlBuilder\Abstraction\AdapterInterface;
 use Budkovsky\DsigXmlBuilder\Entity\KeyValueType;
 use Budkovsky\DsigXmlBuilder\Enum\Tag;
-use Budkovsky\DsigXmlBuilder\Partial\AnyAdapterTrait;
 
 class KeyValueAdapter extends AdapterAbstract
 {
-    use AnyAdapterTrait;
 
     public function generate(): AdapterInterface
     {
         $this->generateMainElement(Tag::KEY_VALUE_ELEMENT);
 
         if ($this->getEntity()->getDsaKeyValue() !== null) {
-            $this->element->appendChild($this->getNewElementByAdapter(
-                $this->getEntity()->getDsaKeyValue(),
-                DSAKeyValueAdapter::create()
+            $this->element->appendChild($this->getNewElementFromEntity(
+                $this->getEntity()->getDsaKeyValue()
             ));
         }
         if ($this->getEntity()->getRsaKeyValue() !== null) {
-            $this->element->appendChild($this->getNewElementByAdapter(
-                $this->getEntity()->getRsaKeyValue(),
-                RSAKeyValueAdapter::create()
+            $this->element->appendChild($this->getNewElementFromEntity(
+                $this->getEntity()->getRsaKeyValue()
             ));
         }
         if ($this->getEntity()->getAny() !== null) {
-            $this->element->appendChild($this->getNewElementByAdapter(
-                $this->getEntity()->getAny(),
-                static::$anyAdapter
+            $this->element->appendChild($this->getNewElementFromEntity(
+                $this->getEntity()->getAny()
             ));
         }
 
@@ -49,4 +44,3 @@ class KeyValueAdapter extends AdapterAbstract
         $this->entityType = KeyValueType::class;
     }
 }
-

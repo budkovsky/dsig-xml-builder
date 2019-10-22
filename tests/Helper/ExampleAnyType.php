@@ -3,11 +3,15 @@ declare(strict_types = 1);
 
 namespace Budkovsky\DsigXmlBuilder\Tests\Helper;
 
-use Budkovsky\Aid\Abstraction\EntityInterface;
 use Budkovsky\Aid\Abstraction\StaticFactoryInterface;
+use Budkovsky\DsigXmlBuilder\Abstraction\AdapterInterface;
+use Budkovsky\DsigXmlBuilder\Abstraction\DSigTypeInterface;
+use Budkovsky\DsigXmlBuilder\Partial\EntityAdapterTrait;
 
-class ExampleAnyType implements EntityInterface, StaticFactoryInterface
+class ExampleAnyType implements DSigTypeInterface, StaticFactoryInterface
 {
+    use EntityAdapterTrait;
+
     /** @var string */
     private $subelement1;
 
@@ -42,5 +46,11 @@ class ExampleAnyType implements EntityInterface, StaticFactoryInterface
 
         return $this;
     }
+
+    protected function getDefaultAdapter(): AdapterInterface
+    {
+        return new ExampleAnyAdapter();
+    }
+
 }
 

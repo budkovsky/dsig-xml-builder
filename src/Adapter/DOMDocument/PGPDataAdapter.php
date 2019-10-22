@@ -3,7 +3,6 @@ declare(strict_types = 1);
 
 namespace Budkovsky\DsigXmlBuilder\Adapter\DOMDocument;
 
-use Budkovsky\Aid\Abstraction\EntityInterface;
 use Budkovsky\DsigXmlBuilder\Abstraction\AdapterAbstract;
 use Budkovsky\DsigXmlBuilder\Abstraction\AdapterInterface;
 use Budkovsky\DsigXmlBuilder\Entity\PGPDataType;
@@ -35,11 +34,6 @@ class PGPDataAdapter extends AdapterAbstract
         return $this;
     }
 
-    protected function getNewElementFromEntity(EntityInterface $entity): \DOMElement
-    {
-        $this->getNewElementByAdapter($entity, static::$anyAdapter);
-    }
-
     protected function getEntity(): PGPDataType
     {
         return $this->entity;
@@ -49,6 +43,4 @@ class PGPDataAdapter extends AdapterAbstract
     {
         $this->entityType = PGPDataType::class;
     }
-
 }
-

@@ -3,13 +3,12 @@ declare(strict_types = 1);
 
 namespace Budkovsky\DsigXmlBuilder\Adapter\DOMDocument;
 
-use Budkovsky\Aid\Abstraction\EntityInterface;
 use Budkovsky\DsigXmlBuilder\Abstraction\AdapterAbstract;
-use Budkovsky\DsigXmlBuilder\Partial\AdapterChildrenTrait;
-use Budkovsky\DsigXmlBuilder\Entity\SignatureMethodType;
 use Budkovsky\DsigXmlBuilder\Abstraction\AdapterInterface;
-use Budkovsky\DsigXmlBuilder\Enum\Tag;
+use Budkovsky\DsigXmlBuilder\Entity\SignatureMethodType;
 use Budkovsky\DsigXmlBuilder\Enum\Attribute;
+use Budkovsky\DsigXmlBuilder\Enum\Tag;
+use Budkovsky\DsigXmlBuilder\Partial\AdapterChildrenTrait;
 
 class SignatureMethodAdapter extends AdapterAbstract
 {
@@ -25,11 +24,6 @@ class SignatureMethodAdapter extends AdapterAbstract
         $this->generateChildren();
 
         return $this;
-    }
-
-    protected function getNewElementFromEntity(EntityInterface $entity): \DOMElement
-    {
-        return $this->getNewElementByAdapter($entity, $this->anyAdapter);
     }
 
     protected function getEntity(): SignatureMethodType

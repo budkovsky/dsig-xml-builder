@@ -7,6 +7,9 @@ use Budkovsky\Aid\Abstraction\StaticFactoryInterface;
 use Budkovsky\DsigXmlBuilder\Abstraction\DSigTypeInterface;
 use Budkovsky\DsigXmlBuilder\Collection\ReferenceTypeCollection;
 use Budkovsky\DsigXmlBuilder\Partial\IdAttributeTrait;
+use Budkovsky\DsigXmlBuilder\Partial\EntityAdapterTrait;
+use Budkovsky\DsigXmlBuilder\Adapter\DOMDocument\ManifestAdapter;
+use Budkovsky\DsigXmlBuilder\Abstraction\AdapterInterface;
 
 /**
  * ManifestType entity
@@ -23,6 +26,7 @@ use Budkovsky\DsigXmlBuilder\Partial\IdAttributeTrait;
 class ManifestType implements DSigTypeInterface, StaticFactoryInterface
 {
     use IdAttributeTrait;
+    use EntityAdapterTrait;
 
     /** @var ReferenceTypeCollection */
     private $references;
@@ -68,4 +72,10 @@ class ManifestType implements DSigTypeInterface, StaticFactoryInterface
 
         return $this;
     }
+
+    protected function getDefaultAdapter(): AdapterInterface
+    {
+        return new ManifestAdapter();
+    }
+
 }

@@ -177,7 +177,8 @@ class ExampleEntity
     {
         return SignaturePropertyType::create()
             ->setTargetAttribute('http://aaa.com/bbb#ccc')
-            ->addChild(self::getAnyEntity());
+            ->addChild(self::getAnyEntity())
+        ;
     }
 
     public static function getDSAKeyValue(): DSAKeyValueType

@@ -5,6 +5,9 @@ namespace Budkovsky\DsigXmlBuilder\Entity;
 
 use Budkovsky\Aid\Abstraction\StaticFactoryInterface;
 use Budkovsky\DsigXmlBuilder\Abstraction\DSigTypeInterface;
+use Budkovsky\DsigXmlBuilder\Partial\EntityAdapterTrait;
+use Budkovsky\DsigXmlBuilder\Adapter\DOMDocument\DSAKeyValueAdapter;
+use Budkovsky\DsigXmlBuilder\Abstraction\AdapterInterface;
 
 /**
  * DSAKeyValueType entity
@@ -29,6 +32,8 @@ use Budkovsky\DsigXmlBuilder\Abstraction\DSigTypeInterface;
  */
 class DSAKeyValueType implements DSigTypeInterface, StaticFactoryInterface
 {
+    use EntityAdapterTrait;
+
     /** @var string */
     private $p;
 
@@ -190,5 +195,10 @@ class DSAKeyValueType implements DSigTypeInterface, StaticFactoryInterface
         $this->pgenCounter = $pgenCounter;
 
         return $this;
+    }
+
+    protected function getDefaultAdapter(): AdapterInterface
+    {
+        return new DSAKeyValueAdapter();
     }
 }

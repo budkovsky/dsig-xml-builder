@@ -7,6 +7,9 @@ use Budkovsky\Aid\Abstraction\StaticFactoryInterface;
 use Budkovsky\DsigXmlBuilder\Abstraction\DSigTypeInterface;
 use Budkovsky\DsigXmlBuilder\Partial\ChildrenTrait;
 use Budkovsky\DsigXmlBuilder\Partial\IdAttributeTrait;
+use Budkovsky\DsigXmlBuilder\Partial\EntityAdapterTrait;
+use Budkovsky\DsigXmlBuilder\Adapter\DOMDocument\KeyInfoAdapter;
+use Budkovsky\DsigXmlBuilder\Abstraction\AdapterInterface;
 
 /**
  * KeyInfoType entity
@@ -32,6 +35,7 @@ class KeyInfoType implements DSigTypeInterface, StaticFactoryInterface
 {
     use IdAttributeTrait;
     use ChildrenTrait;
+    use EntityAdapterTrait;
 
     /**
      * KeyInfoType entity static factory
@@ -40,5 +44,10 @@ class KeyInfoType implements DSigTypeInterface, StaticFactoryInterface
     public static function create(): KeyInfoType
     {
         return new static;
+    }
+
+    protected function getDefaultAdapter(): AdapterInterface
+    {
+        return new KeyInfoAdapter();
     }
 }

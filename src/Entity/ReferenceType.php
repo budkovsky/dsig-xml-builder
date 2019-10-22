@@ -4,11 +4,14 @@ declare(strict_types = 1);
 namespace Budkovsky\DsigXmlBuilder\Entity;
 
 use Budkovsky\Aid\Abstraction\StaticFactoryInterface;
+use Budkovsky\DsigXmlBuilder\Abstraction\AdapterInterface;
 use Budkovsky\DsigXmlBuilder\Abstraction\DSigTypeInterface;
 use Budkovsky\DsigXmlBuilder\Collection\TransformTypeCollection;
 use Budkovsky\DsigXmlBuilder\Partial\IdAttributeTrait;
 use Budkovsky\DsigXmlBuilder\Partial\TypeAttributeTrait;
 use Budkovsky\DsigXmlBuilder\Partial\UriAttributeTrait;
+use Budkovsky\DsigXmlBuilder\Partial\EntityAdapterTrait;
+use Budkovsky\DsigXmlBuilder\Adapter\DOMDocument\ReferenceAdapter;
 
 /**
  * ReferenceType entity
@@ -31,6 +34,7 @@ class ReferenceType implements DSigTypeInterface, StaticFactoryInterface
     use IdAttributeTrait;
     use UriAttributeTrait;
     use TypeAttributeTrait;
+    use EntityAdapterTrait;
 
     /** @var TransformTypeCollection */
     private $transforms;
@@ -125,4 +129,10 @@ class ReferenceType implements DSigTypeInterface, StaticFactoryInterface
 
         return $this;
     }
+
+    protected function getDefaultAdapter(): AdapterInterface
+    {
+        return new ReferenceAdapter();
+    }
+
 }

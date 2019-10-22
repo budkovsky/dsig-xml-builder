@@ -18,15 +18,8 @@ class SignatureValueAdapter extends AdapterAbstract
 
     public function generate(): AdapterInterface
     {
-        $this->generateMainElement(
-            Tag::SIGNATURE_VALUE_ELEMENT,
-            $this->getEntity()->getSimpleContent()
-        );
-
-        $this->generateAttribute(
-            Attribute::ID,
-            $this->getEntity()->getIdAttribute()
-        );
+        $this->generateMainElement(Tag::SIGNATURE_VALUE_ELEMENT, $this->getEntity()->getSimpleContent());
+        $this->generateAttribute(Attribute::ID, $this->getEntity()->getIdAttribute());
 
         return $this;
     }

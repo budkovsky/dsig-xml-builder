@@ -3,7 +3,6 @@ declare(strict_types = 1);
 
 namespace Budkovsky\DsigXmlBuilder\Adapter\DOMDocument;
 
-use Budkovsky\Aid\Abstraction\EntityInterface;
 use Budkovsky\DsigXmlBuilder\Abstraction\AdapterAbstract;
 use Budkovsky\DsigXmlBuilder\Abstraction\AdapterInterface;
 use Budkovsky\DsigXmlBuilder\Entity\ObjectType;
@@ -35,11 +34,6 @@ class ObjectAdapter extends AdapterAbstract
         return $this;
     }
 
-    protected function getNewElementFromEntity(EntityInterface $entity): \DOMElement
-    {
-        return $this->getNewElementByAdapter($entity, $this->adapter);
-    }
-
     protected function getEntity(): ObjectType
     {
         return $this->entity;
@@ -50,4 +44,3 @@ class ObjectAdapter extends AdapterAbstract
         $this->entityType = ObjectType::class;
     }
 }
-

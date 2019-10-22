@@ -4,11 +4,14 @@ declare(strict_types = 1);
 namespace Budkovsky\DsigXmlBuilder\Entity;
 
 use Budkovsky\Aid\Abstraction\StaticFactoryInterface;
+use Budkovsky\DsigXmlBuilder\Abstraction\AdapterInterface;
 use Budkovsky\DsigXmlBuilder\Abstraction\DSigTypeInterface;
 use Budkovsky\DsigXmlBuilder\Abstraction\KeyInfoChildInterface;
 use Budkovsky\DsigXmlBuilder\Collection\TransformTypeCollection;
 use Budkovsky\DsigXmlBuilder\Partial\TypeAttributeTrait;
 use Budkovsky\DsigXmlBuilder\Partial\UriAttributeTrait;
+use Budkovsky\DsigXmlBuilder\Partial\EntityAdapterTrait;
+use Budkovsky\DsigXmlBuilder\Adapter\DOMDocument\RetrievalMethodAdapter;
 
 /**
  * RetrievalMethodType entity
@@ -27,6 +30,7 @@ class RetrievalMethodType implements DSigTypeInterface, StaticFactoryInterface, 
 {
     use UriAttributeTrait;
     use TypeAttributeTrait;
+    use EntityAdapterTrait;
 
     /** @var TransformTypeCollection */
     private $transforms;
@@ -76,5 +80,11 @@ class RetrievalMethodType implements DSigTypeInterface, StaticFactoryInterface, 
 
         return $this;
     }
+
+    protected function getDefaultAdapter(): AdapterInterface
+    {
+        return new RetrievalMethodAdapter();
+    }
+
 }
 
