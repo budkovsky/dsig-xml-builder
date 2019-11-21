@@ -7,3 +7,5 @@ composer.phar
 /.buildpath
 /.project
 /.settings/
+
+/tmp/*

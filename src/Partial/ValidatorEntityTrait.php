@@ -10,7 +10,7 @@ use Budkovsky\DsigXmlBuilder\Enum\Attribute;
 use Budkovsky\DsigXmlBuilder\Enum\ValidationMessage;
 use Budkovsky\DsigXmlBuilder\Exception\DsigXmlBuilderException;
 use Budkovsky\DsigXmlBuilder\Exception\RestrictionException;
-use Budkovsky\DsigXmlBuilder\Helper\RestrictionHelper;
+use Budkovsky\DsigXmlBuilder\Helper\Restriction;
 
 /**
  * Validator for entity trait
@@ -51,7 +51,7 @@ trait ValidatorEntityTrait
     private function validateIsBase64(?string $value, string $childName): void
     {
         $this->processValidationStep(
-            RestrictionHelper::isBase64($value),
+            Restriction::isBase64($value),
             ValidationMessage::NOT_BASE64,
             $this->getName(),
             $childName
@@ -61,7 +61,7 @@ trait ValidatorEntityTrait
     private function validateIsUri(?string $value, string $childName): void
     {
         $this->processValidationStep(
-            RestrictionHelper::isUri($value),
+            Restriction::isUri($value),
             ValidationMessage::NOT_URI,
             $this->getName(),
             $childName

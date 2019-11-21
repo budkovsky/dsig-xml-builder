@@ -17,7 +17,7 @@ class SignatureValueValidatorTest extends TestCase
 
     public function testCanValidateIsValueBase64String(): void
     {
-        $this->expectExceptionMessageMatches('/simpleContent/');
+        $this->expectExceptionMessageRegExp('/simpleContent/');
         SignatureValueValidator::create()
             ->validate(
                 ExampleEntity::getSignatureValue()

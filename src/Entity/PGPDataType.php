@@ -8,7 +8,7 @@ use Budkovsky\DsigXmlBuilder\Abstraction\AdapterInterface;
 use Budkovsky\DsigXmlBuilder\Abstraction\DSigTypeInterface;
 use Budkovsky\DsigXmlBuilder\Abstraction\KeyInfoChildInterface;
 use Budkovsky\DsigXmlBuilder\Exception\RestrictionException;
-use Budkovsky\DsigXmlBuilder\Helper\RestrictionHelper;
+use Budkovsky\DsigXmlBuilder\Helper\Restriction;
 use Budkovsky\DsigXmlBuilder\Partial\ChildrenTrait;
 use Budkovsky\DsigXmlBuilder\Partial\EntityAdapterTrait;
 use Budkovsky\DsigXmlBuilder\Adapter\DOMDocument\PGPDataAdapter;
@@ -65,7 +65,7 @@ class PGPDataType implements DSigTypeInterface, StaticFactoryInterface, KeyInfoC
      */
     public function setPgpKeyId(string $pgpKeyId): PGPDataType
     {
-        if (!RestrictionHelper::isBase64($pgpKeyId)) {
+        if (!Restriction::isBase64($pgpKeyId)) {
             throw new RestrictionException('PGPKeyID must be base64 encoded string');
         }
 
@@ -88,7 +88,7 @@ class PGPDataType implements DSigTypeInterface, StaticFactoryInterface, KeyInfoC
      */
     public function setPgpKeyPacket(string $pgpKeyPacket): PGPDataType
     {
-        if (!RestrictionHelper::isBase64($pgpKeyPacket)) {
+        if (!Restriction::isBase64($pgpKeyPacket)) {
             throw new RestrictionException('PGPKeyPacket must be base64 encoded string');
         }
         $this->pgpKeyPacket = $pgpKeyPacket;

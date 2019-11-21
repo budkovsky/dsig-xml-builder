@@ -36,7 +36,7 @@ class ReferenceAdapter extends AdapterAbstract
         );
 
         // DigestValue
-        $this->generateChild(Tag::DIGEST_VALUE_ELEMENT, $this->getEntity()->getDigestValue());
+        $this->generateChild(Tag::DIGEST_VALUE_ELEMENT, $this->getEntity()->getDigestValue() ?? '');
 
         // Id attribute
         if ($this->getEntity()->getIdAttribute() !== null) {

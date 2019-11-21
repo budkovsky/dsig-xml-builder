@@ -5,6 +5,7 @@ namespace Budkovsky\DsigXmlBuilder\Tests\Partial;
 
 use Budkovsky\DsigXmlBuilder\Abstraction\DSigTypeInterface;
 use Budkovsky\ExtendedDomElement\ExtendedDomElement;
+use Budkovsky\DsigXmlBuilder\Enum\XmlNs;
 
 trait AdapterSchemaValidatorTestTrait
 {
@@ -17,7 +18,10 @@ trait AdapterSchemaValidatorTestTrait
         /** @var \DOMDocument $document */
         $document = ExtendedDomElement::getDomDocument();
         /** @var \Budkovsky\DsigXmlBuilder\Abstraction\AdapterInterface $adapter */
-        $adapter = new $this->class;
+        $adapter = $entity->getAdapter()
+            ->setNamespace(XmlNs::XML_DSIG_2000_09)
+            ->setElementPrefix('ds:')
+        ;
         /** @var ExtendedDomElement $element */
         $element = $adapter
             ->setDocument($document)

@@ -5,6 +5,6 @@ namespace Budkovsky\DsigXmlBuilder\Abstraction;
 
 interface DOMDocumentGetter
 {
-    function getDOMDocument(): \DOMDocument;
+    function getDOMDocument(): ?\DOMDocument;
 }
 

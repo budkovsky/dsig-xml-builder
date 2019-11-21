@@ -35,7 +35,7 @@ class X509IssuerSerialValidatorTest extends TestCase
         $entity = X509IssuerSerialType::create()
             ->setX509SerialNumber(rand(1,100000))
         ;
-        $this->expectExceptionMessageMatches('/IssuerName/');
+        $this->expectExceptionMessageRegExp('/IssuerName/');
         X509IssuerSerialValidator::create()->validate($entity);
     }
 
@@ -44,7 +44,7 @@ class X509IssuerSerialValidatorTest extends TestCase
         $entity = X509IssuerSerialType::create()
             ->setX509IssuerName(RandomString::get())
         ;
-        $this->expectExceptionMessageMatches('/SerialNumber/');
+        $this->expectExceptionMessageRegExp('/SerialNumber/');
         X509IssuerSerialValidator::create()->validate($entity);
     }
 }

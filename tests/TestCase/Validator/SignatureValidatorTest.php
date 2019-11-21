@@ -30,7 +30,7 @@ class SignatureValidatorTest extends TestCase
 
     public function testReportsEmptySignedInfo(): void
     {
-        $this->expectExceptionMessageMatches('/SignedInfo/');
+        $this->expectExceptionMessageRegExp('/SignedInfo/');
 
         SignatureValidator::create()->validate(
             ExampleEntity::getSignature()
@@ -40,7 +40,7 @@ class SignatureValidatorTest extends TestCase
 
     public function testReportsEmptySignatureValue(): void
     {
-        $this->expectExceptionMessageMatches('/SignatureValue/');
+        $this->expectExceptionMessageRegExp('/SignatureValue/');
 
         SignatureValidator::create()->validate(
             ExampleEntity::getSignature()

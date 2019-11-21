@@ -5,6 +5,8 @@ namespace Budkovsky\DsigXmlBuilder\Abstraction;
 
 use Budkovsky\Aid\Abstraction\EntityInterface;
 use Budkovsky\DsigXmlBuilder\Exception\AdapterException;
+use Budkovsky\DsigXmlBuilder\Enum\Attribute;
+use Budkovsky\DsigXmlBuilder\Enum\XmlNs;
 
 abstract class AdapterAbstract implements AdapterInterface
 {
@@ -24,7 +26,7 @@ abstract class AdapterAbstract implements AdapterInterface
     protected $elementTag;
 
     /** @var string */
-    protected $namespace = 'http://www.w3.org/2000/09/xmldsig#';
+    protected $namespace = XmlNs::XML_DSIG_2000_09;
 
     protected $elementPrefix = 'ds:';
 
@@ -38,7 +40,6 @@ abstract class AdapterAbstract implements AdapterInterface
         return new static;
     }
 
-
     public function setDocument(\DOMDocument $document): AdapterInterface
     {
         $this->document = $document;
@@ -50,7 +51,7 @@ abstract class AdapterAbstract implements AdapterInterface
     {
         if (!($entity instanceof $this->entityType)) {
             throw new AdapterException(\sprintf(
-                '`%s` is invalid entity type for validator `%s`',
+                '`%s` is invalid entity type for `%s`',
                 \get_class($entity),
                 static::class
             ));
@@ -103,7 +104,9 @@ abstract class AdapterAbstract implements AdapterInterface
         if ($value !== null) {
             $this->element->setAttribute($name, $value);
         }
-
+        if ($value !== null && $name == Attribute::ID) {
+            $this->element->setIdAttribute($name, true);
+        }
         return $this;
     }
 

@@ -2,18 +2,18 @@
 	"name": "budkovsky/dsig-xml-builder",
 	"autoload": {
 		"psr-4": {
-			"Budkovsky\\DsigXmlBuilder\\Tests\\": "tests",
-			"Budkovsky\\DsigXmlBuilder\\": "src"
+			"Budkovsky\\DsigXmlBuilder\\Tests\\":
+			"tests","Budkovsky\\DsigXmlBuilder\\":"src"
 		}
 	},
 	"require": {
-		"php": "^7.2",
-		"ext-openssl": "*",
+		"php": "^7.1",
 		"budkovsky/extended-dom-element": "*",
-		"budkovsky/aid": "*"
+		"budkovsky/aid": "*",
+		"budkovsky/openssl-wrapper": "^0.1.1"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "^8.0"
+		"phpunit/phpunit": "^7.0"
 	},
 	"repositories": [
 		{
@@ -25,6 +25,11 @@
 			"type": "git",
 			"url": "https://github.com/budkovsky/aid",
 			"name": "budkovsky/aid"
+		},
+		{
+		  "type": "git",
+		  "url": "https://github.com/budkovsky/openssl-wrapper",
+		  "name": "budkovsky/openssl-wrapper"
 		}
 	]
 }

@@ -1,10 +1,9 @@
 <?php
 namespace Budkovsky\DsigXmlBuilder\Abstraction;
 
-
-use Abstraction\AbstractFactoryInterface;
 use Budkovsky\DsigXmlBuilder\Enum\KeyValueChoice;
 use Budkovsky\DsigXmlBuilder\Exception\FactoryException;
+use Budkovsky\Aid\Abstraction\AbstractFactoryInterface;
 
 abstract class KeyValueTypeAbstract implements AbstractFactoryInterface
 {

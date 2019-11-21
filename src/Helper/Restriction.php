@@ -4,10 +4,9 @@ declare(strict_types = 1);
 namespace Budkovsky\DsigXmlBuilder\Helper;
 
 /**
- * RestrictionHelper
- *
+ * Restriction
  */
-abstract class RestrictionHelper
+abstract class Restriction
 {
     //const REGEX_URI = '^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?';
     //const REGEX_URI = '/\\b(([\\w-]+://?|www[.])[^\\s()<>]+(?:\\([\\w\\d]+\\)|([^[:punct:]\\s]|/)))/iS';

@@ -27,10 +27,8 @@ class SignatureValidator extends ValidatorAbstract
             'SignatureValue'
         );
         SignatureValueValidator::create()->addObserver($this)->validate($entity->getSignatureValue());
-        if ($entity->getKeyInfoCollection()) {
-            foreach ($entity->getKeyInfoCollection() as $keyInfo) {
-                KeyInfoValidator::create()->addObserver($this)->validate($keyInfo);
-            }
+        if ($entity->getKeyInfo()) {
+            KeyInfoValidator::create()->addObserver($this)->validate($entity->getKeyInfo());
         }
         //TODO ObjectType validation skeleton
         if ($entity->getIdAttribute() !== null) {

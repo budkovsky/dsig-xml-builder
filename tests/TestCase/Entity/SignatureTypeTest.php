@@ -4,7 +4,6 @@ declare(strict_types = 1);
 namespace Budkovsky\DsigXmlBuilder\Tests\TestCase\Entity;
 
 use Budkovsky\Aid\Helper\RandomString;
-use Budkovsky\DsigXmlBuilder\Collection\KeyInfoTypeCollection;
 use Budkovsky\DsigXmlBuilder\Collection\ObjectTypeCollection;
 use Budkovsky\DsigXmlBuilder\Entity\KeyInfoType;
 use Budkovsky\DsigXmlBuilder\Entity\ObjectType;
@@ -29,21 +28,20 @@ class SignatureTypeTest extends TestCase
         $entity = SignatureType::create()
             ->setSignedInfo(ExampleEntity::getSignedInfo())
             ->setSignatureValue(ExampleEntity::getSignatureValue())
-            ->setKeyInfoCollection(new KeyInfoTypeCollection())
+            ->setKeyInfo(new KeyInfoType())
             ->setObjects(new ObjectTypeCollection())
             ->setIdAttribute($id = RandomString::get())
         ;
         $this->assertInstanceOf(SignedInfoType::class, $entity->getSignedInfo());
         $this->assertInstanceOf(SignatureValueType::class, $entity->getSignatureValue());
-        $this->assertInstanceOf(KeyInfoTypeCollection::class, $entity->getKeyInfoCollection());
+        $this->assertInstanceOf(KeyInfoType::class, $entity->getKeyInfo());
         $this->assertInstanceOf(ObjectTypeCollection::class, $entity->getObjects());
         $this->assertEquals($id, $entity->getIdAttribute());
 
         $entity->addObject(new ObjectType());
         $this->assertGreaterThan(0, $entity->getObjects()->count());
 
-        $entity->addKeyInfo(new KeyInfoType());
-        $this->assertGreaterThan(0, $entity->getKeyInfoCollection()->count());
+        $entity->setKeyInfo(new KeyInfoType());
     }
 
     public function testAreGettersNullable(): void
@@ -52,7 +50,7 @@ class SignatureTypeTest extends TestCase
 
         $this->assertNull($entity->getSignedInfo());
         $this->assertNull($entity->getSignatureValue());
-        $this->assertNull($entity->getKeyInfoCollection());
+        $this->assertNull($entity->getKeyInfo());
         $this->assertNull($entity->getObjects());
         $this->assertNull($entity->getIdAttribute());
     }

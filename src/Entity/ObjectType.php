@@ -7,7 +7,7 @@ use Budkovsky\Aid\Abstraction\StaticFactoryInterface;
 use Budkovsky\DsigXmlBuilder\Abstraction\DSigTypeInterface;
 use Budkovsky\DsigXmlBuilder\Abstraction\SimpleContentInterface;
 use Budkovsky\DsigXmlBuilder\Exception\RestrictionException;
-use Budkovsky\DsigXmlBuilder\Helper\RestrictionHelper;
+use Budkovsky\DsigXmlBuilder\Helper\Restriction;
 use Budkovsky\DsigXmlBuilder\Partial\ChildrenTrait;
 use Budkovsky\DsigXmlBuilder\Partial\EntityAdapterTrait;
 use Budkovsky\DsigXmlBuilder\Partial\IdAttributeTrait;
@@ -85,7 +85,7 @@ class ObjectType implements DSigTypeInterface, StaticFactoryInterface, SimpleCon
      */
     public function setEncoding(string $encoding):  ObjectType
     {
-        if (!RestrictionHelper::isUri($encoding)) {
+        if (!Restriction::isUri($encoding)) {
             throw new RestrictionException("Encoding `$encoding` is not valid URI");
         }
 

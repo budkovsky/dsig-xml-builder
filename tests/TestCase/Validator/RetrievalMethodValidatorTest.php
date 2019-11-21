@@ -36,7 +36,7 @@ class RetrievalMethodValidatorTest extends TestCase
         $this->assertTrue(RetrievalMethodValidator::create()->validate($entity)->isValid());
 
         //Type attribute set with wrong value
-        $this->expectExceptionMessageMatches('/Type/');
+        $this->expectExceptionMessageRegExp('/Type/');
         $entity->setTypeAttribute('#%^ERF sfdgko 123');
         RetrievalMethodValidator::create()->validate($entity);
     }

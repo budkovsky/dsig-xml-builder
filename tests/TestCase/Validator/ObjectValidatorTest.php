@@ -20,7 +20,7 @@ class ObjectValidatorTest extends TestCase
 
     public function testIsIdAttributeNotEmptyIfExists(): void
     {
-        $this->expectExceptionMessageMatches('/Id.+empty/');
+        $this->expectExceptionMessageRegExp('/Id.+empty/');
         ObjectValidator::create()->validate(
             ObjectType::create()
                 ->setIdAttribute('')
@@ -29,7 +29,7 @@ class ObjectValidatorTest extends TestCase
 
     public function testIsMimetypeAttributeNotEmptyIfExists(): void
     {
-        $this->expectExceptionMessageMatches('/MimeType.+empty/');
+        $this->expectExceptionMessageRegExp('/MimeType.+empty/');
         ObjectValidator::create()->validate(
             ObjectType::create()
                 ->setMimeType('')
@@ -38,7 +38,7 @@ class ObjectValidatorTest extends TestCase
 
     public function testIsMEncodingAttributeNotEmptyIfExists(): void
     {
-        $this->expectExceptionMessageMatches('/Encoding.+URI/');
+        $this->expectExceptionMessageRegExp('/Encoding.+URI/');
         ObjectValidator::create()->validate(
             ObjectType::create()
             ->setEncoding('')

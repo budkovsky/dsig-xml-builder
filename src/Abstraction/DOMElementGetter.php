@@ -5,6 +5,6 @@ namespace Budkovsky\DsigXmlBuilder\Abstraction;
 
 interface DOMElementGetter
 {
-    function getDOMElement(): \DOMElement;
+    function getDOMElement(): ?\DOMElement;
 }
 

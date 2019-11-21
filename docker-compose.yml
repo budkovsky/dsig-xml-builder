@@ -1,0 +1,11 @@
+version: "3.1"
+
+services:
+
+  php:
+    build: docker/php71-fpm
+    container_name: php
+    working_dir: /app
+    volumes:
+      - .:/app
+      - ./docker/php71-fpm/php-ini-overrides.ini:/etc/php/7.1/cli/conf.d/99-overrides.ini

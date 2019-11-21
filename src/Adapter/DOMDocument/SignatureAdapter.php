@@ -31,10 +31,14 @@ class SignatureAdapter extends AdapterAbstract
             )
         );
 
-        // KeyInfo elements
-        $this->generateElementsFromCollection(
-            $this->getEntity()->getKeyInfoCollection()
-        );
+        // KeyInfo element
+        if ($this->getEntity()->getKeyInfo()) {
+            $this->element->appendChild(
+                $this->getNewElementFromEntity(
+                    $this->getEntity()->getKeyInfo()
+                )
+            );
+        }
 
         //Object elements
         $this->generateElementsFromCollection(

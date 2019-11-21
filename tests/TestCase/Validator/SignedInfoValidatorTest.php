@@ -32,7 +32,7 @@ class SignedInfoValidatorTest extends TestCase
 
     public function testIsCanonicalizationMethodRequired(): void
     {
-        $this->expectExceptionMessageMatches('/CanonicalizationMethod/');
+        $this->expectExceptionMessageRegExp('/CanonicalizationMethod/');
 
         SignedInfoValidator::create()->validate(
             ExampleEntity::getSignedInfo()
@@ -42,7 +42,7 @@ class SignedInfoValidatorTest extends TestCase
 
     public function testIsSignatureMethodRequired(): void
     {
-        $this->expectExceptionMessageMatches('/SignatureMethod/');
+        $this->expectExceptionMessageRegExp('/SignatureMethod/');
 
         SignedInfoValidator::create()->validate(
             ExampleEntity::getSignedInfo()
@@ -52,7 +52,7 @@ class SignedInfoValidatorTest extends TestCase
 
     public function testIsAtleastOneReferenceElementRequired(): void
     {
-        $this->expectExceptionMessageMatches('/Reference/');
+        $this->expectExceptionMessageRegExp('/Reference/');
 
         SignedInfoValidator::create()->validate(
             ExampleEntity::getSignedInfo()

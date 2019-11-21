@@ -8,6 +8,7 @@ use Budkovsky\DsigXmlBuilder\Abstraction\AdapterInterface;
 use Budkovsky\DsigXmlBuilder\Abstraction\DSigTypeInterface;
 use Budkovsky\DsigXmlBuilder\Partial\EntityAdapterTrait;
 use Budkovsky\DsigXmlBuilder\Adapter\DOMDocument\X509DataAdapter;
+use Budkovsky\DsigXmlBuilder\Adapter\DOMDocument\X509IssuerSerialAdapter;
 
 /**
  * X509IssuerSerialType entity
@@ -79,7 +80,7 @@ class X509IssuerSerialType implements DSigTypeInterface, StaticFactoryInterface
 
     protected function getDefaultAdapter(): AdapterInterface
     {
-        return new X509DataAdapter();
+        return new X509IssuerSerialAdapter();
     }
 
 }

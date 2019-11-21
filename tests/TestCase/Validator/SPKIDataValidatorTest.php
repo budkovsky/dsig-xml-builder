@@ -19,13 +19,13 @@ class SPKIDataValidatorTest extends TestCase
 
     public function testReportsInvalidIfEmpty(): void
     {
-        $this->expectExceptionMessageMatches('/SPKISexp/');
+        $this->expectExceptionMessageRegExp('/SPKISexp/');
         SPKIDataValidator::create()->validate(new SPKIDataType());
     }
 
     public function testReportsInvalidIfSpkisexpChildExistsButEmpty(): void
     {
-        $this->expectExceptionMessageMatches('/SPKISexp.+empty/');
+        $this->expectExceptionMessageRegExp('/SPKISexp.+empty/');
         SPKIDataValidator::create()->validate(
             SPKIDataType::create()->addChild(
                 SPKISexp::create()
@@ -35,7 +35,7 @@ class SPKIDataValidatorTest extends TestCase
 
     public function testReportsInvalidIfSpkisexpChildIsNotBase64(): void
     {
-        $this->expectExceptionMessageMatches('/SPKISexp.+base64/');
+        $this->expectExceptionMessageRegExp('/SPKISexp.+base64/');
         SPKIDataValidator::create()->validate(
             SPKIDataType::create()->addChild(
                 SPKISexp::create()->setSimpleContent('@$%#$%$ 1232 d356')

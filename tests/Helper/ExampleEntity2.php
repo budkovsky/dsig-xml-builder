@@ -25,7 +25,7 @@ class ExampleEntity2
         return SignatureType::create()
             ->setSignedInfo(self::getSignedInfo())
             ->setSignatureValue(self::getSignatureValue())
-            ->addKeyInfo(self::getKeyInfo())
+            ->setKeyInfo(self::getKeyInfo())
             ->addObject(self::getObject())
         ;
     }

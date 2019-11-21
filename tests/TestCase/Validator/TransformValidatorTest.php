@@ -28,13 +28,13 @@ class TransformValidatorTest extends TestCase
 
     public function testReportsInvalidIfAlgorithmAttributeNotSet(): void
     {
-        $this->expectExceptionMessageMatches('/Algorithm/');
+        $this->expectExceptionMessageRegExp('/Algorithm/');
         TransformValidator::create()->validate(TransformType::create());
     }
 
     public function testReportsInvalidIfAlgorithmIsNotValidUri(): void
     {
-        $this->expectExceptionMessageMatches('/Algorithm.+URI/');
+        $this->expectExceptionMessageRegExp('/Algorithm.+URI/');
         TransformValidator::create()->validate(
             TransformType::create()->setAlgorithmAttribute('123 2342 @#$@')
         );

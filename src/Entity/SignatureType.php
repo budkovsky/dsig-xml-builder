@@ -8,7 +8,6 @@ use Budkovsky\DsigXmlBuilder\Abstraction\AdapterInterface;
 use Budkovsky\DsigXmlBuilder\Abstraction\DSigTypeInterface;
 use Budkovsky\DsigXmlBuilder\Collection\ObjectTypeCollection;
 use Budkovsky\DsigXmlBuilder\Partial\IdAttributeTrait;
-use Budkovsky\DsigXmlBuilder\Collection\KeyInfoTypeCollection;
 use Budkovsky\DsigXmlBuilder\Partial\EntityAdapterTrait;
 use Budkovsky\DsigXmlBuilder\Adapter\DOMDocument\SignatureAdapter;
 
@@ -38,8 +37,8 @@ class SignatureType implements DSigTypeInterface, StaticFactoryInterface
     /** @var SignatureValueType */
     private $signatureValue;
 
-    /** @var KeyInfoTypeCollection */
-    private $keyInfoCollection;
+    /** @var KeyInfoType */
+    private $keyInfo;
 
     /** @var ObjectTypeCollection */
     private $objects;
@@ -92,30 +91,20 @@ class SignatureType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
-     * @return KeyInfoTypeCollection|NULL
+     * @return KeyInfoType|NULL
      */
-    public function getKeyInfoCollection(): ?KeyInfoTypeCollection
+    public function getKeyInfo(): ?KeyInfoType
     {
-        return $this->keyInfoCollection;
+        return $this->keyInfo;
     }
 
     /**
-     * @param KeyInfoTypeCollection $keyInfo
+     * @param KeyInfoType $keyInfo
      * @return SignatureType
      */
-    public function setKeyInfoCollection(KeyInfoTypeCollection $keyInfo): SignatureType
+    public function setKeyInfo(KeyInfoType $keyInfo): SignatureType
     {
-        $this->keyInfoCollection = $keyInfo;
-
-        return $this;
-    }
-
-    public function addKeyInfo(KeyInfoType $keyInfo): SignatureType
-    {
-        if (!$this->keyInfoCollection) {
-            $this->keyInfoCollection = new KeyInfoTypeCollection();
-        }
-        $this->keyInfoCollection->add($keyInfo);
+        $this->keyInfo = $keyInfo;
 
         return $this;
     }

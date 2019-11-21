@@ -34,7 +34,7 @@ class KeyInfoValidatorTest extends TestCase
 
     public function testCanValidateEmptyKeyName(): void
     {
-        $this->expectExceptionMessageMatches(
+        $this->expectExceptionMessageRegExp(
             sprintf('/%s/', Tag::KEY_NAME_ELEMENT)
         );
         KeyInfoValidator::create()->validate(
@@ -47,7 +47,7 @@ class KeyInfoValidatorTest extends TestCase
 
     public function testCanValidateEmptyMgmtData(): void
     {
-        $this->expectExceptionMessageMatches(
+        $this->expectExceptionMessageRegExp(
             sprintf('/%s/', Tag::MGMT_DATA_ELEMENT)
         );
         KeyInfoValidator::create()->validate(
