@@ -19,8 +19,8 @@ use Budkovsky\DsigXmlBuilder\Enum\SignatureAlgorithm;
 use Budkovsky\DsigXmlBuilder\Enum\SignatureMode;
 use Budkovsky\DsigXmlBuilder\Exception\GeneratorException;
 use Budkovsky\DsigXmlBuilder\Exception\SignatureModeException;
-use Budkovsky\DsigXmlBuilder\Facade\DetachedSignatureGenerator;
-use Budkovsky\DsigXmlBuilder\Facade\EnvelopingRSASignatureGenerator;
+use Budkovsky\DsigXmlBuilder\Facade\RSADetachedSignatureGenerator;
+use Budkovsky\DsigXmlBuilder\Facade\RSAEnvelopingSignatureGenerator;
 use Budkovsky\DsigXmlBuilder\Helper\Calculation;
 use Budkovsky\OpenSslWrapper\Keystore;
 use Budkovsky\OpenSslWrapper\PrivateKey;
@@ -46,6 +46,9 @@ abstract class RSAGeneratorAbstract extends GeneratorAbstract
      */
     protected $insertBeforeElement;
 
+    /** @var \Budkovsky\DsigXmlBuilder\Entity\ReferenceType */
+    protected $contentReferenceEntity;
+
     public function setKeystore(Keystore $keystore): self
     {
         $this->keystore = $keystore;
@@ -67,15 +70,15 @@ abstract class RSAGeneratorAbstract extends GeneratorAbstract
         switch ($mode) {
 
             case SignatureMode::ENVELOPED:
-                $generator = new EnvelopingRSASignatureGenerator();
+                $generator = new RSAEnvelopingSignatureGenerator();
                 break;
 
             case SignatureMode::ENVELOPING:
-                $generator = new EnvelopingRSASignatureGenerator();
+                $generator = new RSAEnvelopingSignatureGenerator();
                 break;
 
             case SignatureMode::DETACHED:
-                $generator = new DetachedSignatureGenerator();
+                $generator = new RSADetachedSignatureGenerator();
                 break;
 
             default: //should not happen...
@@ -97,13 +100,13 @@ abstract class RSAGeneratorAbstract extends GeneratorAbstract
                 ->setSignatureMethod(SignatureMethodType::create()->setAlgorithmAttribute($this->signatureAlgorithm))
                 ->addReference(
                     $this->contentReferenceEntity = ReferenceType::create()
-                    ->setDigestMethod(
-                        DigestMethodType::create()
-                        ->setAlgorithmAttribute($this->digestAlgorithm)
-                        )
-                    ->setDigestValue('<!-- DIGEST VALUE -->')
-                    //->setIdAttribute($this->getcontentReferenceId())
-                    ->setUriAttribute("#{$this->getContentId()}")
+                        ->setDigestMethod(
+                                DigestMethodType::create()
+                                    ->setAlgorithmAttribute($this->digestAlgorithm)
+                            )
+                        ->setDigestValue('<!-- DIGEST VALUE -->')
+                        //->setIdAttribute($this->getcontentReferenceId())
+                        ->setUriAttribute("#{$this->getContentId()}")
                 )
             );
 
@@ -190,7 +193,7 @@ abstract class RSAGeneratorAbstract extends GeneratorAbstract
         return $this;
     }
 
-    protected function processKeystore(): EnvelopingRSASignatureGenerator
+    protected function processKeystore(): RSAGeneratorAbstract
     {
         if (!$this->keystore) {
 
@@ -238,6 +241,7 @@ abstract class RSAGeneratorAbstract extends GeneratorAbstract
     protected function processCalculation(): GeneratorAbstract
     {
         $this->createSignatureElement();
+
 
         //calculating digest value and filling <DigestValue> element
         $digestValue = Calculation::getDigestValue(

@@ -8,12 +8,9 @@ use Budkovsky\DsigXmlBuilder\Abstraction\RSAGeneratorAbstract;
 use Budkovsky\DsigXmlBuilder\Entity\ObjectType;
 use Budkovsky\DsigXmlBuilder\Helper\Calculation;
 
-class EnvelopingRSASignatureGenerator extends RSAGeneratorAbstract
+class RSAEnvelopingSignatureGenerator extends RSAGeneratorAbstract
 {
-    /** @var \Budkovsky\DsigXmlBuilder\Entity\ReferenceType */
-    protected $contentReferenceEntity;
-
-    public static function create(): EnvelopingRSASignatureGenerator
+    public static function create(): RSAEnvelopingSignatureGenerator
     {
         return new static;
     }

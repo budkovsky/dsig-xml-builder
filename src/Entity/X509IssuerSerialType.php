@@ -6,9 +6,8 @@ namespace Budkovsky\DsigXmlBuilder\Entity;
 use Budkovsky\Aid\Abstraction\StaticFactoryInterface;
 use Budkovsky\DsigXmlBuilder\Abstraction\AdapterInterface;
 use Budkovsky\DsigXmlBuilder\Abstraction\DSigTypeInterface;
-use Budkovsky\DsigXmlBuilder\Partial\EntityAdapterTrait;
-use Budkovsky\DsigXmlBuilder\Adapter\DOMDocument\X509DataAdapter;
 use Budkovsky\DsigXmlBuilder\Adapter\DOMDocument\X509IssuerSerialAdapter;
+use Budkovsky\DsigXmlBuilder\Partial\EntityAdapterTrait;
 
 /**
  * X509IssuerSerialType entity
