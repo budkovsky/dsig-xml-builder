@@ -31,5 +31,6 @@
 		  "url": "https://github.com/budkovsky/openssl-wrapper",
 		  "name": "budkovsky/openssl-wrapper"
 		}
-	]
+	],
+	"test": "vendor/bin/phpunit"
 }
