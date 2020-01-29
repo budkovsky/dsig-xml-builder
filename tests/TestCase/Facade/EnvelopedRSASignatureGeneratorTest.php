@@ -35,6 +35,9 @@ class EnvelopedRSASignatureGeneratorTest extends TestCase
             ->loadDocument('<document xmlns="http://example.org/envelope"><body>aaaaa</body></document>')
         ;
 
+        $pkey = new PrivateKey();
+        $pkey->load($body);
+
         $this->assertTrue(
             $this->isSignatureWithKeyValueValid(
                 $generator->process()->getDOMDocument()->saveXML()
