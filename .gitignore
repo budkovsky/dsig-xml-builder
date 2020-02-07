@@ -9,3 +9,5 @@ composer.phar
 /.settings/
 
 /tmp/*
+
+/bin/vars.sh

@@ -1,0 +1,3 @@
+#!/bin/sh
+CONTAINER_NAME="dsig-php71"
+DOCKERFILE_PATH="docker/php71-fpm"
