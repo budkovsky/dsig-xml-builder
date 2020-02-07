@@ -16,4 +16,3 @@ class ValidatorCollection extends CollectionAbstract
         }
     }
 }
-

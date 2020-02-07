@@ -11,7 +11,6 @@ trait AdapterTransformsTrait
     protected function getTransformsElement(?TransformTypeCollection $collection): \DOMElement
     {
         if ($collection !== null && $collection->count() > 0) {
-
             $container = $this->getNewElement(Tag::TRANSFORMS_ELEMENT);
             foreach ($collection as $transform) {
                 $container->appendChild(

@@ -11,3 +11,4 @@ composer.phar
 /tmp/*
 
 /bin/vars.sh
+/reports/*

@@ -68,7 +68,6 @@ abstract class RSAGeneratorAbstract extends GeneratorAbstract
         }
 
         switch ($mode) {
-
             case SignatureMode::ENVELOPED:
                 $generator = new RSAEnvelopingSignatureGenerator();
                 break;
@@ -83,8 +82,8 @@ abstract class RSAGeneratorAbstract extends GeneratorAbstract
 
             default: //should not happen...
                 throw new GeneratorException(
-                "Unexpected error while creating generator via abstract factory"
-                    );
+                    "Unexpected error while creating generator via abstract factory"
+                );
                 break;
         }
 
@@ -96,19 +95,21 @@ abstract class RSAGeneratorAbstract extends GeneratorAbstract
         $this->signatureEntity->getAdapter()->setNamespace('http://www.w3.org/2000/09/xmldsig#');
         $this->signatureEntity->setSignedInfo(
             SignedInfoType::create()
-                ->setCanonicalizationMethod(CanonicalizationMethodType::create()->setAlgorithmAttribute($this->canonicalizationAlgorithm))
-                ->setSignatureMethod(SignatureMethodType::create()->setAlgorithmAttribute($this->signatureAlgorithm))
+                ->setCanonicalizationMethod(
+                    CanonicalizationMethodType::create()->setAlgorithmAttribute($this->canonicalizationAlgorithm)
+                )
+                ->setSignatureMethod(
+                    SignatureMethodType::create()->setAlgorithmAttribute($this->signatureAlgorithm)
+                )
                 ->addReference(
                     $this->contentReferenceEntity = ReferenceType::create()
                         ->setDigestMethod(
-                                DigestMethodType::create()
-                                    ->setAlgorithmAttribute($this->digestAlgorithm)
-                            )
+                            DigestMethodType::create()->setAlgorithmAttribute($this->digestAlgorithm)
+                        )
                         ->setDigestValue('<!-- DIGEST VALUE -->')
-                        //->setIdAttribute($this->getcontentReferenceId())
                         ->setUriAttribute("#{$this->getContentId()}")
                 )
-            );
+        );
 
         return $this;
     }
@@ -118,7 +119,7 @@ abstract class RSAGeneratorAbstract extends GeneratorAbstract
         $this->signatureEntity->setSignatureValue(
             SignatureValueType::create()
             //->setIdAttribute($this->getSignatureValueId())
-            );
+        );
 
         return $this;
     }
@@ -127,8 +128,7 @@ abstract class RSAGeneratorAbstract extends GeneratorAbstract
     {
         $this->signatureEntity->setKeyInfo(KeyInfoType::create());
 
-        if (
-            ($this->keyInfoMode & KeyInfoMode::RSA_KEY_VALUE)
+        if (($this->keyInfoMode & KeyInfoMode::RSA_KEY_VALUE)
             && $this->getKeystore()->getPrivateKey()
         ) {
             $this->processPrivateKey($this->getKeystore()->getPrivateKey());
@@ -136,8 +136,7 @@ abstract class RSAGeneratorAbstract extends GeneratorAbstract
 
         $x509Data = new X509DataType();
 
-        if (
-            ($this->keyInfoMode & KeyInfoMode::RSA_X509DATA_CERTIFICATE)
+        if (($this->keyInfoMode & KeyInfoMode::RSA_X509DATA_CERTIFICATE)
             && $this->getKeystore()->getCertificate()
         ) {
             $x509Data->addChild(
@@ -147,8 +146,7 @@ abstract class RSAGeneratorAbstract extends GeneratorAbstract
             );
         }
 
-        if (
-            ($this->keyInfoMode & KeyInfoMode::RSA_X509DATA_EXTRA_CERTS)
+        if (($this->keyInfoMode & KeyInfoMode::RSA_X509DATA_EXTRA_CERTS)
             && $this->getKeystore()->getExtraCerts()
             && $this->getKeystore()->getExtraCerts()->count() > 0
         ) {
@@ -178,7 +176,7 @@ abstract class RSAGeneratorAbstract extends GeneratorAbstract
         if ($keyDetails->getType() != KeyType::RSA) {
             throw new GeneratorException(
                 "Invalid private key type. Different key than RSA not implemented."
-                );
+            );
         }
 
         $this->signatureEntity->getKeyInfo()->addChild(
@@ -196,7 +194,6 @@ abstract class RSAGeneratorAbstract extends GeneratorAbstract
     protected function processKeystore(): RSAGeneratorAbstract
     {
         if (!$this->keystore) {
-
             return $this;
         }
 
@@ -204,15 +201,14 @@ abstract class RSAGeneratorAbstract extends GeneratorAbstract
         if ($this->keystore->getCertificate()) {
             $x509Data->addChild(X509Certificate::create()->setSimpleContent(
                 Calculation::trimPemBody($this->keystore->getCertificate()->export())
-                ));
-
+            ));
         }
         if ($this->keystore->getExtraCerts()) {
             foreach ($this->keystore->getExtraCerts() as $extraCert) {
                 /** @var X509 $extraCert */
                 $x509Data->addChild(X509Certificate::create()->setSimpleContent(
                     Calculation::trimPemBody($extraCert->export())
-                    ));
+                ));
             }
         }
 
@@ -254,10 +250,10 @@ abstract class RSAGeneratorAbstract extends GeneratorAbstract
         //calculating signature value and filling <SignatureValue> element
         $signatureValue = $this->getKeystore()->getPrivateKey()->sign(
             $this->document->getElementsByTagName('SignedInfo')[0]->C14N(),
-                SignatureAlgorithm::map(
-                    $this->signatureEntity->getSignedInfo()->getSignatureMethod()->getAlgorithmAttribute()
-                )
-            );
+            SignatureAlgorithm::map(
+                $this->signatureEntity->getSignedInfo()->getSignatureMethod()->getAlgorithmAttribute()
+            )
+        );
         $this->document->getElementsByTagName('SignatureValue')[0]->nodeValue = \base64_encode($signatureValue);
 
         return $this;

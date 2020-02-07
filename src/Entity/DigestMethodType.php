@@ -42,5 +42,4 @@ class DigestMethodType implements DSigTypeInterface, StaticFactoryInterface
     {
         return new DigestMethodAdapter();
     }
-
 }

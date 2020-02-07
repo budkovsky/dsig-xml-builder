@@ -14,7 +14,7 @@ abstract class KeyValueTypeAbstract implements AbstractFactoryInterface
         if (!KeyValueChoice::isValid($type)) {
             throw new FactoryException(
                 "`$type` is not valid argument for KeyValueType factory"
-                );
+            );
         }
         $className = null;
         switch ($type) {
@@ -29,4 +29,3 @@ abstract class KeyValueTypeAbstract implements AbstractFactoryInterface
         return new $className;
     }
 }
-

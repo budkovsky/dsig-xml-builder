@@ -44,4 +44,3 @@ class RetrievalMethodAdapter extends AdapterAbstract
         $this->entityType = RetrievalMethodType::class;
     }
 }
-

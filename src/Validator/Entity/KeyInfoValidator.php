@@ -36,10 +36,9 @@ class KeyInfoValidator extends ValidatorAbstract
 
     protected function validateKeyInfoChild(EntityInterface $child): void
     {
-        switch(true) {
-
+        switch (true) {
             case $child instanceof KeyName:
-            $this->validateIsNotEmpty($child, Tag::KEY_NAME_ELEMENT);
+                $this->validateIsNotEmpty($child, Tag::KEY_NAME_ELEMENT);
                 break;
 
             case $child instanceof KeyValueType:

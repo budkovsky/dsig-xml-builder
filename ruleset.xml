@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<ruleset name="DSig-XML-Bulider"
+         xmlns="http://pmd.sf.net/ruleset/1.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd"
+         xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
+    <description>
+        Custom ruleset for Digital Signature XML Builder
+    </description>
+    <rule ref="rulesets/cleancode.xml">
+    	<exclude name="BooleanArgumentFlag" />
+    	<exclude name="ElseExpression" />
+    	<exclude name="StaticAccess" />
+    </rule>
+    <rule ref="rulesets/codesize.xml">
+    	<exclude name="TooManyFields" />
+    	<exclude name="TooManyMethods" />
+    	<exclude name="TooManyPublicMethods" />
+    </rule>
+    <rule ref="rulesets/design.xml">
+    	<exclude name="NumberOfChildren" />
+    	<exclude name="DepthOfInheritance" />
+    </rule>
+    <rule ref="rulesets/naming.xml">
+    	<exclude name="ShortVariable" />
+        <exclude name="LongVariable" />
+    </rule>
+    <rule ref="rulesets/controversial.xml" />
+    <rule ref="rulesets/unusedcode.xml" />
+</ruleset>

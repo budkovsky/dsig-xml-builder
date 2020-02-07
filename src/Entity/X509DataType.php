@@ -43,5 +43,4 @@ class X509DataType implements DSigTypeInterface, StaticFactoryInterface, KeyInfo
     {
         return new X509DataAdapter();
     }
-
 }

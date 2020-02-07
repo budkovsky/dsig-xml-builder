@@ -77,5 +77,4 @@ class ManifestType implements DSigTypeInterface, StaticFactoryInterface
     {
         return new ManifestAdapter();
     }
-
 }

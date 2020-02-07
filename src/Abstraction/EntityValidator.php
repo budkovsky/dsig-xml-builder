@@ -10,4 +10,3 @@ interface EntityValidator
 {
     public static function isValid(): bool;
 }
-

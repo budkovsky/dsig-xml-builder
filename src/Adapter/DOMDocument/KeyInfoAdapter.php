@@ -21,7 +21,7 @@ class KeyInfoAdapter extends AdapterAbstract
             foreach ($this->getEntity()->getChildren() as $childEntity) {
                 $this->getDOMElement()->appendChild(
                     $this->getNewElementFromEntity($childEntity)
-                    );
+                );
             }
         }
         if ($this->getEntity()->getIdAttribute() !== null) {
@@ -40,6 +40,4 @@ class KeyInfoAdapter extends AdapterAbstract
     {
         $this->entityType = KeyInfoType::class;
     }
-
 }
-

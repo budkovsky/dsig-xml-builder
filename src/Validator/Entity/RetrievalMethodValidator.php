@@ -22,13 +22,11 @@ class RetrievalMethodValidator extends ValidatorAbstract
             $this->validateAttributeValidUri($entity->getTypeAttribute(), Attribute::TYPE);
         }
         $this->validateTransforms($entity->getTransforms());
-
     }
 
     protected function validateTransforms(?TransformTypeCollection $transformCollection): void
     {
-        foreach ($transformCollection as $transform)
-        {
+        foreach ($transformCollection as $transform) {
             TransformValidator::create('Transforms')
                 ->addObserver($this)
                 ->validate($transform)
@@ -36,4 +34,3 @@ class RetrievalMethodValidator extends ValidatorAbstract
         }
     }
 }
-

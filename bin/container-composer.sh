@@ -1,3 +1,7 @@
 #!/bin/bash
 
-docker exec -ti dsig-php71 composer $@
+source bin/vars.sh
+
+./bin/container-start.sh
+
+docker exec -ti ${CONTAINER_NAME} composer $@

@@ -6,4 +6,3 @@ namespace Budkovsky\DsigXmlBuilder\Exception;
 class DsigXmlBuilderException extends \RuntimeException
 {
 }
-

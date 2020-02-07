@@ -13,7 +13,7 @@ trait AdapterReferencesTrait
             foreach ($collection as $entity) {
                 $this->getDOMElement()->appendChild(
                     $this->getNewElementFromEntity($entity)
-                    );
+                );
             }
         }
 

@@ -14,4 +14,3 @@ class KeyNameAdapter extends SimpleAdapterAbstract
         return Tag::KEY_NAME_ELEMENT;
     }
 }
-

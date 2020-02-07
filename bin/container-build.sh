@@ -1,2 +1,10 @@
 #!/bin/bash
-docker build -t dsig-php71 docker/php71-fpm
+
+source bin/vars.sh
+
+if [ ! "$(docker image ls ${CONTAINER_NAME} | grep ${CONTAINER_NAME})" ]
+then
+	docker build -t ${CONTAINER_NAME} $(pwd)/${DOCKERFILE_PATH}
+fi
+
+exit 0

@@ -85,6 +85,4 @@ class RetrievalMethodType implements DSigTypeInterface, StaticFactoryInterface, 
     {
         return new RetrievalMethodAdapter();
     }
-
 }
-

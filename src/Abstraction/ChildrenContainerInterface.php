@@ -10,4 +10,3 @@ interface ChildrenContainerInterface extends EntityInterface
 {
     public function getChildren(): EntityCollection;
 }
-

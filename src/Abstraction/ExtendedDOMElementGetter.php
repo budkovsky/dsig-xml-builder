@@ -7,6 +7,5 @@ use Budkovsky\ExtendedDomElement\ExtendedDomElement;
 
 interface ExtendedDOMElementGetter
 {
-    function getExtendedDOMDocument(): ExtendedDomElement;
+    public function getExtendedDOMDocument(): ExtendedDomElement;
 }
-

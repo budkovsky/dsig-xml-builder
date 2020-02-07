@@ -40,5 +40,4 @@ class TransformType implements DSigTypeInterface, StaticFactoryInterface
     {
         return new TransformAdapter();
     }
-
 }

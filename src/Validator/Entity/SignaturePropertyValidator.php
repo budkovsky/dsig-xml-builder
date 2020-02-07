@@ -25,7 +25,5 @@ class SignaturePropertyValidator extends ValidatorAbstract
         if ($entity->getIdAttribute() !== null) {
             $this->validateAttributeNotEmpty($entity->getIdAttribute(), Attribute::ID);
         }
-
-
     }
 }

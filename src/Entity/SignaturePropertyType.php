@@ -66,5 +66,4 @@ class SignaturePropertyType implements DSigTypeInterface, StaticFactoryInterface
     {
         return new SignaturePropertyAdapter();
     }
-
 }

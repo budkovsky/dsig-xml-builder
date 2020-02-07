@@ -18,7 +18,7 @@ class ReferenceValidator extends ValidatorAbstract
     protected function processValidation(DSigTypeInterface $entity): void
     {
         /** @var \Budkovsky\DsigXmlBuilder\Entity\ReferenceType $entity */
-        if($entity->getTransforms()) {
+        if ($entity->getTransforms()) {
             foreach ($entity->getTransforms() as $transform) {
                 TransformValidator::create('Transforms')->addObserver($this)->validate($transform);
             }

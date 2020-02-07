@@ -8,4 +8,3 @@ use Budkovsky\Aid\Abstraction\EntityInterface;
 interface KeyInfoChildInterface extends EntityInterface
 {
 }
-

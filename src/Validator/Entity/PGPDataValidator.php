@@ -26,8 +26,8 @@ class PGPDataValidator extends ValidatorAbstract
         if ($entity->getPgpKeyId() !== null) {
             $this->validateIsBase64($entity->getPgpKeyId(), 'PGPKeyID');
         }
-        if($entity->getPgpKeyPacket() !== null) {
-            $this->validateIsBase64($entity->getPgpKeyPacket(),'PGPKeyPacket');
+        if ($entity->getPgpKeyPacket() !== null) {
+            $this->validateIsBase64($entity->getPgpKeyPacket(), 'PGPKeyPacket');
         }
     }
 }

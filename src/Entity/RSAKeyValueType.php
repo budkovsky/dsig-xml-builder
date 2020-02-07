@@ -82,6 +82,4 @@ class RSAKeyValueType implements DSigTypeInterface, StaticFactoryInterface
     {
         return new RSAKeyValueAdapter();
     }
-
 }
-

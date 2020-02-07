@@ -142,5 +142,4 @@ class SignatureType implements DSigTypeInterface, StaticFactoryInterface
     {
         return new SignatureAdapter();
     }
-
 }

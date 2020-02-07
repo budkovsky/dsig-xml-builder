@@ -18,17 +18,16 @@ class EntityService
     {
         $this->entity = SignatureType::create()
             ->setSignedInfo(
-                    SignedInfoType::create()
+                SignedInfoType::create()
                         ->setCanonicalizationMethod(new CanonicalizationMethodType())
                         ->setSignatureMethod(new SignatureMethodType())
                         ->addReference(
-                                ReferenceType::create()
+                            ReferenceType::create()
                                     ->setDigestMethod(new DigestMethodType())
-                            )
-                )
+                        )
+            )
             ->setSignatureValue(new SignatureValueType())
         ;
-
     }
 
     public function getEntity(): SignatureType
@@ -36,4 +35,3 @@ class EntityService
         return $this->entity;
     }
 }
-

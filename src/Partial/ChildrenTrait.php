@@ -40,7 +40,7 @@ trait ChildrenTrait
      */
     public function addChild(EntityInterface $entity): self
     {
-        if(!$this->children) {
+        if (!$this->children) {
             $this->children = new EntityCollection();
         }
         $this->children->add($entity);

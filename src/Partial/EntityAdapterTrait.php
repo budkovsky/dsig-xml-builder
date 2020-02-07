@@ -24,4 +24,3 @@ trait EntityAdapterTrait
 
     abstract protected function getDefaultAdapter(): AdapterInterface;
 }
-

@@ -128,5 +128,4 @@ class SignedInfoType implements DSigTypeInterface, StaticFactoryInterface
     {
         return new SignedInfoAdapter();
     }
-
 }

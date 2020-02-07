@@ -32,5 +32,4 @@ class CanonicalizationMethodAdapter extends AdapterAbstract
     {
         $this->entityType = CanonicalizationMethodType::class;
     }
-
 }

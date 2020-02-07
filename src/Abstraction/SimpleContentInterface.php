@@ -13,4 +13,3 @@ interface SimpleContentInterface extends EntityInterface, StringableInterface, S
 
     public function getSimpleContent(): ?string;
 }
-

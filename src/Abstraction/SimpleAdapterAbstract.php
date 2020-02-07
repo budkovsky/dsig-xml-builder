@@ -23,4 +23,3 @@ abstract class SimpleAdapterAbstract extends AdapterAbstract
 
     abstract protected function getTagName(): string;
 }
-

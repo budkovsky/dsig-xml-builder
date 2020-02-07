@@ -18,4 +18,3 @@ class KeyInfoTypeCollection extends CollectionAbstract implements StaticFactoryI
         return $this;
     }
 }
-

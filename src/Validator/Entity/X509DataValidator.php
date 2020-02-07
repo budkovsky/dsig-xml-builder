@@ -14,7 +14,7 @@ use Budkovsky\DsigXmlBuilder\Entity\SimpleType\X509SubjectName;
 use Budkovsky\DsigXmlBuilder\Enum\Tag;
 use Budkovsky\DsigXmlBuilder\Partial\ValidatorEntityTrait;
 
-class X509DataValidator extends  ValidatorAbstract
+class X509DataValidator extends ValidatorAbstract
 {
     use ValidatorEntityTrait;
 
@@ -22,8 +22,7 @@ class X509DataValidator extends  ValidatorAbstract
     {
         /** @var \Budkovsky\DsigXmlBuilder\Entity\X509DataType $entity */
         if ($entity->getChildren()) {
-            foreach ($entity->getChildren() as $child)
-            {
+            foreach ($entity->getChildren() as $child) {
                 /** @var X509DataChildInterface */
                 $this->validateX509DataChild($child);
             }
@@ -33,7 +32,6 @@ class X509DataValidator extends  ValidatorAbstract
     protected function validateX509DataChild(EntityInterface $child): void
     {
         switch (true) {
-
             case $child instanceof X509IssuerSerialType:
                 X509IssuerSerialValidator::create()->addObserver($this)->validate($child);
                 break;

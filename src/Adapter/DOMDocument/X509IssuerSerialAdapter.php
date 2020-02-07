@@ -36,8 +36,7 @@ class X509IssuerSerialAdapter extends AdapterAbstract
     private function generateX509IssuerSerialChild(
         string $tag,
         string $value
-    ): X509IssuerSerialAdapter
-    {
+    ): X509IssuerSerialAdapter {
         $this->element->appendChild(
             $this->document->createElementNS(
                 $this->namespace,

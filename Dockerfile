@@ -1,5 +1,5 @@
 FROM debian:stable-slim
-WORKDIR "/application"
+WORKDIR "/app"
 
 # Fix debconf warnings upon build
 ARG DEBIAN_FRONTEND=noninteractive
@@ -13,7 +13,7 @@ RUN apt-get update \
 	&& echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php7.list \
 	&& apt-get update \
 	&& apt-get install -y --no-install-recommends php7.1-fpm php7.1-intl php7.1-zip php7.1-xsl php7.1-mbstring \
-	&& apt-get -y install php7.1-dev php-pear \
+	&& apt-get -y install php7.1-dev php-xdebug php-pear \
 	&& pecl channel-update pecl.php.net \
 	&& pecl install gnupg \
 	&& echo "extension=gnupg.so" | tee /etc/php/7.1/mods-available/gnupg.ini \

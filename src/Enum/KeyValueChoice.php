@@ -26,4 +26,3 @@ class KeyValueChoice extends EnumAbstract
         ];
     }
 }
-

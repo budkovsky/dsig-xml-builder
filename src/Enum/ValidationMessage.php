@@ -19,4 +19,3 @@ class ValidationMessage
     const ANY_CHILD_NOT_EXIST = '`%s`: any child element does not exist';
     const REQUIRED_AT_LEAST_ONE_ELEMENT = '`%s`: at least one `%s` element is required';
 }
-

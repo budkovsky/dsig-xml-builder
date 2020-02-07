@@ -6,4 +6,3 @@ namespace Budkovsky\DsigXmlBuilder\Exception;
 class RestrictionException extends DsigXmlBuilderException
 {
 }
-

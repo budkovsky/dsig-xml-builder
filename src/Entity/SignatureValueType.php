@@ -41,5 +41,4 @@ class SignatureValueType implements DSigTypeInterface, StaticFactoryInterface
     {
         return new SignatureValueAdapter();
     }
-
 }

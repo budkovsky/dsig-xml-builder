@@ -81,5 +81,4 @@ class X509IssuerSerialType implements DSigTypeInterface, StaticFactoryInterface
     {
         return new X509IssuerSerialAdapter();
     }
-
 }

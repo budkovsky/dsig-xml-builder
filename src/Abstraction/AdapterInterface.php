@@ -18,4 +18,3 @@ interface AdapterInterface extends StaticFactoryInterface, DOMDocumentGetter, DO
 
     public function generate(): AdapterInterface;
 }
-

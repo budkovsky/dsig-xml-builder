@@ -42,7 +42,6 @@ abstract class CanonicalizationAlgorithm extends EnumAbstract
         }
 
         switch ($algorithm) {
-
             case self::XML_1_0_WITH_COMMENTS:
             case self::XML_1_1_WITH_COMMENTS:
                 $result = C14nFlag::WITH_COMMENTS;

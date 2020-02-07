@@ -6,4 +6,3 @@ namespace Budkovsky\DsigXmlBuilder\Exception;
 class PemException extends DsigXmlBuilderException
 {
 }
-

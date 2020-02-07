@@ -61,8 +61,7 @@ class SignaturePropertiesType implements DSigTypeInterface, StaticFactoryInterfa
      */
     public function setSignatureProperties(
         SignaturePropertyCollection $signatureProperties
-    ): SignaturePropertiesType
-    {
+    ): SignaturePropertiesType {
         $this->signatureProperties = $signatureProperties;
 
         return $this;
@@ -84,5 +83,4 @@ class SignaturePropertiesType implements DSigTypeInterface, StaticFactoryInterfa
     {
         return new SignaturePropertiesAdapter();
     }
-
 }

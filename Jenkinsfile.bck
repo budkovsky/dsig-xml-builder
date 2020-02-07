@@ -1,0 +1,221 @@
+pipeline {
+    agent { dockerfile true }
+    stages {
+    	stage('prepare') {
+    	    steps {
+    	 		sh 'rm -rf reports/*' 
+    	    }
+    	}
+        stage('build') {
+    	    steps {
+    	        sh 'composer install'
+    	    }
+        }
+        stage('tests') {
+         	steps {
+         		sh 'vendor/bin/phpcs -p --report=checkstyle --report-file=`pwd`/reports/checkstyle.xml --standard=PSR2 src/ || exit 0'
+         		sh 'vendor/bin/phpcpd --progress --log-pmd=reports/phpcpd.xml src/ || exit 0'
+				sh 'vendor/bin/phpunit --bootstrap vendor/autoload.php --log-junit reports/unitreport.xml --coverage-clover reports/coverage/clover.xml --coverage-xml reports/coverage --coverage-html reports/coverage --coverage-crap4j reports/crap4j.xml --whitelist src/ tests'
+				sh 'echo "<html><body><pre>" > reports/phploc.html'
+				sh 'vendor/bin/phploc --log-xml=reports/phploc.xml --log-csv=reports/phploc.csv src/ >> reports/phploc.html'
+				sh 'echo "</pre></html></body>" >> reports/phploc.html'
+				sh 'vendor/bin/pdepend --summary-xml=reports/pdepend.xml --jdepend-chart=reports/jdepend-chart.svg --overview-pyramid=reports/jdepend-overview-pyramid.svg src/'
+				sh 'echo "<html><body><h1>PHP Depend<h1><h2>Dependency chart</h2><img src=\"jdepend-chart.svg\" /><h2>Overview pyramid</h2><img src=\"jdepend-overview-pyramid.svg\" /></html></body>" > reports/pdepend.html' 
+				sh 'vendor/bin/phpmd src/ xml cleancode,codesize,design,naming,unusedcode --ignore-violations-on-exit > reports/phpmd.xml'   
+				sh 'vendor/bin/phpdox -f phpdox.xml' 
+         	}
+         	
+         	post {
+                always {
+                    junit "reports/*.xml"
+                    step([
+                            $class              : "CloverPublisher",
+                            cloverReportDir     : "reports/coverage",
+                            cloverReportFileName: "clover.xml"
+                    ])
+                    checkstyle pattern: 'reports/checkstyle.xml'
+                    dry canRunOnFailed: true, pattern: 'reports/phpcpd.xml'
+                    pmd canRunOnFailed: true, pattern: 'reports/phpmd.xml'
+                	publishHTML (target: [
+		                allowMissing: false,
+		                alwaysLinkToLastBuild: false,
+		                keepAll: true,
+		                reportDir: 'reports/phpdox/html',
+		                reportFiles: 'index.xhtml',
+		                reportName: "PHPDox Documentation"
+			        ])
+			        publishHTML (target: [
+		                allowMissing: false,
+		                alwaysLinkToLastBuild: false,
+		                keepAll: true,
+		                reportDir: 'reports/',
+		                reportFiles: 'phploc.html',
+		                reportName: "PHPLOC output"
+			        ])
+			        publishHTML (target: [
+		                allowMissing: false,
+		                alwaysLinkToLastBuild: false,
+		                keepAll: true,
+		                reportDir: 'reports/',
+		                reportFiles: 'pdepend.html',
+		                reportName: "PDepend"
+			        ])
+			        plot([
+			        	csvFileName: 'plot-b2544cb2-4c63-4de0-b2a8-176196b0e718.csv', 
+			        	csvSeries: [[
+			        		displayTableFlag: false,
+			        		exclusionValues: 'Lines of Code (LOC),Comment Lines of Code (CLOC),Non-Comment Lines of Code (NCLOC),Logical Lines of Code (LLOC)',
+			        		file: 'reports/phploc.csv',
+			        		inclusionFlag: 'INCLUDE_BY_STRING', url: ''
+		        		]], 
+		        		group: 'phploc', 
+		        		numBuilds: '100', 
+		        		style: 'line', 
+		        		title: 'A - Lines of code', 
+		        		yaxis: 'Lines of Code'
+	        		])
+	        		plot([
+			        	csvFileName: 'plot-b2544cb2-4c63-4de0-b2a8-176196b0e717.csv', 
+			        	csvSeries: [[
+			        		displayTableFlag: false,
+			        		exclusionValues: 'Directories,Files,Namespaces',
+			        		file: 'reports/phploc.csv',
+			        		inclusionFlag: 'INCLUDE_BY_STRING', url: ''
+		        		]], 
+		        		group: 'phploc', 
+		        		numBuilds: '100', 
+		        		style: 'line', 
+		        		title: 'B - Structures Containers', 
+		        		yaxis: 'Count'
+	        		])
+	        		plot([
+			        	csvFileName: 'plot-b2544cb2-4c63-4de0-b2a8-176196b0e716.csv', 
+			        	csvSeries: [[
+			        		displayTableFlag: false,
+			        		exclusionValues: 'Average Class Length (LLOC),Average Method Length (LLOC),Average Function Length (LLOC)',
+			        		file: 'reports/phploc.csv',
+			        		inclusionFlag: 'INCLUDE_BY_STRING', url: ''
+		        		]], 
+		        		group: 'phploc', 
+		        		numBuilds: '100', 
+		        		style: 'line', 
+		        		title: 'C - Average Length', 
+		        		yaxis: 'Average Lines of Code'
+	        		])
+	        		plot([
+			        	csvFileName: 'plot-b2544cb2-4c63-4de0-b2a8-176196b0e715.csv', 
+			        	csvSeries: [[
+			        		displayTableFlag: false,
+			        		exclusionValues: 'Cyclomatic Complexity / Lines of Code,Cyclomatic Complexity / Number of Methods',
+			        		file: 'reports/phploc.csv',
+			        		inclusionFlag: 'INCLUDE_BY_STRING', url: ''
+		        		]], 
+		        		group: 'phploc', 
+		        		numBuilds: '100', 
+		        		style: 'line', 
+		        		title: 'D - Relative Cyclomatic Complexity', 
+		        		yaxis: 'Cyclomatic Complexity by Structure'
+	        		])
+	        		plot([
+			        	csvFileName: 'plot-b2544cb2-4c63-4de0-b2a8-176196b0e714.csv', 
+			        	csvSeries: [[
+			        		displayTableFlag: false,
+			        		exclusionValues: 'Classes,Abstract Classes,Concrete Classes',
+			        		file: 'reports/phploc.csv',
+			        		inclusionFlag: 'INCLUDE_BY_STRING', url: ''
+		        		]], 
+		        		group: 'phploc', 
+		        		numBuilds: '100', 
+		        		style: 'line', 
+		        		title: 'E - Types of Classes', 
+		        		yaxis: 'Count'
+	        		])
+	        		plot([
+			        	csvFileName: 'plot-b2544cb2-4c63-4de0-b2a8-176196b0e713.csv', 
+			        	csvSeries: [[
+			        		displayTableFlag: false,
+			        		exclusionValues: 'Methods,Non-Static Methods,Static Methods,Public Methods,Non-Public Methods',
+			        		file: 'reports/phploc.csv',
+			        		inclusionFlag: 'INCLUDE_BY_STRING', url: ''
+		        		]], 
+		        		group: 'phploc', 
+		        		numBuilds: '100', 
+		        		style: 'line', 
+		        		title: 'F - Types of Methods', 
+		        		yaxis: 'Count'
+	        		])
+	        		plot([
+			        	csvFileName: 'plot-b2544cb2-4c63-4de0-b2a8-176196b0e712.csv', 
+			        	csvSeries: [[
+			        		displayTableFlag: false,
+			        		exclusionValues: 'Constants,Global Constants,Class Constants',
+			        		file: 'reports/phploc.csv',
+			        		inclusionFlag: 'INCLUDE_BY_STRING', url: ''
+		        		]], 
+		        		group: 'phploc', 
+		        		numBuilds: '100', 
+		        		style: 'line', 
+		        		title: 'G - Types of Constants', 
+		        		yaxis: 'Count'
+	        		])
+	        		plot([
+	        			csvFileName: 'plot-b2544cb2-4c63-4de0-b2a8-176196b0e711.csv', 
+			        	csvSeries: [[
+			        		displayTableFlag: false,
+			        		exclusionValues: 'Test Classes,Test Methods',
+			        		file: 'reports/phploc.csv',
+			        		inclusionFlag: 'INCLUDE_BY_STRING', url: ''
+		        		]], 
+		        		group: 'phploc', 
+		        		numBuilds: '100', 
+		        		style: 'line', 
+		        		title: 'I - Testing', 
+		        		yaxis: 'Count'
+	        		])
+	        		plot([
+	        			csvFileName: 'plot-b2544cb2-4c63-4de0-b2a8-176196b0e710.csv', 
+			        	csvSeries: [[
+			        		displayTableFlag: false,
+			        		exclusionValues: 'Logical Lines of Code (LLOC),Classes Length (LLOC),Functions Length (LLOC),LLOC outside functions or classes',
+			        		file: 'reports/phploc.csv',
+			        		inclusionFlag: 'INCLUDE_BY_STRING', url: ''
+		        		]], 
+		        		group: 'phploc', 
+		        		numBuilds: '100', 
+		        		style: 'line', 
+		        		title: 'AB - Code Structure by Logical Lines of Code', 
+		        		yaxis: 'Logical Lines of Code'
+	        		])
+	        		plot([
+	        			csvFileName: 'plot-b2544cb2-4c63-4de0-b2a8-176196b0e709.csv', 
+			        	csvSeries: [[
+			        		displayTableFlag: false,
+			        		exclusionValues: 'Functions,Named Functions,Anonymous Functions',
+			        		file: 'reports/phploc.csv',
+			        		inclusionFlag: 'INCLUDE_BY_STRING', url: ''
+		        		]], 
+		        		group: 'phploc', 
+		        		numBuilds: '100', 
+		        		style: 'line', 
+		        		title: 'H - Types of Functions', 
+		        		yaxis: 'Count'
+	        		])
+	        		plot([
+	        			csvFileName: 'plot-b2544cb2-4c63-4de0-b2a8-176196b0e708.csv', 
+			        	csvSeries: [[
+			        		displayTableFlag: false,
+			        		exclusionValues: 'Interfaces,Traits,Classes,Methods,Functions,Constants',
+			        		file: 'reports/phploc.csv',
+			        		inclusionFlag: 'INCLUDE_BY_STRING', url: ''
+		        		]], 
+		        		group: 'phploc', 
+		        		numBuilds: '100', 
+		        		style: 'line', 
+		        		title: 'B - Structure Objects', 
+		        		yaxis: 'Count'
+	        		])
+                }
+            }
+        }
+    }
+}

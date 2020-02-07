@@ -134,5 +134,4 @@ class ReferenceType implements DSigTypeInterface, StaticFactoryInterface
     {
         return new ReferenceAdapter();
     }
-
 }

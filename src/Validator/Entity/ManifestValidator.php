@@ -20,8 +20,7 @@ class ManifestValidator extends ValidatorAbstract
         }
         if ($entity->getReferences() === null || $entity->getReferences()->count() === 0) {
             $this->validateObligatoryField(null, 'Reference');
-        }
-        else {
+        } else {
             foreach ($entity->getReferences() as $reference) {
                 ReferenceValidator::create()->addObserver($this)->validate($reference);
             }

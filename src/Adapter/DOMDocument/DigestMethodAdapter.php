@@ -32,5 +32,4 @@ class DigestMethodAdapter extends AdapterAbstract
     {
         $this->entityType = DigestMethodType::class;
     }
-
 }

@@ -100,7 +100,7 @@ trait GeneratorPropertyTrait
 
     public function setSignatureAlgorithm(string $algorithm): self
     {
-        if(!SignatureAlgorithm::isValid($algorithm)) {
+        if (!SignatureAlgorithm::isValid($algorithm)) {
             throw new SignatureAlgorithmException("Invalid signature algorithm: `{$algorithm}`");
         }
         $this->signatureAlgorithm = $algorithm;

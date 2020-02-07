@@ -43,7 +43,6 @@ class KeyValueValidator extends ValidatorAbstract
         } else {
             RSAKeyValueValidator::create()->addObserver($this)->validate($keyValue->getRsaKeyValue());
         }
-
     }
 
     protected function validateDsa(KeyValueType $keyValue): void
