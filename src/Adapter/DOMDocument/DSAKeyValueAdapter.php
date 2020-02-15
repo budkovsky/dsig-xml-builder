@@ -8,18 +8,30 @@ use Budkovsky\DsigXmlBuilder\Abstraction\AdapterInterface;
 use Budkovsky\DsigXmlBuilder\Entity\DSAKeyValueType;
 use Budkovsky\DsigXmlBuilder\Enum\Tag;
 
+/**
+ * DSAKeyValue adapter
+ */
 class DSAKeyValueAdapter extends AdapterAbstract
 {
+    /**
+     * {@inheritDoc}
+     */
     protected function getEntity(): DSAKeyValueType
     {
         return $this->entity;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function setEntityType(): void
     {
         $this->entityType = DSAKeyValueType::class;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function generate(): AdapterInterface
     {
         $this->generateMainElement(Tag::DSA_KEY_VALUE_ELEMENT);
@@ -36,6 +48,12 @@ class DSAKeyValueAdapter extends AdapterAbstract
         return $this;
     }
 
+    /**
+     * Generates child element
+     * @param string $name
+     * @param string $value
+     * @return DSAKeyValueAdapter
+     */
     private function generateDSAKeyValueChild(string $name, ?string $value): DSAKeyValueAdapter
     {
         if ($value) {

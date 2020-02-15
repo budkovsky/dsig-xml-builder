@@ -1,4 +1,6 @@
 <?php
+declare(strict_types = 1);
+
 namespace Budkovsky\DsigXmlBuilder\Validator\Entity;
 
 use Budkovsky\Aid\Validator\Abstraction\ValidatorAbstract;
@@ -7,10 +9,18 @@ use Budkovsky\DsigXmlBuilder\Entity\KeyValueType;
 use Budkovsky\DsigXmlBuilder\Partial\ValidatorEntityTrait;
 use Budkovsky\DsigXmlBuilder\Enum\ValidationMessage;
 
+/**
+ * Validator for KeyValue entity
+ */
 class KeyValueValidator extends ValidatorAbstract
 {
     use ValidatorEntityTrait;
 
+    /**
+     * Runs validation
+     *
+     * @param DSigTypeInterface $entity
+     */
     protected function processValidation(DSigTypeInterface $entity): void
     {
 
@@ -26,6 +36,11 @@ class KeyValueValidator extends ValidatorAbstract
         }
     }
 
+    /**
+     * Validates `any` entity
+     *
+     * @param KeyValueType $keyValue
+     */
     protected function validateAnyEntity(KeyValueType $keyValue): void
     {
         if ($keyValue->getDsaKeyValue() !== null || $keyValue->getRsaKeyValue() !== null) {
@@ -36,6 +51,11 @@ class KeyValueValidator extends ValidatorAbstract
         }
     }
 
+    /**
+     * Validates RSAKeyValueType child entity
+     *
+     * @param KeyValueType $keyValue
+     */
     protected function validateRsa(KeyValueType $keyValue): void
     {
         if ($keyValue->getAny() !== null || $keyValue->getDsaKeyValue() !== null) {
@@ -45,6 +65,11 @@ class KeyValueValidator extends ValidatorAbstract
         }
     }
 
+    /**
+     * Validates DSAKeyValueType child entity
+     *
+     * @param KeyValueType $keyValue
+     */
     protected function validateDsa(KeyValueType $keyValue): void
     {
         if ($keyValue->getAny() !== null || $keyValue->getRsaKeyValue() !== null) {

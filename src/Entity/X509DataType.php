@@ -34,11 +34,20 @@ class X509DataType implements DSigTypeInterface, StaticFactoryInterface, KeyInfo
     use ChildrenTrait;
     use EntityAdapterTrait;
 
+    /**
+     * X509DataType entity static factory
+     *
+     * @return X509DataType
+     */
     public static function create(): X509DataType
     {
         return new static;
     }
 
+    /**
+     * Returns default adapter for X509DataType entity
+     * @return X509DataAdapter
+     */
     protected function getDefaultAdapter(): AdapterInterface
     {
         return new X509DataAdapter();

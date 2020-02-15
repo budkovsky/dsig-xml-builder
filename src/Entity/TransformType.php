@@ -31,11 +31,20 @@ class TransformType implements DSigTypeInterface, StaticFactoryInterface
     use ChildrenTrait;
     use EntityAdapterTrait;
 
+    /**
+     * TransformType entity static factory
+     *
+     * @return TransformType
+     */
     public static function create(): TransformType
     {
         return new static;
     }
 
+    /**
+     * Returns default adapter for TransformType entity
+     * @return TransformAdapter
+     */
     protected function getDefaultAdapter(): AdapterInterface
     {
         return new TransformAdapter();

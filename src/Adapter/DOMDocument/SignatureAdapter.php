@@ -10,8 +10,14 @@ use Budkovsky\DsigXmlBuilder\Entity\SignatureType;
 use Budkovsky\DsigXmlBuilder\Enum\Attribute;
 use Budkovsky\DsigXmlBuilder\Enum\Tag;
 
+/**
+ * Signature adapter
+ */
 class SignatureAdapter extends AdapterAbstract
 {
+    /**
+     * {@inheritDoc}
+     */
     public function generate(): AdapterInterface
     {
         // Signature element
@@ -53,6 +59,12 @@ class SignatureAdapter extends AdapterAbstract
         return $this;
     }
 
+    /**
+     * Generates children elements from collection
+     *
+     * @param CollectionAbstract $collection
+     * @return SignatureAdapter
+     */
     protected function generateElementsFromCollection(?CollectionAbstract $collection): SignatureAdapter
     {
         if ($collection !== null) {
@@ -66,11 +78,17 @@ class SignatureAdapter extends AdapterAbstract
         return $this;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function getEntity(): SignatureType
     {
         return $this->entity;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function setEntityType(): void
     {
         $this->entityType = SignatureType::class;

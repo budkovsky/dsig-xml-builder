@@ -52,6 +52,8 @@ class ObjectType implements DSigTypeInterface, StaticFactoryInterface, SimpleCon
     }
 
     /**
+     * Getter of mimeType
+     *
      * @return string|NULL
      */
     public function getMimeType(): ?string
@@ -60,6 +62,8 @@ class ObjectType implements DSigTypeInterface, StaticFactoryInterface, SimpleCon
     }
 
     /**
+     * Setter for mimeType
+     *
      * @param string $mimeType
      * @return ObjectType
      */
@@ -71,6 +75,8 @@ class ObjectType implements DSigTypeInterface, StaticFactoryInterface, SimpleCon
     }
 
     /**
+     * Getter of encoding
+     *
      * @return string|NULL
      */
     public function getEncoding(): ?string
@@ -79,6 +85,8 @@ class ObjectType implements DSigTypeInterface, StaticFactoryInterface, SimpleCon
     }
 
     /**
+     * Setter for encoding
+     *
      * @param string $encoding
      * @throws RestrictionException
      * @return ObjectType
@@ -94,6 +102,10 @@ class ObjectType implements DSigTypeInterface, StaticFactoryInterface, SimpleCon
         return $this;
     }
 
+    /**
+     * Returns default adapter for ObjectType entity
+     * @return ObjectAdapter
+     */
     protected function getDefaultAdapter(): AdapterInterface
     {
         return new ObjectAdapter();

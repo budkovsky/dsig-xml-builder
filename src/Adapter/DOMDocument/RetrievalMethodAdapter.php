@@ -10,10 +10,16 @@ use Budkovsky\DsigXmlBuilder\Enum\Attribute;
 use Budkovsky\DsigXmlBuilder\Abstraction\AdapterInterface;
 use Budkovsky\DsigXmlBuilder\Partial\AdapterTransformsTrait;
 
+/**
+ * RetrievalMethod adapter
+ */
 class RetrievalMethodAdapter extends AdapterAbstract
 {
     use AdapterTransformsTrait;
 
+    /**
+     * {@inheritDoc}
+     */
     public function generate(): AdapterInterface
     {
         $this->generateMainElement(Tag::RETRIEVAL_METHOD_ELEMENT);
@@ -34,11 +40,17 @@ class RetrievalMethodAdapter extends AdapterAbstract
         return $this;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function getEntity(): RetrievalMethodType
     {
         return $this->entity;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function setEntityType(): void
     {
         $this->entityType = RetrievalMethodType::class;

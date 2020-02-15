@@ -4,7 +4,7 @@ declare(strict_types = 1);
 namespace Budkovsky\DsigXmlBuilder\Partial;
 
 /**
- * `URI` attribute trait
+ * Trait for entities contain `URI` attribute
  */
 trait UriAttributeTrait
 {
@@ -12,6 +12,8 @@ trait UriAttributeTrait
     protected $uriAttribute;
 
     /**
+     * Getter of URI attribute
+     *
      * @return string|NULL
      */
     public function getUriAttribute(): ?string
@@ -20,6 +22,8 @@ trait UriAttributeTrait
     }
 
     /**
+     * Setter for URI attribute
+     *
      * @param string $uri
      * @return self
      */

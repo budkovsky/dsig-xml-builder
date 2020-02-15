@@ -6,7 +6,7 @@ namespace Budkovsky\DsigXmlBuilder\Enum;
 use Budkovsky\Aid\Abstraction\EnumAbstract;
 
 /**
- * Enumeration of XML tags used in digital signature
+ * Enumeration of XML tags available in digital signature
  */
 class Tag extends EnumAbstract
 {
@@ -57,7 +57,7 @@ class Tag extends EnumAbstract
     const HMAC_OUTPUT_LENGTH_ELEMENT = 'HMACOutputLength';
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public static function getAll(): array
     {

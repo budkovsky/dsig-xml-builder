@@ -35,6 +35,11 @@ class SPKIDataType implements DSigTypeInterface, StaticFactoryInterface, KeyInfo
     {
         return new static;
     }
+
+    /**
+     * Returns default adapter for SPKIDataType entity
+     * @return SPKIDataAdapter
+     */
     protected function getDefaultAdapter(): AdapterInterface
     {
         return new SPKIDataAdapter();

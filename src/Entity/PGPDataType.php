@@ -52,6 +52,8 @@ class PGPDataType implements DSigTypeInterface, StaticFactoryInterface, KeyInfoC
     }
 
     /**
+     * Getter of pgpKeyId
+     *
      * @return string|NULL
      */
     public function getPgpKeyId(): ?string
@@ -60,6 +62,8 @@ class PGPDataType implements DSigTypeInterface, StaticFactoryInterface, KeyInfoC
     }
 
     /**
+     * Setter for phpKeyId
+     *
      * @param string $pgpKeyId
      * @return PGPDataType
      */
@@ -75,6 +79,8 @@ class PGPDataType implements DSigTypeInterface, StaticFactoryInterface, KeyInfoC
     }
 
     /**
+     * Getter of pgpKeyPacket
+     *
      * @return string|NULL
      */
     public function getPgpKeyPacket(): ?string
@@ -83,6 +89,8 @@ class PGPDataType implements DSigTypeInterface, StaticFactoryInterface, KeyInfoC
     }
 
     /**
+     * Setter for pgpKeyPacket
+     *
      * @param string $pgpKeyPacket
      * @return PGPDataType
      */
@@ -96,6 +104,10 @@ class PGPDataType implements DSigTypeInterface, StaticFactoryInterface, KeyInfoC
         return $this;
     }
 
+    /**
+     * Returns default adapter for PGPDataType entity
+     * @return PGPDataAdapter
+     */
     protected function getDefaultAdapter(): AdapterInterface
     {
         return new PGPDataAdapter();

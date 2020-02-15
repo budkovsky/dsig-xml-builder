@@ -10,11 +10,19 @@ use Budkovsky\DsigXmlBuilder\Partial\SimpleContentTrait;
 use Budkovsky\DsigXmlBuilder\Abstraction\DSigTypeInterface;
 use Budkovsky\DsigXmlBuilder\Adapter\DOMDocument\SimpleAdapter\MgmtDataAdapter;
 
+/**
+ * MgmtData simpleContent entity
+ */
 class MgmtData implements DSigTypeInterface, SimpleContentInterface
 {
     use EntityAdapterTrait;
     use SimpleContentTrait;
 
+    /**
+     * Returns default adapter for MgmtData entity
+     *
+     * @return MgmtDataAdapter
+     */
     protected function getDefaultAdapter(): AdapterInterface
     {
         return new MgmtDataAdapter();

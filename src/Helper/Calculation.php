@@ -6,8 +6,19 @@ namespace Budkovsky\DsigXmlBuilder\Helper;
 use Budkovsky\DsigXmlBuilder\Enum\DigestAlgorithm;
 use Budkovsky\DsigXmlBuilder\Exception\PemException;
 
+/**
+ * Helper for signature calculations
+ */
 abstract class Calculation
 {
+    /**
+     * Calculates digest value for content to be signed
+     *
+     * @param string $algorithm
+     * @param string $data
+     * @param bool $rawOutput
+     * @return string
+     */
     public static function getDigestValue(string $algorithm, string $data, bool $rawOutput = false): string
     {
         return hash(
@@ -17,6 +28,11 @@ abstract class Calculation
         );
     }
 
+    /**
+     * Prepares content to canonicalization
+     * @param string $content
+     * @return string
+     */
     public static function preCanonicalize(string $content): string
     {
         return \str_replace(
@@ -26,6 +42,12 @@ abstract class Calculation
         );
     }
 
+    /**
+     * Removes *BEGIN* and *END* markers from PEM body
+     * @param string $body
+     * @throws PemException
+     * @return string
+     */
     public static function trimPemBody(string $body): string
     {
         $matches = [];

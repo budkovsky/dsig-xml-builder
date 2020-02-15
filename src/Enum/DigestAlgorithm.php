@@ -20,7 +20,6 @@ abstract class DigestAlgorithm extends EnumAbstract
         self::SHA512 => 'sha512'
     ];
 
-
     const SHA1 = Algorithm::SHA1;
     const SHA224 = Algorithm::SHA224;
     const SHA256 = Algorithm::SHA256;
@@ -44,6 +43,7 @@ abstract class DigestAlgorithm extends EnumAbstract
 
     /**
      * Maps DigestMethod algorithm to hash method
+     *
      * @param string $algorithm
      * @throws DigestAlgorithmException
      * @return string

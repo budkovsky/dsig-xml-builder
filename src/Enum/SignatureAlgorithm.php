@@ -63,7 +63,8 @@ abstract class SignatureAlgorithm extends EnumAbstract
     }
 
     /**
-     * Maps SignatureMethod algorithm to sign algorithm
+     * Maps XML signature algorithm to PHP sign algorithm
+     *
      * @param string $algorithm
      * @throws SignatureAlgorithmException
      * @return string

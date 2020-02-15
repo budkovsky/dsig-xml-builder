@@ -8,5 +8,9 @@ namespace Budkovsky\DsigXmlBuilder\Abstraction;
  */
 interface EntityValidator
 {
+    /**
+     * Returns validation result
+     * @return bool
+     */
     public static function isValid(): bool;
 }

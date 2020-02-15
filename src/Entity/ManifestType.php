@@ -41,6 +41,8 @@ class ManifestType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Getter of reference collection
+     *
      * @return ReferenceTypeCollection|NULL
      */
     public function getReferences(): ?ReferenceTypeCollection
@@ -49,6 +51,8 @@ class ManifestType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Setter for reference collection
+     *
      * @param ReferenceTypeCollection $references
      * @return ManifestType
      */
@@ -60,6 +64,8 @@ class ManifestType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Adds reference to the collection
+     *
      * @param ReferenceType $reference
      * @return ManifestType
      */
@@ -73,6 +79,11 @@ class ManifestType implements DSigTypeInterface, StaticFactoryInterface
         return $this;
     }
 
+    /**
+     * Returns default adapter for ManifestType entity
+     *
+     * @return ManifestAdapter
+     */
     protected function getDefaultAdapter(): AdapterInterface
     {
         return new ManifestAdapter();

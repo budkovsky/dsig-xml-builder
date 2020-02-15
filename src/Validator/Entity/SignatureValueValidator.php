@@ -8,12 +8,17 @@ use Budkovsky\DsigXmlBuilder\Abstraction\DSigTypeInterface;
 use Budkovsky\DsigXmlBuilder\Partial\ValidatorEntityTrait;
 
 /**
- * SignatureValue validator
+ * Validator for SignatureValueType entity
  */
 class SignatureValueValidator extends ValidatorAbstract
 {
     use ValidatorEntityTrait;
 
+    /**
+     * Runs validation
+     *
+     * @param DSigTypeInterface $entity
+     */
     protected function processValidation(DSigTypeInterface $entity): void
     {
         /** @var \Budkovsky\DsigXmlBuilder\Entity\SignatureValueType $entity */

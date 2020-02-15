@@ -7,7 +7,7 @@ use Budkovsky\Aid\Abstraction\CollectionIndexedAbstract;
 use Budkovsky\Aid\Abstraction\EntityInterface;
 
 /**
- * EntityCollection
+ * Typed indexed collection of entities
  */
 class EntityCollection extends CollectionIndexedAbstract
 {
@@ -24,6 +24,12 @@ class EntityCollection extends CollectionIndexedAbstract
         return $this;
     }
 
+    /**
+     * Getter of collection's item
+     *
+     * @param string $index
+     * @return EntityInterface
+     */
     public function get(string $index): EntityInterface
     {
         return $this->collection[$index];

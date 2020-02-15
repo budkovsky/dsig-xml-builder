@@ -26,6 +26,9 @@ use Budkovsky\OpenSslWrapper\Keystore;
 use Budkovsky\OpenSslWrapper\PrivateKey;
 use Budkovsky\OpenSslWrapper\Enum\KeyType;
 
+/**
+ * Abstraction for RSA generators
+ */
 abstract class RSAGeneratorAbstract extends GeneratorAbstract
 {
     /** @var string */
@@ -46,9 +49,17 @@ abstract class RSAGeneratorAbstract extends GeneratorAbstract
      */
     protected $insertBeforeElement;
 
-    /** @var \Budkovsky\DsigXmlBuilder\Entity\ReferenceType */
+    /**
+     * Rerefence object for content
+     * @var \Budkovsky\DsigXmlBuilder\Entity\ReferenceType
+     */
     protected $contentReferenceEntity;
 
+    /**
+     * RSA keystore setter
+     * @param Keystore $keystore
+     * @return self
+     */
     public function setKeystore(Keystore $keystore): self
     {
         $this->keystore = $keystore;
@@ -56,11 +67,22 @@ abstract class RSAGeneratorAbstract extends GeneratorAbstract
         return $this;
     }
 
+    /**
+     * RSA keystore getter
+     * @return Keystore
+     */
     public function getKeystore(): Keystore
     {
         return $this->keystore ?? $this->keystore = new Keystore();
     }
 
+    /**
+     * Abstract factory for types extending RSAGeneratorAbstract
+     * @param string $mode
+     * @throws SignatureModeException
+     * @throws GeneratorException
+     * @return GeneratorAbstract
+     */
     public static function factory(?string $mode = null): GeneratorAbstract
     {
         if (!SignatureMode::isValid($mode)) {
@@ -90,6 +112,9 @@ abstract class RSAGeneratorAbstract extends GeneratorAbstract
         return $generator;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function processSignedInfo(): GeneratorAbstract
     {
         $this->signatureEntity->getAdapter()->setNamespace('http://www.w3.org/2000/09/xmldsig#');
@@ -114,6 +139,9 @@ abstract class RSAGeneratorAbstract extends GeneratorAbstract
         return $this;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function processSignatureValue(): GeneratorAbstract
     {
         $this->signatureEntity->setSignatureValue(
@@ -124,6 +152,9 @@ abstract class RSAGeneratorAbstract extends GeneratorAbstract
         return $this;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function processKeyInfo(): GeneratorAbstract
     {
         $this->signatureEntity->setKeyInfo(KeyInfoType::create());
@@ -168,6 +199,12 @@ abstract class RSAGeneratorAbstract extends GeneratorAbstract
         return $this;
     }
 
+    /**
+     * Private key processing
+     * @param PrivateKey $key
+     * @throws GeneratorException
+     * @return RSAGeneratorAbstract
+     */
     protected function processPrivateKey(PrivateKey $key): RSAGeneratorAbstract
     {
         /** @var \Budkovsky\OpenSslWrapper\Entity\PKeyDetailsRSA $keyDetails */
@@ -191,6 +228,10 @@ abstract class RSAGeneratorAbstract extends GeneratorAbstract
         return $this;
     }
 
+    /**
+     * Keystore processing
+     * @return RSAGeneratorAbstract
+     */
     protected function processKeystore(): RSAGeneratorAbstract
     {
         if (!$this->keystore) {
@@ -215,6 +256,10 @@ abstract class RSAGeneratorAbstract extends GeneratorAbstract
         return $this;
     }
 
+    /**
+     * Creates signature's root element
+     * @return RSAGeneratorAbstract
+     */
     protected function createSignatureElement(): RSAGeneratorAbstract
     {
         $signatureElement = $this->signatureEntity
@@ -234,6 +279,9 @@ abstract class RSAGeneratorAbstract extends GeneratorAbstract
         return $this;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function processCalculation(): GeneratorAbstract
     {
         $this->createSignatureElement();
@@ -259,5 +307,9 @@ abstract class RSAGeneratorAbstract extends GeneratorAbstract
         return $this;
     }
 
+    /**
+     * Getter for string is based for digest value
+     * @return string
+     */
     abstract protected function getDigestValueBase(): string;
 }

@@ -10,12 +10,17 @@ use Budkovsky\DsigXmlBuilder\Enum\ValidationMessage;
 use Budkovsky\DsigXmlBuilder\Enum\Attribute;
 
 /**
- * SignedInfo validator
+ * Validator for SignedInfoType entity
  */
 class SignedInfoValidator extends ValidatorAbstract
 {
     use ValidatorEntityTrait;
 
+    /**
+     * Runs validation
+     *
+     * @param DSigTypeInterface $entity
+     */
     protected function processValidation(DSigTypeInterface $entity): void
     {
         /** @var \Budkovsky\DsigXmlBuilder\Entity\SignedInfoType $entity */

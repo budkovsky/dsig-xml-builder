@@ -14,10 +14,18 @@ use Budkovsky\DsigXmlBuilder\Entity\SimpleType\X509SubjectName;
 use Budkovsky\DsigXmlBuilder\Enum\Tag;
 use Budkovsky\DsigXmlBuilder\Partial\ValidatorEntityTrait;
 
+/**
+ * Validator for X509DataType entity
+ */
 class X509DataValidator extends ValidatorAbstract
 {
     use ValidatorEntityTrait;
 
+    /**
+     * Runs validation
+     *
+     * @param DSigTypeInterface $entity
+     */
     protected function processValidation(DSigTypeInterface $entity): void
     {
         /** @var \Budkovsky\DsigXmlBuilder\Entity\X509DataType $entity */
@@ -29,6 +37,10 @@ class X509DataValidator extends ValidatorAbstract
         }
     }
 
+    /**
+     * Validates child entity
+     * @param EntityInterface $child
+     */
     protected function validateX509DataChild(EntityInterface $child): void
     {
         switch (true) {

@@ -6,8 +6,14 @@ use Budkovsky\DsigXmlBuilder\Entity\X509IssuerSerialType;
 use Budkovsky\DsigXmlBuilder\Enum\Tag;
 use Budkovsky\DsigXmlBuilder\Abstraction\AdapterInterface;
 
+/**
+ * X509IssuerSerial adapter
+ */
 class X509IssuerSerialAdapter extends AdapterAbstract
 {
+    /**
+     * {@inheritDoc}
+     */
     public function generate(): AdapterInterface
     {
         $this->generateMainElement(Tag::X509_ISSUER_SERIAL_ELEMENT);
@@ -23,16 +29,29 @@ class X509IssuerSerialAdapter extends AdapterAbstract
         return $this;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getEntity(): X509IssuerSerialType
     {
         return $this->entity;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function setEntityType(): void
     {
         $this->entityType = X509IssuerSerialType::class;
     }
 
+    /**
+     * Generates child element
+     *
+     * @param string $tag
+     * @param string $value
+     * @return X509IssuerSerialAdapter
+     */
     private function generateX509IssuerSerialChild(
         string $tag,
         string $value

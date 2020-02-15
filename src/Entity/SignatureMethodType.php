@@ -36,6 +36,8 @@ class SignatureMethodType implements DSigTypeInterface, StaticFactoryInterface
 
     /**
      * SignatureMethodType entity static factory
+     *
+     * @return SignatureMethodType
      */
     public static function create(): SignatureMethodType
     {
@@ -43,6 +45,8 @@ class SignatureMethodType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Getter of HMAC output length
+     *
      * @return int|NULL
      */
     public function getHmacOutputLength(): ?int
@@ -51,6 +55,8 @@ class SignatureMethodType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Setter for HMAC output length
+     *
      * @param int $hmacOutputLength
      * @return SignatureMethodType
      */
@@ -61,6 +67,11 @@ class SignatureMethodType implements DSigTypeInterface, StaticFactoryInterface
         return $this;
     }
 
+    /**
+     * Returns default adapter for SignatureMethodType entity
+     *
+     * @return SignatureMethodAdapter
+     */
     protected function getDefaultAdapter(): AdapterInterface
     {
         return new SignatureMethodAdapter();

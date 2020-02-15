@@ -7,8 +7,8 @@ use Budkovsky\Aid\Abstraction\EntityInterface;
 use Budkovsky\Aid\Collection\EntityCollection;
 
 /**
- * ChildrenTrait
- * Extension for entities based on xml complex types with <any> elements in schema
+ * Trait for entities contain children entities with open structure
+ *
  */
 trait ChildrenTrait
 {
@@ -16,6 +16,8 @@ trait ChildrenTrait
     protected $children;
 
     /**
+     * Getter of children entity collection
+     *
      * @return EntityCollection|NULL
      */
     public function getChildren(): ?EntityCollection
@@ -24,6 +26,8 @@ trait ChildrenTrait
     }
 
     /**
+     * Setter for children entity collection
+     *
      * @param EntityCollection $entities
      * @return self
      */
@@ -35,6 +39,8 @@ trait ChildrenTrait
     }
 
     /**
+     * Adds entity to thec children collection
+     *
      * @param EntityInterface $entity
      * @return self
      */

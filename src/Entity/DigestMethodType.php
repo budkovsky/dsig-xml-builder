@@ -38,6 +38,11 @@ class DigestMethodType implements DSigTypeInterface, StaticFactoryInterface
         return new static;
     }
 
+    /**
+     * Returns default adapter for DigestMethodType entity
+     *
+     * @return AdapterInterface
+     */
     protected function getDefaultAdapter(): AdapterInterface
     {
         return new DigestMethodAdapter();

@@ -8,9 +8,15 @@ use Budkovsky\DsigXmlBuilder\Abstraction\AdapterInterface;
 use Budkovsky\DsigXmlBuilder\Entity\KeyValueType;
 use Budkovsky\DsigXmlBuilder\Enum\Tag;
 
+/**
+ * KeyValue adapter
+ */
 class KeyValueAdapter extends AdapterAbstract
 {
 
+    /**
+     * {@inheritDoc}
+     */
     public function generate(): AdapterInterface
     {
         $this->generateMainElement(Tag::KEY_VALUE_ELEMENT);
@@ -34,11 +40,17 @@ class KeyValueAdapter extends AdapterAbstract
         return $this;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function getEntity(): KeyValueType
     {
         return $this->entity;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function setEntityType(): void
     {
         $this->entityType = KeyValueType::class;

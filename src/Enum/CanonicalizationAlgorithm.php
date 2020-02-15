@@ -7,7 +7,8 @@ use Budkovsky\Aid\Abstraction\EnumAbstract;
 use Budkovsky\DsigXmlBuilder\Exception\CanonicalizationAlgorithmException;
 
 /**
- * XML canonicalization algorithm enumeration
+ * Enumeration of XML canonicalization algorithms
+ *
  * @see https://www.w3.org/TR/xmldsig-core/#sec-c14nAlg
  */
 abstract class CanonicalizationAlgorithm extends EnumAbstract
@@ -21,6 +22,9 @@ abstract class CanonicalizationAlgorithm extends EnumAbstract
     const XML_1_0_EXCLUSIVE = Algorithm::CANONICALIZATION_1_0_EXCLUSIVE;
     const XML_1_0_EXCLUSIVE_WITH_COMMENTS = Algorithm::CANONICALIZATION_1_0_EXCLUSIVE_WITH_COMMENTS;
 
+    /**
+     * {@inheritdoc}
+     */
     public static function getAll(): array
     {
         return [
@@ -33,6 +37,13 @@ abstract class CanonicalizationAlgorithm extends EnumAbstract
         ];
     }
 
+    /**
+     * Maps XML canonicalization URI to canonicalization flag constants
+     *
+     * @param string $algorithm
+     * @throws CanonicalizationAlgorithmException
+     * @return int
+     */
     public static function map(string $algorithm): int
     {
         if (!self::isValid($algorithm)) {

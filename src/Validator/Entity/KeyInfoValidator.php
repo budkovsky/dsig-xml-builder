@@ -1,4 +1,6 @@
 <?php
+declare(strict_types = 1);
+
 namespace Budkovsky\DsigXmlBuilder\Validator\Entity;
 
 use Budkovsky\Aid\Abstraction\EntityInterface;
@@ -13,16 +15,27 @@ use Budkovsky\DsigXmlBuilder\Entity\SimpleType\KeyName;
 use Budkovsky\DsigXmlBuilder\Entity\SimpleType\MgmtData;
 use Budkovsky\DsigXmlBuilder\Enum\Tag;
 use Budkovsky\DsigXmlBuilder\Partial\ValidatorEntityTrait;
+use Budkovsky\DsigXmlBuilder\Enum\ValidationMessage;
 
+/**
+ * Validator for KeyInfo entity
+ */
 class KeyInfoValidator extends ValidatorAbstract
 {
     use ValidatorEntityTrait;
 
+    /**
+     * Runs validation
+     *
+     * @param DSigTypeInterface $entity
+     */
     protected function processValidation(DSigTypeInterface $entity): void
     {
         /** @var \Budkovsky\DsigXmlBuilder\Entity\KeyInfoType $entity */
-        $this->validateIsNotEmpty(
+        $this->processValidationStep(
             $entity->getChildren() !== null && $entity->getChildren()->count() > 0,
+            ValidationMessage::IS_EMPTY,
+            $this->getName(),
             Tag::KEY_INFO_ELEMENT
         );
 
@@ -34,11 +47,16 @@ class KeyInfoValidator extends ValidatorAbstract
         }
     }
 
+    /**
+     * Validates KeyInfo child entity
+     *
+     * @param EntityInterface $child
+     */
     protected function validateKeyInfoChild(EntityInterface $child): void
     {
         switch (true) {
             case $child instanceof KeyName:
-                $this->validateIsNotEmpty($child, Tag::KEY_NAME_ELEMENT);
+                $this->validateIsNotEmpty($child->__toString(), Tag::KEY_NAME_ELEMENT);
                 break;
 
             case $child instanceof KeyValueType:
@@ -62,7 +80,7 @@ class KeyInfoValidator extends ValidatorAbstract
                 break;
 
             case $child instanceof MgmtData:
-                $this->validateIsNotEmpty($child, Tag::MGMT_DATA_ELEMENT);
+                $this->validateIsNotEmpty($child->__toString(), Tag::MGMT_DATA_ELEMENT);
                 break;
         }
     }

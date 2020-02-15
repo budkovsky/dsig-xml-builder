@@ -4,7 +4,7 @@ declare(strict_types = 1);
 namespace Budkovsky\DsigXmlBuilder\Partial;
 
 /**
- * `Type` attribute trait
+ * Trait for entities contain `Type` attribute
  */
 trait TypeAttributeTrait
 {
@@ -12,6 +12,8 @@ trait TypeAttributeTrait
     protected $typeAttribute;
 
     /**
+     * Getter of type attribute
+     *
      * @return string|NULL
      */
     public function getTypeAttribute(): ?string
@@ -20,6 +22,8 @@ trait TypeAttributeTrait
     }
 
     /**
+     * Setter for type attribute
+     *
      * @param string $type
      * @return self
      */

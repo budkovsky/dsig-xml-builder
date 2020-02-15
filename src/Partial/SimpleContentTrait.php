@@ -3,17 +3,26 @@ declare(strict_types = 1);
 
 namespace Budkovsky\DsigXmlBuilder\Partial;
 
+/**
+ * Trait for entities are model of simpleContent XML element
+ */
 trait SimpleContentTrait
 {
     /** @var string */
     protected $simpleContent;
 
+    /**
+     * simpleContent entity static factory
+     *
+     * @return self
+     */
     public static function create(): self
     {
         return new static();
     }
 
     /**
+     * Getter of entity content
      *
      * @return string|NULL
      */
@@ -23,6 +32,7 @@ trait SimpleContentTrait
     }
 
     /**
+     * Setter for entity content
      *
      * @param string $value
      */
@@ -34,6 +44,8 @@ trait SimpleContentTrait
     }
 
     /**
+     * Casts object to a string
+     *
      * @return string
      */
     public function __toString(): string

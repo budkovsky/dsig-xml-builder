@@ -6,7 +6,7 @@ namespace Budkovsky\DsigXmlBuilder\Enum;
 use Budkovsky\Aid\Abstraction\EnumAbstract;
 
 /**
- * KeyValueChoice enumeration
+ * Enumeration of KeyValue type choice
  */
 class KeyValueChoice extends EnumAbstract
 {
@@ -15,7 +15,7 @@ class KeyValueChoice extends EnumAbstract
     const ANY = 'ANY';
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public static function getAll(): array
     {

@@ -37,6 +37,10 @@ class CanonicalizationMethodType implements DSigTypeInterface, StaticFactoryInte
         return new static;
     }
 
+    /**
+     * Returns default adapter for CanonicalizationMethodType entity
+     * @return CanonicalizationMethodAdapter
+     */
     protected function getDefaultAdapter(): AdapterInterface
     {
         return new CanonicalizationMethodAdapter();

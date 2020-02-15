@@ -4,6 +4,7 @@ declare(strict_types = 1);
 namespace Budkovsky\DsigXmlBuilder\Enum;
 
 /**
+ * Enumeration of canonicalization modes
  * @see https://www.php.net/manual/en/domnode.c14n.php
  */
 class C14nFlag

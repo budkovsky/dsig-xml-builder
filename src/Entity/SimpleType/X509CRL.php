@@ -10,11 +10,18 @@ use Budkovsky\DsigXmlBuilder\Abstraction\DSigTypeInterface;
 use Budkovsky\DsigXmlBuilder\Partial\EntityAdapterTrait;
 use Budkovsky\DsigXmlBuilder\Adapter\DOMDocument\SimpleAdapter\X509CRLAdapter;
 
+/**
+ * X509 simpleContent entity
+ */
 class X509CRL implements DSigTypeInterface, SimpleContentInterface
 {
     use EntityAdapterTrait;
     use SimpleContentTrait;
 
+    /**
+     * Returns default adapter for X509CRL entity
+     * @return X509CRLAdapter
+     */
     protected function getDefaultAdapter(): AdapterInterface
     {
         return new X509CRLAdapter();

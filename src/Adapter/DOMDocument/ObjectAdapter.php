@@ -10,10 +10,16 @@ use Budkovsky\DsigXmlBuilder\Enum\Attribute;
 use Budkovsky\DsigXmlBuilder\Enum\Tag;
 use Budkovsky\DsigXmlBuilder\Partial\AdapterChildrenTrait;
 
+/**
+ * Object adapter
+ */
 class ObjectAdapter extends AdapterAbstract
 {
     use AdapterChildrenTrait;
 
+    /**
+     * {@inheritDoc}
+     */
     public function generate(): AdapterInterface
     {
         $this->generateMainElement(Tag::OBJECT_ELEMENT);
@@ -34,11 +40,17 @@ class ObjectAdapter extends AdapterAbstract
         return $this;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function getEntity(): ObjectType
     {
         return $this->entity;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function setEntityType(): void
     {
         $this->entityType = ObjectType::class;

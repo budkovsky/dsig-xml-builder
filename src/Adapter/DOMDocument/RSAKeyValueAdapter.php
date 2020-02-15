@@ -8,8 +8,14 @@ use Budkovsky\DsigXmlBuilder\Entity\RSAKeyValueType;
 use Budkovsky\DsigXmlBuilder\Abstraction\AdapterInterface;
 use Budkovsky\DsigXmlBuilder\Enum\Tag;
 
+/**
+ * RSAKeyValue adapter
+ */
 class RSAKeyValueAdapter extends AdapterAbstract
 {
+    /**
+     * {@inheritDoc}
+     */
     public function generate(): AdapterInterface
     {
         $this->generateMainElement(Tag::RSA_KEY_VALUE_ELEMENT);
@@ -19,11 +25,17 @@ class RSAKeyValueAdapter extends AdapterAbstract
         return $this;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function getEntity(): RSAKeyValueType
     {
         return $this->entity;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function setEntityType(): void
     {
         $this->entityType = RSAKeyValueType::class;

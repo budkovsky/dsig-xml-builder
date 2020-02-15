@@ -8,10 +8,18 @@ use Budkovsky\DsigXmlBuilder\Entity\SimpleType\SPKISexp;
 use Budkovsky\DsigXmlBuilder\Enum\Tag;
 use Budkovsky\DsigXmlBuilder\Enum\ValidationMessage;
 
+/**
+ * Validator for SPKIDataType entity
+ */
 class SPKIDataValidator extends ValidatorAbstract
 {
     use ValidatorEntityTrait;
 
+    /**
+     * Runs validation
+     *
+     * @param DSigTypeInterface $entity
+     */
     protected function processValidation(DSigTypeInterface $entity): void
     {
         /** @var \Budkovsky\DsigXmlBuilder\Entity\SPKIDataType $entity */

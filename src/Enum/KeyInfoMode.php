@@ -1,6 +1,10 @@
 <?php
 namespace Budkovsky\DsigXmlBuilder\Enum;
 
+
+/**
+ * Enumeration of KeyInfo mode
+ */
 class KeyInfoMode
 {
     const RSA_KEY_VALUE = 1;

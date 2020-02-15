@@ -1,14 +1,17 @@
 <?php
+declare(strict_types = 1);
+
 namespace Budkovsky\DsigXmlBuilder\Abstraction;
 
 use Budkovsky\DsigXmlBuilder\Enum\KeyValueChoice;
 use Budkovsky\DsigXmlBuilder\Exception\FactoryException;
 use Budkovsky\Aid\Abstraction\AbstractFactoryInterface;
 
+/**
+ * @TODO to remove or not?
+ */
 abstract class KeyValueTypeAbstract implements AbstractFactoryInterface
 {
-
-
     public static function factory(string $type): KeyValueTypeAbstract
     {
         if (!KeyValueChoice::isValid($type)) {

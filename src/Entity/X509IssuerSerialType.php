@@ -40,6 +40,8 @@ class X509IssuerSerialType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Getter of X509IssuerName
+     *
      * @return string|NULL
      */
     public function getX509IssuerName(): ?string
@@ -48,6 +50,8 @@ class X509IssuerSerialType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Setter for X509IssuerName
+     *
      * @param string $x509IssuerName
      * @return X509IssuerSerialType
      */
@@ -59,6 +63,8 @@ class X509IssuerSerialType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Getter of X509SerialNumber
+     *
      * @return int|NULL
      */
     public function getX509SerialNumber(): ?int
@@ -67,6 +73,8 @@ class X509IssuerSerialType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Setter for X509SerialNumber
+     *
      * @param int $x509SerialNumber
      * @return X509IssuerSerialType
      */
@@ -77,6 +85,11 @@ class X509IssuerSerialType implements DSigTypeInterface, StaticFactoryInterface
         return $this;
     }
 
+    /**
+     * Returns default adapter for X509IssuerSerialType entity
+     *
+     * @return X509IssuerSerialAdapter
+     */
     protected function getDefaultAdapter(): AdapterInterface
     {
         return new X509IssuerSerialAdapter();

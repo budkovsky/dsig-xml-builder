@@ -9,10 +9,16 @@ use Budkovsky\DsigXmlBuilder\Entity\PGPDataType;
 use Budkovsky\DsigXmlBuilder\Enum\Tag;
 use Budkovsky\DsigXmlBuilder\Partial\AdapterChildrenTrait;
 
+/**
+ * PGPData adapter
+ */
 class PGPDataAdapter extends AdapterAbstract
 {
     use AdapterChildrenTrait;
 
+    /**
+     * {@inheritDoc}
+     */
     public function generate(): AdapterInterface
     {
         $this->generateMainElement(Tag::PGP_DATA_ELEMENT);
@@ -34,11 +40,17 @@ class PGPDataAdapter extends AdapterAbstract
         return $this;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function getEntity(): PGPDataType
     {
         return $this->entity;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function setEntityType(): void
     {
         $this->entityType = PGPDataType::class;

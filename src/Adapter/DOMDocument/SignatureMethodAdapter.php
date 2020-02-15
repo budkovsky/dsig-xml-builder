@@ -10,10 +10,16 @@ use Budkovsky\DsigXmlBuilder\Enum\Attribute;
 use Budkovsky\DsigXmlBuilder\Enum\Tag;
 use Budkovsky\DsigXmlBuilder\Partial\AdapterChildrenTrait;
 
+/**
+ * SignatureMethod adapter
+ */
 class SignatureMethodAdapter extends AdapterAbstract
 {
     use AdapterChildrenTrait;
 
+    /**
+     * {@inheritDoc}
+     */
     public function generate(): AdapterInterface
     {
         $this->generateMainElement(Tag::SIGNATURE_METHOD_ELEMENT);
@@ -26,11 +32,17 @@ class SignatureMethodAdapter extends AdapterAbstract
         return $this;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function getEntity(): SignatureMethodType
     {
         return $this->entity;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function setEntityType(): void
     {
         $this->entityType = SignatureMethodType::class;

@@ -10,11 +10,18 @@ use Budkovsky\DsigXmlBuilder\Abstraction\DSigTypeInterface;
 use Budkovsky\DsigXmlBuilder\Partial\EntityAdapterTrait;
 use Budkovsky\DsigXmlBuilder\Adapter\DOMDocument\SimpleAdapter\SPKISexpAdapter;
 
+/**
+ * SPKISexp simpleContent entity
+ */
 class SPKISexp implements DSigTypeInterface, SimpleContentInterface
 {
     use EntityAdapterTrait;
     use SimpleContentTrait;
 
+    /**
+     * Returns default adapter for SPKISexp entity
+     * @return SPKISexpAdapter
+     */
     protected function getDefaultAdapter(): AdapterInterface
     {
         return new SPKISexpAdapter();

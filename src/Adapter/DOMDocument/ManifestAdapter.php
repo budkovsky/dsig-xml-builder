@@ -10,10 +10,16 @@ use Budkovsky\DsigXmlBuilder\Enum\Attribute;
 use Budkovsky\DsigXmlBuilder\Enum\Tag;
 use Budkovsky\DsigXmlBuilder\Partial\AdapterReferencesTrait;
 
+/**
+ * Manifest adapter
+ */
 class ManifestAdapter extends AdapterAbstract
 {
     use AdapterReferencesTrait;
 
+    /**
+     * {@inheritDoc}
+     */
     public function generate(): AdapterInterface
     {
         $this->generateMainElement(Tag::MANIFEST_ELEMENT);
@@ -25,11 +31,17 @@ class ManifestAdapter extends AdapterAbstract
         return $this;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function getEntity(): ManifestType
     {
         return $this->entity;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function setEntityType(): void
     {
         $this->entityType = ManifestType::class;

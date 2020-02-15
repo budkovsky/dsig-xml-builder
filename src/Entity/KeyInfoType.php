@@ -46,6 +46,10 @@ class KeyInfoType implements DSigTypeInterface, StaticFactoryInterface
         return new static;
     }
 
+    /**
+     * Returns default adapter for KeyInfoType entity
+     * @return KeyInfoAdapter
+     */
     protected function getDefaultAdapter(): AdapterInterface
     {
         return new KeyInfoAdapter();

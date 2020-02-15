@@ -7,11 +7,17 @@ use Budkovsky\Aid\Abstraction\CollectionAbstract;
 use Budkovsky\DsigXmlBuilder\Entity\SignaturePropertyType;
 
 /**
- * SignatureProperty collection
+ * Collection of SignaturePropertyType objects
  */
 class SignaturePropertyCollection extends CollectionAbstract
 {
 
+    /**
+     * Adds SignaturePropertyType object to the collection
+     *
+     * @param SignaturePropertyType $signatureProperty
+     * @return SignaturePropertyCollection
+     */
     public function add(?SignaturePropertyType $signatureProerty = null): SignaturePropertyCollection
     {
         if ($signatureProerty) {

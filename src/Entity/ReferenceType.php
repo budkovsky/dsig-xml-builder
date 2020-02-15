@@ -55,14 +55,17 @@ class ReferenceType implements DSigTypeInterface, StaticFactoryInterface
 
     /**
      * ReferenceType entity static factory
+     *
      * @return ReferenceType
      */
     public static function create(): ReferenceType
     {
-        return new static;
+        return new static();
     }
 
     /**
+     * Getter of transform collection
+     *
      * @return TransformTypeCollection|NULL
      */
     public function getTransforms(): ?TransformTypeCollection
@@ -71,6 +74,8 @@ class ReferenceType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Setter for transform collection
+     *
      * @param TransformTypeCollection $transforms
      * @return ReferenceType
      */
@@ -82,6 +87,8 @@ class ReferenceType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Adds transform to the collection
+     *
      * @param TransformType $transform
      * @return ReferenceType
      */
@@ -93,6 +100,7 @@ class ReferenceType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     *
      * @return CanonicalizationMethodType|NULL
      */
     public function getDigestMethod(): ?DigestMethodType
@@ -101,6 +109,8 @@ class ReferenceType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Setter for digest method
+     *
      * @param DigestMethodType $digestMethod
      * @return ReferenceType
      */
@@ -112,6 +122,8 @@ class ReferenceType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Getter of digest value
+     *
      * @return string|NULL
      */
     public function getDigestValue(): ?string
@@ -120,6 +132,8 @@ class ReferenceType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Setter for digest value
+     *
      * @param string $digestValue
      * @return \Budkovsky\DsigXmlBuilder\Entity\ReferenceType
      */
@@ -129,6 +143,10 @@ class ReferenceType implements DSigTypeInterface, StaticFactoryInterface
 
         return $this;
     }
+    /**
+     * Returns default adapter for ReferenceType entity
+     * @return ReferenceAdapter
+     */
 
     protected function getDefaultAdapter(): AdapterInterface
     {

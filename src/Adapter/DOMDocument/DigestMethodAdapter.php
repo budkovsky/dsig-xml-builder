@@ -10,10 +10,16 @@ use Budkovsky\DsigXmlBuilder\Enum\Attribute;
 use Budkovsky\DsigXmlBuilder\Enum\Tag;
 use Budkovsky\DsigXmlBuilder\Partial\AdapterChildrenTrait;
 
+/**
+ * DigestMethod adapter
+ */
 class DigestMethodAdapter extends AdapterAbstract
 {
     use AdapterChildrenTrait;
 
+    /**
+     * {@inheritDoc}
+     */
     public function generate(): AdapterInterface
     {
         $this->generateMainElement(Tag::DIGEST_METHOD_ELEMENT);
@@ -23,11 +29,17 @@ class DigestMethodAdapter extends AdapterAbstract
         return $this;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function getEntity(): DigestMethodType
     {
         return $this->entity;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function setEntityType(): void
     {
         $this->entityType = DigestMethodType::class;

@@ -48,7 +48,7 @@ class SignedInfoType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
-     * SignedInfoType static factory
+     * SignedInfoType entity static factory
      * @return SignedInfoType
      */
     public static function create(): SignedInfoType
@@ -57,6 +57,8 @@ class SignedInfoType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Getter of canonicalization method
+     *
      * @return CanonicalizationMethodType|NULL
      */
     public function getCanonicalizationMethod(): ?CanonicalizationMethodType
@@ -65,6 +67,8 @@ class SignedInfoType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Setter for canonicalization method
+     *
      * @param string $canonicalizationMethod
      * @return SignedInfoType
      */
@@ -76,6 +80,8 @@ class SignedInfoType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Getter of signature method
+     *
      * @return SignatureMethodType|NULL
      */
     public function getSignatureMethod(): ?SignatureMethodType
@@ -84,6 +90,8 @@ class SignedInfoType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Setter for signature method
+     *
      * @param SignatureMethodType $signatureMethod
      * @return SignedInfoType
      */
@@ -95,6 +103,8 @@ class SignedInfoType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Getter of reference collection
+     *
      * @return ReferenceTypeCollection|NULL
      */
     public function getReferences(): ?ReferenceTypeCollection
@@ -103,6 +113,8 @@ class SignedInfoType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Setter for reference collection
+     *
      * @param ReferenceTypeCollection $references
      * @return SignedInfoType
      */
@@ -114,6 +126,8 @@ class SignedInfoType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Adds reference to the collection
+     *
      * @param ReferenceType $reference
      * @return SignedInfoType
      */
@@ -124,6 +138,10 @@ class SignedInfoType implements DSigTypeInterface, StaticFactoryInterface
         return $this;
     }
 
+    /**
+     * Returns default adapter for SignedInfoType entity
+     * @return SignedInfoAdapter
+     */
     protected function getDefaultAdapter(): AdapterInterface
     {
         return new SignedInfoAdapter();

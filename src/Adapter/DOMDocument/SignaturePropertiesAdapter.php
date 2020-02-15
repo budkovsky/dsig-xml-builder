@@ -7,8 +7,14 @@ use Budkovsky\DsigXmlBuilder\Entity\SignaturePropertiesType;
 use Budkovsky\DsigXmlBuilder\Enum\Attribute;
 use Budkovsky\DsigXmlBuilder\Enum\Tag;
 
+/**
+ * SignatureProperties adapter
+ */
 class SignaturePropertiesAdapter extends AdapterAbstract
 {
+    /**
+     * {@inheritDoc}
+     */
     public function generate(): AdapterInterface
     {
         $this->generateMainElement(Tag::SIGNATURE_PROPERTIES_ELEMENT);
@@ -22,11 +28,18 @@ class SignaturePropertiesAdapter extends AdapterAbstract
         return $this;
     }
 
+    /**
+
+     * {@inheritDoc}
+     */
     protected function getEntity(): SignaturePropertiesType
     {
         return $this->entity;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function setEntityType(): void
     {
         $this->entityType = SignaturePropertiesType::class;

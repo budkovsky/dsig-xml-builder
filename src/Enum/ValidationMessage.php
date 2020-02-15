@@ -3,6 +3,9 @@ declare(strict_types = 1);
 
 namespace Budkovsky\DsigXmlBuilder\Enum;
 
+/**
+ * Enumeration of validator message templates
+ */
 class ValidationMessage
 {
     private const PREFIX = '`%s`: `%s` ';

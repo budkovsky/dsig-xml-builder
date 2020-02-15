@@ -7,12 +7,13 @@ use Budkovsky\Aid\Abstraction\CollectionAbstract;
 use Budkovsky\DsigXmlBuilder\Entity\TransformType;
 
 /**
- * TransformTypeCollection
+ * Collection of TransformType objects
  */
 class TransformTypeCollection extends CollectionAbstract
 {
     /**
-     * {@inheritDoc}
+     * Adds TransformType object to the collection
+     *
      * @param TransformType $transform
      * @return TransformTypeCollection
      */

@@ -10,10 +10,16 @@ use Budkovsky\DsigXmlBuilder\Enum\Attribute;
 use Budkovsky\DsigXmlBuilder\Enum\Tag;
 use Budkovsky\DsigXmlBuilder\Partial\AdapterChildrenTrait;
 
+/**
+ * SignatureProperty adapter
+ */
 class SignaturePropertyAdapter extends AdapterAbstract
 {
     use AdapterChildrenTrait;
 
+    /**
+     * {@inheritDoc}
+     */
     public function generate(): AdapterInterface
     {
         $this->generateMainElement(Tag::SIGNATURE_PROPERTY_ELEMENT);
@@ -24,11 +30,17 @@ class SignaturePropertyAdapter extends AdapterAbstract
         return $this;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function getEntity(): SignaturePropertyType
     {
         return $this->entity;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function setEntityType(): void
     {
         $this->entityType = SignaturePropertyType::class;

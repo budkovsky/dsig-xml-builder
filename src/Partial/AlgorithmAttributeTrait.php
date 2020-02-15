@@ -3,12 +3,17 @@ declare(strict_types = 1);
 
 namespace Budkovsky\DsigXmlBuilder\Partial;
 
+/**
+ * Trait for entities with `Algorithm` attribute
+ */
 trait AlgorithmAttributeTrait
 {
     /** @var string */
     protected $algorithmAttribute;
 
     /**
+     * Getter of algorithm attribute
+     *
      * @return string|NULL
      */
     public function getAlgorithmAttribute(): ?string
@@ -17,6 +22,8 @@ trait AlgorithmAttributeTrait
     }
 
     /**
+     * Setter for algorithm attribute
+     *
      * @param string $algorithm
      * @return self
      */

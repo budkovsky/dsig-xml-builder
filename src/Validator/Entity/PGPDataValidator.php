@@ -9,12 +9,17 @@ use Budkovsky\DsigXmlBuilder\Enum\ValidationMessage;
 use Budkovsky\DsigXmlBuilder\Partial\ValidatorEntityTrait;
 
 /**
- * PGPData entity validator
+ * Validator for PGPDataType entity
  */
 class PGPDataValidator extends ValidatorAbstract
 {
     use ValidatorEntityTrait;
 
+    /**
+     * Runs validation
+     *
+     * @param DSigTypeInterface $entity
+     */
     protected function processValidation(DSigTypeInterface $entity): void
     {
         /** @var \Budkovsky\DsigXmlBuilder\Entity\PGPDataType $entity */

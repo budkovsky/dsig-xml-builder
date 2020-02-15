@@ -45,6 +45,8 @@ class KeyValueType implements DSigTypeInterface, StaticFactoryInterface, KeyInfo
     }
 
     /**
+     * Getter of DSAKeyValueType
+     *
      * @return DSAKeyValueType|NULL
      */
     public function getDsaKeyValue(): ?DSAKeyValueType
@@ -53,6 +55,8 @@ class KeyValueType implements DSigTypeInterface, StaticFactoryInterface, KeyInfo
     }
 
     /**
+     * Setter for KeyValueType
+     *
      * @param DSAKeyValueType $dsaKeyValue
      * @return KeyValueType
      */
@@ -64,6 +68,8 @@ class KeyValueType implements DSigTypeInterface, StaticFactoryInterface, KeyInfo
     }
 
     /**
+     * Getter of RSAKeyValue
+     *
      * @return RSAKeyValueType|NULL
      */
     public function getRsaKeyValue(): ?RSAKeyValueType
@@ -72,6 +78,8 @@ class KeyValueType implements DSigTypeInterface, StaticFactoryInterface, KeyInfo
     }
 
     /**
+     * Setter for RSAKeyValueType
+     *
      * @param RSAKeyValueType $rsaKeyValue
      * @return KeyValueType
      */
@@ -82,6 +90,10 @@ class KeyValueType implements DSigTypeInterface, StaticFactoryInterface, KeyInfo
         return $this;
     }
 
+    /**
+     * Returns default adapter for KeyValueType entity
+     * @return KeyValueAdapter
+     */
     protected function getDefaultAdapter(): AdapterInterface
     {
         return new KeyValueAdapter();

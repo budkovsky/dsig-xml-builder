@@ -9,12 +9,17 @@ use Budkovsky\DsigXmlBuilder\Enum\Attribute;
 use Budkovsky\DsigXmlBuilder\Partial\ValidatorEntityTrait;
 
 /**
- * DigestMethod validator
+ * Validator for DigestMethodType entity
  */
 class DigestMethodValidator extends ValidatorAbstract
 {
     use ValidatorEntityTrait;
 
+    /**
+     * Runs validation
+     *
+     * @param DSigTypeInterface $entity
+     */
     protected function processValidation(?DSigTypeInterface $entity = null): void
     {
         /** @var \Budkovsky\DsigXmlBuilder\Entity\DigestMethodType $entity */

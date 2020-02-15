@@ -9,10 +9,18 @@ use Budkovsky\DsigXmlBuilder\Collection\TransformTypeCollection;
 use Budkovsky\DsigXmlBuilder\Partial\ValidatorEntityTrait;
 use Budkovsky\DsigXmlBuilder\Enum\Attribute;
 
+/**
+ * Validator for RetrievalMethodType entity
+ */
 class RetrievalMethodValidator extends ValidatorAbstract
 {
     use ValidatorEntityTrait;
 
+    /**
+     * Runs validation
+     *
+     * @param DSigTypeInterface $entity
+     */
     protected function processValidation(DSigTypeInterface $entity): void
     {
         /** @var \Budkovsky\DsigXmlBuilder\Entity\RetrievalMethodType $entity */
@@ -24,6 +32,11 @@ class RetrievalMethodValidator extends ValidatorAbstract
         $this->validateTransforms($entity->getTransforms());
     }
 
+    /**
+     * Validates TransformType entities collection
+     *
+     * @param TransformTypeCollection $transformCollection
+     */
     protected function validateTransforms(?TransformTypeCollection $transformCollection): void
     {
         foreach ($transformCollection as $transform) {

@@ -53,6 +53,8 @@ class RetrievalMethodType implements DSigTypeInterface, StaticFactoryInterface, 
     }
 
     /**
+     * Getter of transform collection
+     *
      * @return TransformTypeCollection|NULL
      */
     public function getTransforms(): ?TransformTypeCollection
@@ -61,6 +63,8 @@ class RetrievalMethodType implements DSigTypeInterface, StaticFactoryInterface, 
     }
 
     /**
+     * Setter for transform collection
+     *
      * @param TransformTypeCollection $transforms
      * @return RetrievalMethodType
      */
@@ -71,6 +75,12 @@ class RetrievalMethodType implements DSigTypeInterface, StaticFactoryInterface, 
         return $this;
     }
 
+    /**
+     * Adds transform to the collection
+     *
+     * @param TransformType $transform
+     * @return RetrievalMethodType
+     */
     public function addTransform(TransformType $transform): RetrievalMethodType
     {
         if (!$this->transforms) {
@@ -81,6 +91,10 @@ class RetrievalMethodType implements DSigTypeInterface, StaticFactoryInterface, 
         return $this;
     }
 
+    /**
+     * Returns default adapter for RetrievalMethodType entity
+     * @return RetrievalMethodAdapter
+     */
     protected function getDefaultAdapter(): AdapterInterface
     {
         return new RetrievalMethodAdapter();

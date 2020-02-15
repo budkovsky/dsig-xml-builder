@@ -33,6 +33,7 @@ class RSAKeyValueType implements DSigTypeInterface, StaticFactoryInterface
 
     /**
      * RSAKeyValeType entity static factory
+     *
      * @return RSAKeyValueType
      */
     public static function create(): RSAKeyValueType
@@ -41,6 +42,8 @@ class RSAKeyValueType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Getter of modulus
+     *
      * @return string|NULL
      */
     public function getModulus(): ?string
@@ -49,6 +52,8 @@ class RSAKeyValueType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Getter of exponent
+     *
      * @return string|NULL
      */
     public function getExponent(): ?string
@@ -57,6 +62,8 @@ class RSAKeyValueType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Setter for modulus
+     *
      * @param string $modulus
      * @return RSAKeyValueType
      */
@@ -68,6 +75,8 @@ class RSAKeyValueType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Setter for exponent
+     *
      * @param string $exponent
      * @return RSAKeyValueType
      */
@@ -78,6 +87,11 @@ class RSAKeyValueType implements DSigTypeInterface, StaticFactoryInterface
         return $this;
     }
 
+    /**
+     * Returns default adapter for RSAKeyValueType entity
+     *
+     * @return RSAKeyValueAdapter
+     */
     protected function getDefaultAdapter(): AdapterInterface
     {
         return new RSAKeyValueAdapter();

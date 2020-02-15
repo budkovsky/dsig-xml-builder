@@ -4,7 +4,6 @@ declare(strict_types = 1);
 namespace Budkovsky\DsigXmlBuilder\Tests\Partial;
 
 use Budkovsky\DsigXmlBuilder\Abstraction\DSigTypeInterface;
-use Budkovsky\ExtendedDomElement\ExtendedDomElement;
 use Budkovsky\DsigXmlBuilder\Enum\XmlNs;
 
 trait AdapterSchemaValidatorTestTrait
@@ -16,7 +15,7 @@ trait AdapterSchemaValidatorTestTrait
     protected function isGeneratedXmlValid(DSigTypeInterface $entity): bool
     {
         /** @var \DOMDocument $document */
-        $document = ExtendedDomElement::getDomDocument();
+        $document = new \DOMDocument();
         /** @var \Budkovsky\DsigXmlBuilder\Abstraction\AdapterInterface $adapter */
         $adapter = $entity->getAdapter()
             ->setNamespace(XmlNs::XML_DSIG_2000_09)

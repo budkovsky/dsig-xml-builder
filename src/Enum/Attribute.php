@@ -3,6 +3,9 @@ namespace Budkovsky\DsigXmlBuilder\Enum;
 
 use Budkovsky\Aid\Abstraction\EnumAbstract;
 
+/**
+ * Enumerations of attributes for XML DSig types
+ */
 class Attribute extends EnumAbstract
 {
     const ID = 'Id';
@@ -13,6 +16,9 @@ class Attribute extends EnumAbstract
     const MIME_TYPE = 'MimeType';
     const ENCODING = 'Encoding';
 
+    /**
+     * {@inheritdoc}
+     */
     public static function getAll(): array
     {
         return [

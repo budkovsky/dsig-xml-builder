@@ -1,15 +1,20 @@
 {
 	"name": "budkovsky/dsig-xml-builder",
+	"description": "XML Digital Signature builder for PHP7.1+",
 	"autoload": {
 		"psr-4": {
-			"Budkovsky\\DsigXmlBuilder\\Tests\\": "tests",
 			"Budkovsky\\DsigXmlBuilder\\": "src"
 		}
 	},
+	"autoload-dev": {
+	   "psr-4": {
+	       "Budkovsky\\DsigXmlBuilder\\Tests\\": "tests"
+	   }
+	},
 	"require": {
 		"php": "^7.1",
-		"budkovsky/extended-dom-element": "*",
-		"budkovsky/aid": "*",
+		"ext-openssl": "*",
+		"budkovsky/aid": "^0.1.14",
 		"budkovsky/openssl-wrapper": "^0.1.1"
 	},
 	"require-dev": {
@@ -40,5 +45,8 @@
 		  "name": "budkovsky/openssl-wrapper"
 		}
 	],
-	"test": "vendor/bin/phpunit"
+	"license": "MIT",
+	"scripts": {
+	   "test": "vendor/bin/phpunit --bootstrap vendor/autoload.php tests"
+   }
 }

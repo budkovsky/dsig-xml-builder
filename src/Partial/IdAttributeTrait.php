@@ -4,7 +4,7 @@ declare(strict_types = 1);
 namespace Budkovsky\DsigXmlBuilder\Partial;
 
 /**
- * `Id` attribute trait
+ * Trair for entities with id attribute
  */
 trait IdAttributeTrait
 {
@@ -12,6 +12,8 @@ trait IdAttributeTrait
     protected $idAttribute;
 
     /**
+     * Getter of id attribute
+     *
      * @return string|NULL
      */
     public function getIdAttribute(): ?string
@@ -20,6 +22,8 @@ trait IdAttributeTrait
     }
 
     /**
+     * Setter for id attribute
+     *
      * @param string $id
      * @return self
      */

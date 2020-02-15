@@ -53,7 +53,7 @@ pipeline {
             }
         }
         stage('documentation') {
-            steps{
+            steps {
 	            sh 'vendor/bin/phpdox -f phpdox.xml'
 	            publishHTML (target: [
 	                allowMissing: false,

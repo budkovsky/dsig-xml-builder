@@ -65,6 +65,8 @@ class DSAKeyValueType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Getter of `P` value
+     *
      * @return string|NULL
      */
     public function getP(): ?string
@@ -73,6 +75,8 @@ class DSAKeyValueType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Getter of `Q` value
+     *
      * @return string|NULL
      */
     public function getQ(): ?string
@@ -81,6 +85,8 @@ class DSAKeyValueType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Getter of `G` value
+     *
      * @return string|NULL
      */
     public function getG(): ?string
@@ -89,6 +95,8 @@ class DSAKeyValueType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Getter of `Y` value
+     *
      * @return string|NULL
      */
     public function getY(): ?string
@@ -97,6 +105,8 @@ class DSAKeyValueType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Getter of `J` value
+     *
      * @return string|NULL
      */
     public function getJ(): ?string
@@ -105,6 +115,8 @@ class DSAKeyValueType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Getter of `seed` value
+     *
      * @return string|NULL
      */
     public function getSeed(): ?string
@@ -113,6 +125,8 @@ class DSAKeyValueType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Getter of `pgenCounter` value
+     *
      * @return string|NULL
      */
     public function getPgenCounter(): ?string
@@ -132,6 +146,8 @@ class DSAKeyValueType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Setter for `Q` value
+     *
      * @param string $q
      * @return DSAKeyValueType
      */
@@ -143,6 +159,8 @@ class DSAKeyValueType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Setter for `G` value
+     *
      * @param string $g
      * @return DSAKeyValueType
      */
@@ -154,6 +172,8 @@ class DSAKeyValueType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Setter for `Y` value
+     *
      * @param string $y
      * @return DSAKeyValueType
      */
@@ -165,6 +185,8 @@ class DSAKeyValueType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Setter for `J` value
+     *
      * @param string $j
      * @return DSAKeyValueType
      */
@@ -176,6 +198,8 @@ class DSAKeyValueType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Setter for `seed` value
+     *
      * @param string $seed
      * @return DSAKeyValueType
      */
@@ -187,6 +211,8 @@ class DSAKeyValueType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Setter for `pgenCounter` value
+     *
      * @param string $pgenCounter
      * @return DSAKeyValueType
      */
@@ -197,6 +223,11 @@ class DSAKeyValueType implements DSigTypeInterface, StaticFactoryInterface
         return $this;
     }
 
+    /**
+     * Returns default adapter for DSAKeyValueType entity
+     *
+     * @return DSAKeyValueAdapter
+     */
     protected function getDefaultAdapter(): AdapterInterface
     {
         return new DSAKeyValueAdapter();

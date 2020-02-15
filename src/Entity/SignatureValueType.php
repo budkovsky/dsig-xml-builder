@@ -37,6 +37,10 @@ class SignatureValueType implements DSigTypeInterface, StaticFactoryInterface
         return new static();
     }
 
+    /**
+     * Returns default adapter for SignatureValueType entity
+     * @return SignatureValueAdapter
+     */
     protected function getDefaultAdapter(): AdapterInterface
     {
         return new SignatureValueAdapter();

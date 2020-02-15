@@ -7,12 +7,13 @@ use Budkovsky\Aid\Abstraction\CollectionAbstract;
 use Budkovsky\DsigXmlBuilder\Entity\ReferenceType;
 
 /**
- * ReferenceTypeCollection class
+ * Collection of ReferenceType objects
  */
 class ReferenceTypeCollection extends CollectionAbstract
 {
     /**
-     * {@inheritDoc}
+     * Adds ReferenceType object to the collection
+     *
      * @param ReferenceType $reference
      * @return ReferenceTypeCollection
      */

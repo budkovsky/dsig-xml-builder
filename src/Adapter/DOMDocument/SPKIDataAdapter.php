@@ -9,10 +9,16 @@ use Budkovsky\DsigXmlBuilder\Entity\SPKIDataType;
 use Budkovsky\DsigXmlBuilder\Enum\Tag;
 use Budkovsky\DsigXmlBuilder\Partial\AdapterChildrenTrait;
 
+/**
+ * SPKIData adapter
+ */
 class SPKIDataAdapter extends AdapterAbstract
 {
     use AdapterChildrenTrait;
 
+    /**
+     * {@inheritDoc}
+     */
     public function generate(): AdapterInterface
     {
         $this->generateMainElement(Tag::SPKI_DATA_ELEMENT);
@@ -21,11 +27,17 @@ class SPKIDataAdapter extends AdapterAbstract
         return $this;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function getEntity(): SPKIDataType
     {
         return $this->entity;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function setEntityType(): void
     {
         $this->entityType = SPKIDataType::class;

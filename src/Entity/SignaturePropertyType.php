@@ -36,6 +36,7 @@ class SignaturePropertyType implements DSigTypeInterface, StaticFactoryInterface
 
     /**
      * SignaturePropertyType entity static factory
+     *
      * @return SignaturePropertyType
      */
     public static function create()
@@ -44,6 +45,8 @@ class SignaturePropertyType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Getter of target attribute
+     *
      * @return string|NULL
      */
     public function getTargetAttribute(): ?string
@@ -52,6 +55,8 @@ class SignaturePropertyType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Setter for target attribute
+     *
      * @param string $targetAttribute
      * @return SignaturePropertyType
      */
@@ -62,6 +67,11 @@ class SignaturePropertyType implements DSigTypeInterface, StaticFactoryInterface
         return $this;
     }
 
+    /**
+     * Returns default adapter for SignaturePropertyType entity
+     *
+     * @return SignaturePropertyAdapter
+     */
     protected function getDefaultAdapter(): AdapterInterface
     {
         return new SignaturePropertyAdapter();

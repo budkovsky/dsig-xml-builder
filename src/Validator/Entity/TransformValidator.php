@@ -11,12 +11,17 @@ use Budkovsky\DsigXmlBuilder\Entity\SimpleType\Xpath;
 use Budkovsky\DsigXmlBuilder\Enum\Tag;
 
 /**
- * Transform validator
+ * Validator for TransformType entity
  */
 class TransformValidator extends ValidatorAbstract
 {
     use ValidatorEntityTrait;
 
+    /**
+     * Runs validation
+     *
+     * @param DSigTypeInterface $entity
+     */
     protected function processValidation(DSigTypeInterface $entity): void
     {
         /** @var \Budkovsky\DsigXmlBuilder\Entity\TransformType $entity */

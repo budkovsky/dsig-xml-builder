@@ -48,6 +48,8 @@ class SignaturePropertiesType implements DSigTypeInterface, StaticFactoryInterfa
     }
 
     /**
+     * Getter of signature properties
+     *
      * @return SignaturePropertyCollection|NULL
      */
     public function getSignatureProperties(): ?SignaturePropertyCollection
@@ -56,6 +58,8 @@ class SignaturePropertiesType implements DSigTypeInterface, StaticFactoryInterfa
     }
 
     /**
+	 * Setter for signature properties
+	 *
      * @param SignaturePropertyCollection $signatureProperties
      * @return SignaturePropertiesType
      */
@@ -68,6 +72,8 @@ class SignaturePropertiesType implements DSigTypeInterface, StaticFactoryInterfa
     }
 
     /**
+     * Adds signature property to the collection
+     *
      * @param SignaturePropertyType $signatureProperty
      * @return SignaturePropertiesType
      */
@@ -79,6 +85,10 @@ class SignaturePropertiesType implements DSigTypeInterface, StaticFactoryInterfa
         return $this;
     }
 
+    /**
+     * Returns default adapter for SignaturePropertiesType entity
+     * @return SignaturePropertiesAdapter
+     */
     protected function getDefaultAdapter(): AdapterInterface
     {
         return new SignaturePropertiesAdapter();

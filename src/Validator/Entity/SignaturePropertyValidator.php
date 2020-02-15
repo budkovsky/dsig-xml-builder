@@ -9,10 +9,18 @@ use Budkovsky\DsigXmlBuilder\Partial\ValidatorEntityTrait;
 use Budkovsky\DsigXmlBuilder\Enum\Attribute;
 use Budkovsky\DsigXmlBuilder\Enum\ValidationMessage;
 
+/**
+ * Validator for SignaturePropertyType entity
+ */
 class SignaturePropertyValidator extends ValidatorAbstract
 {
     use ValidatorEntityTrait;
 
+    /**
+     * Runs validation
+     *
+     * @param DSigTypeInterface $entity
+     */
     protected function processValidation(DSigTypeInterface $entity): void
     {
         /** @var \Budkovsky\DsigXmlBuilder\Entity\SignaturePropertyType $entity */

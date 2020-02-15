@@ -9,12 +9,17 @@ use Budkovsky\DsigXmlBuilder\Partial\ValidatorEntityTrait;
 use Budkovsky\DsigXmlBuilder\Enum\Attribute;
 
 /**
- * Reference validator
+ * Validator for ReferenceType entity
  */
 class ReferenceValidator extends ValidatorAbstract
 {
     use ValidatorEntityTrait;
 
+    /**
+     * Runs validation
+     *
+     * @param DSigTypeInterface $entity
+     */
     protected function processValidation(DSigTypeInterface $entity): void
     {
         /** @var \Budkovsky\DsigXmlBuilder\Entity\ReferenceType $entity */
@@ -36,6 +41,12 @@ class ReferenceValidator extends ValidatorAbstract
         }
     }
 
+    /**
+     * Validates digest value
+     *
+     * @param string $value
+     * @param string $name
+     */
     protected function validateDigestValue(?string $value, string $name): void
     {
         $this->validateIsNotEmpty($value, $name);

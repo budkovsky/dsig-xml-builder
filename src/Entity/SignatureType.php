@@ -53,6 +53,8 @@ class SignatureType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Getter of SignedInfo
+     *
      * @return SignedInfoType|NULL
      */
     public function getSignedInfo(): ?SignedInfoType
@@ -61,6 +63,8 @@ class SignatureType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Setter for SignedInfo
+     *
      * @param SignedInfoType $signedInfo
      * @return SignatureType
      */
@@ -72,6 +76,8 @@ class SignatureType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Getter of SignatureValue
+     *
      * @return SignatureValueType|NULL
      */
     public function getSignatureValue(): ?SignatureValueType
@@ -80,6 +86,8 @@ class SignatureType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Setter for SignatureValue
+     *
      * @param SignatureValueType $signatureValue
      * @return SignatureType
      */
@@ -91,6 +99,8 @@ class SignatureType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Getter of KeyInfo
+     *
      * @return KeyInfoType|NULL
      */
     public function getKeyInfo(): ?KeyInfoType
@@ -99,6 +109,8 @@ class SignatureType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Setter for KeyInfo
+     *
      * @param KeyInfoType $keyInfo
      * @return SignatureType
      */
@@ -110,6 +122,8 @@ class SignatureType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Getter of object collection
+     *
      * @return ObjectTypeCollection|NULL
      */
     public function getObjects(): ?ObjectTypeCollection
@@ -117,6 +131,12 @@ class SignatureType implements DSigTypeInterface, StaticFactoryInterface
         return $this->objects;
     }
 
+    /**
+     * Setter for object collection
+     *
+     * @param ObjectTypeCollection $objects
+     * @return SignatureType
+     */
     public function setObjects(ObjectTypeCollection $objects): SignatureType
     {
         $this->objects = $objects;
@@ -125,6 +145,8 @@ class SignatureType implements DSigTypeInterface, StaticFactoryInterface
     }
 
     /**
+     * Adds object to the collection
+     *
      * @param ObjectType $object
      * @return SignatureType
      */
@@ -138,6 +160,11 @@ class SignatureType implements DSigTypeInterface, StaticFactoryInterface
         return $this;
     }
 
+    /**
+     * Returns default adapter for SignatureType entity
+     *
+     * @return SignatureAdapter
+     */
     protected function getDefaultAdapter(): AdapterInterface
     {
         return new SignatureAdapter();

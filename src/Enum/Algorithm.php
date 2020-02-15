@@ -3,6 +3,9 @@ namespace Budkovsky\DsigXmlBuilder\Enum;
 
 use Budkovsky\Aid\Abstraction\EnumAbstract;
 
+/**
+ * Enumeration of the algorithms
+ */
 class Algorithm extends EnumAbstract
 {
     const BASE64 = 'http://www.w3.org/2000/09/xmldsig#base64';
@@ -41,6 +44,9 @@ class Algorithm extends EnumAbstract
     const CANONICALIZATION_1_1_WITH_COMMENTS = 'http://www.w3.org/2006/12/xml-c14n11#WithComments';
     const CANONICALIZATION_1_0_EXCLUSIVE_WITH_COMMENTS = 'http://www.w3.org/2001/10/xml-exc-c14n#WithComments';
 
+    /**
+     * {@inheritdoc}
+     */
     public static function getAll(): array
     {
         return [

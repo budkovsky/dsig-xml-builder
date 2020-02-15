@@ -8,10 +8,16 @@ use Budkovsky\DsigXmlBuilder\Enum\Tag;
 use Budkovsky\DsigXmlBuilder\Partial\AdapterReferencesTrait;
 use Budkovsky\DsigXmlBuilder\Enum\Attribute;
 
+/**
+ * SignedInfo adapter
+ */
 class SignedInfoAdapter extends AdapterAbstract
 {
     use AdapterReferencesTrait;
 
+    /**
+     * {@inheritDoc}
+     */
     public function generate(): AdapterInterface
     {
         $this->generateMainElement(Tag::SIGNED_INFO_ELEMENT);
@@ -33,11 +39,17 @@ class SignedInfoAdapter extends AdapterAbstract
         return $this;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function getEntity(): SignedInfoType
     {
         return $this->entity;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function setEntityType(): void
     {
         $this->entityType = SignedInfoType::class;

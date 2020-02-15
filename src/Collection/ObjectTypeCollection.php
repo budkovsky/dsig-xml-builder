@@ -7,12 +7,13 @@ use Budkovsky\Aid\Abstraction\CollectionAbstract;
 use Budkovsky\DsigXmlBuilder\Entity\ObjectType;
 
 /**
- * ObjectTypeCollection
+ * Collection of ObjectType objects
  */
 class ObjectTypeCollection extends CollectionAbstract
 {
     /**
-     * {@inheritDoc}
+     * Adds ObjectType to the collection
+     *
      * @param ObjectType $object
      * @return ObjectTypeCollection
      */

@@ -5,8 +5,17 @@ namespace Budkovsky\DsigXmlBuilder\Partial;
 
 use Budkovsky\DsigXmlBuilder\Collection\ReferenceTypeCollection;
 
+/**
+ * Trait for adapter assigned to entity contains reference collection
+ */
 trait AdapterReferencesTrait
 {
+    /**
+     * Generates reference sub-elements
+     *
+     * @param ReferenceTypeCollection $collection
+     * @return self
+     */
     protected function generateReferenceElements(?ReferenceTypeCollection $collection): self
     {
         if ($collection !== null) {
@@ -20,6 +29,11 @@ trait AdapterReferencesTrait
         return $this;
     }
 
-    /** @see \Budkovsky\DsigXmlBuilder\Abstraction\AdapterAbstract::getDOMElement() */
+    /**
+     * Returns main entity assigned with adapter
+     *
+     * @see \Budkovsky\DsigXmlBuilder\Abstraction\AdapterAbstract::getDOMElement()
+     * @return \DOMElement
+     */
     abstract public function getDOMElement(): \DOMElement;
 }
