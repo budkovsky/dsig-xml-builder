@@ -17,7 +17,7 @@ class SignatureMode extends EnumAbstract
     /**
      * {@inheritDoc}
      */
-    public function getAll(): array
+    public static function getAll(): array
     {
         return [
             'ENVELOPED' => self::ENVELOPED,

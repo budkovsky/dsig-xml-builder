@@ -50,6 +50,8 @@ class Algorithm extends EnumAbstract
     public static function getAll(): array
     {
         return [
+            'BASE64' => self::BASE64,
+
             'SHA1' => self::SHA1,
             'SHA256' => self::SHA256,
             'SHA224' => self::SHA224,

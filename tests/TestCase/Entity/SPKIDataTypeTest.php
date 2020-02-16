@@ -1,7 +1,7 @@
 <?php
 namespace Budkovsky\DsigXmlBuilder\Tests\TestCase\Entity;
 
-use Budkovsky\Aid\Collection\EntityCollection;
+use Budkovsky\DsigXmlBuilder\Collection\EntityCollection;
 use Budkovsky\DsigXmlBuilder\Entity\SPKIDataType;
 use Budkovsky\DsigXmlBuilder\Entity\SimpleType\SPKISexp;
 use Budkovsky\DsigXmlBuilder\Tests\Partial\EntityTestTrait;

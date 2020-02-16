@@ -4,7 +4,7 @@ declare(strict_types = 1);
 namespace Budkovsky\DsigXmlBuilder\Tests\TestCase\Entity;
 
 use Budkovsky\Aid\Abstraction\EntityInterface;
-use Budkovsky\Aid\Collection\EntityCollection;
+use Budkovsky\DsigXmlBuilder\Collection\EntityCollection;
 use Budkovsky\Aid\Helper\RandomString;
 use Budkovsky\DsigXmlBuilder\Entity\ObjectType;
 use Budkovsky\DsigXmlBuilder\Tests\Partial\EntityTestTrait;

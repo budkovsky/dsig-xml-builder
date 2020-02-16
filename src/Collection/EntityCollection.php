@@ -3,35 +3,24 @@ declare(strict_types = 1);
 
 namespace Budkovsky\DsigXmlBuilder\Collection;
 
-use Budkovsky\Aid\Abstraction\CollectionIndexedAbstract;
 use Budkovsky\Aid\Abstraction\EntityInterface;
+use Budkovsky\Aid\Abstraction\CollectionAbstract;
 
 /**
  * Typed indexed collection of entities
  */
-class EntityCollection extends CollectionIndexedAbstract
+class EntityCollection extends CollectionAbstract
 {
     /**
      * @param EntityInterface $entity
      * @return EntityCollection
      */
-    public function add(?string $index = null, ?EntityInterface $entity = null): EntityCollection
+    public function add(?EntityInterface $entity = null): EntityCollection
     {
-        if ($index && $entity) {
-            $this->collection[$index] = $entity;
+        if ($entity) {
+            $this->collection[] = $entity;
         }
 
         return $this;
-    }
-
-    /**
-     * Getter of collection's item
-     *
-     * @param string $index
-     * @return EntityInterface
-     */
-    public function get(string $index): EntityInterface
-    {
-        return $this->collection[$index];
     }
 }

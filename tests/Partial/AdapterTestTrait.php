@@ -6,7 +6,7 @@ namespace Budkovsky\DsigXmlBuilder\Tests\Partial;
 use Budkovsky\DsigXmlBuilder\Abstraction\DSigTypeInterface;
 use Budkovsky\DsigXmlBuilder\Enum\XmlNs;
 
-trait AdapterSchemaValidatorTestTrait
+trait AdapterTestTrait
 {
     use CreationTestTrait;
 

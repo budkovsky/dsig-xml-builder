@@ -25,6 +25,7 @@ use Budkovsky\DsigXmlBuilder\Helper\Calculation;
 use Budkovsky\OpenSslWrapper\Keystore;
 use Budkovsky\OpenSslWrapper\PrivateKey;
 use Budkovsky\OpenSslWrapper\Enum\KeyType;
+use Budkovsky\DsigXmlBuilder\Facade\RSAEnvelopedSignatureGenerator;
 
 /**
  * Abstraction for RSA generators
@@ -94,7 +95,7 @@ abstract class RSAGeneratorAbstract extends GeneratorAbstract
 
         switch ($mode) {
             case SignatureMode::ENVELOPED:
-                $generator = new RSAEnvelopingSignatureGenerator();
+                $generator = new RSAEnvelopedSignatureGenerator();
                 break;
 
             case SignatureMode::ENVELOPING:
@@ -149,7 +150,7 @@ abstract class RSAGeneratorAbstract extends GeneratorAbstract
     {
         $this->signatureEntity->setSignatureValue(
             SignatureValueType::create()
-            //->setIdAttribute($this->getSignatureValueId())
+            ->setIdAttribute($this->getSignatureValueId())
         );
 
         return $this;

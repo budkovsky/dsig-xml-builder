@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace Budkovsky\DsigXmlBuilder\Tests\TestCase\Entity;
 
-use Budkovsky\Aid\Collection\EntityCollection;
+use Budkovsky\DsigXmlBuilder\Collection\EntityCollection;
 use Budkovsky\Aid\Helper\RandomString;
 use Budkovsky\DsigXmlBuilder\Entity\KeyValueType;
 use Budkovsky\DsigXmlBuilder\Entity\PGPDataType;

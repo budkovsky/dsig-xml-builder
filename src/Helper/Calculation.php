@@ -53,9 +53,10 @@ abstract class Calculation
         $matches = [];
         $pattern = '/-----BEGIN.*?-----(.*?)-----END.*?-----/s';
         \preg_match($pattern, $body, $matches);
-        $trimmedBody = \str_replace(["\n", "\r"], ['', ''], trim($matches[1]));
-
-
+        $trimmedBody = isset($matches[1]) && !empty($matches[1])
+            ? \str_replace(["\n", "\r"], ['', ''], trim($matches[1]))
+            : $body
+        ;
 
         if (!Restriction::isBase64($trimmedBody)) {
             throw new PemException('PEM body is not base64 string');

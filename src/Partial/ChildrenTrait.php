@@ -4,7 +4,7 @@ declare(strict_types = 1);
 namespace Budkovsky\DsigXmlBuilder\Partial;
 
 use Budkovsky\Aid\Abstraction\EntityInterface;
-use Budkovsky\Aid\Collection\EntityCollection;
+use Budkovsky\DsigXmlBuilder\Collection\EntityCollection;
 
 /**
  * Trait for entities contain children entities with open structure

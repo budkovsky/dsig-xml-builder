@@ -22,7 +22,5 @@ RUN apt-get update \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* ~/.composer
 
-EXPOSE 9000
-
 #CMD ["php", "-a"]
 #CMD ["tail", "-f", "/dev/null"]

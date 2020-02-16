@@ -27,9 +27,6 @@ trait GeneratorPropertyTrait
     /** @var \DOMDocument */
     protected $document;
 
-    /** @var bool */
-    protected $formatOutput;
-
     /** @var string */
     protected $canonicalizationAlgorithm = CanonicalizationAlgorithm::XML_1_0;
 
@@ -62,13 +59,8 @@ trait GeneratorPropertyTrait
      */
     public function __construct()
     {
-//         libxml_disable_entity_loader(true);
         $this->signatureEntity = new SignatureType();
         $this->document = new DOMDocument('1.0', 'utf-8');
-//         $this->document->preserveWhiteSpace = false;
-//         $this->document->formatOutput = true;
-//         $this->document->substituteEntities = false;
-         $this->document->resolveExternals = false;
     }
 
     /**
@@ -77,24 +69,9 @@ trait GeneratorPropertyTrait
      * @param string $content
      * @return self
      */
-
     public function setContent(string $content): self
     {
         $this->content = $content;
-
-        return $this;
-    }
-
-    /**
-     * Setter for `format output?` flag
-     *
-     * @param bool $formatOutput
-     * @return self
-     */
-
-    public function setFormatOutput(bool $formatOutput): self
-    {
-        $this->formatOutput = $formatOutput;
 
         return $this;
     }
@@ -108,7 +85,6 @@ trait GeneratorPropertyTrait
      * @throws CanonicalizationAlgorithmException
      * @return self
      */
-
     public function setCanonicalizationAlgorithm(string $algorithm): self
     {
         if (!CanonicalizationAlgorithm::isValid($algorithm)) {
@@ -128,7 +104,6 @@ trait GeneratorPropertyTrait
      * @throws DigestAlgorithmException
      * @return self
      */
-
     public function setDigestAlgorithm(string $algorithm): self
     {
         if (!DigestAlgorithm::isValid($algorithm)) {
@@ -148,7 +123,6 @@ trait GeneratorPropertyTrait
      * @throws SignatureAlgorithmException
      * @return self
      */
-
     public function setSignatureAlgorithm(string $algorithm): self
     {
         if (!SignatureAlgorithm::isValid($algorithm)) {
@@ -165,22 +139,11 @@ trait GeneratorPropertyTrait
      * @param string $id
      * @return self
      */
-
     public function setSignatureId(string $id): self
     {
-        $this->signatureId = $id;
+        $this->signatureEntity->setIdAttribute($id);
 
         return $this;
-    }
-
-    /**
-     * Getter of signature id attribute
-     * @return string
-     */
-
-    protected function getSignatureId(): string
-    {
-        return $this->signatureId ?? $this->signatureId = RandomString::get();
     }
 
     /**
@@ -188,7 +151,6 @@ trait GeneratorPropertyTrait
      * @param string $id
      * @return self
      */
-
     public function setContentId(string $id): self
     {
         $this->contentId = $id;
@@ -200,7 +162,6 @@ trait GeneratorPropertyTrait
      * Getter of content id attribute
      * @return string
      */
-
     protected function getContentId(): string
     {
         return $this->contentId ?? $this->contentId = RandomString::get();
@@ -208,35 +169,9 @@ trait GeneratorPropertyTrait
 
     /**
      * Setter for signature value id attribute
-     *
      * @param string $id
      * @return self
      */
-
-    public function setDigestValueId(string $id): self
-    {
-        $this->digestValueId = $id;
-
-        return $this;
-    }
-
-    /**
-     * Getter of content reference id
-     *
-     * @return string
-     */
-
-    protected function getcontentReferenceId(): string
-    {
-        return $this->contentReferenceId ?? $this->contentReferenceId = RandomString::get();
-    }
-
-    /**
-     * Setter for signature value id attribute
-     * @param string $id
-     * @return self
-     */
-
     public function setSignatureValueId(string $id): self
     {
         $this->signatureValueId = $id;
@@ -248,7 +183,6 @@ trait GeneratorPropertyTrait
      * Getter of signature value id attribute
      * @return string
      */
-
     protected function getSignatureValueId(): string
     {
         return $this->signatureValueId ?? $this->signatureValueId = RandomString::get();
@@ -262,7 +196,6 @@ trait GeneratorPropertyTrait
      * @param int $mode
      * @return self
      */
-
     public function setKeyInfoMode(int $mode): self
     {
         $this->keyInfoMode = $mode;
@@ -275,7 +208,6 @@ trait GeneratorPropertyTrait
      *
      * @return \DOMDocument
      */
-
     public function getDOMDocument(): \DOMDocument
     {
         return $this->document;
@@ -287,7 +219,6 @@ trait GeneratorPropertyTrait
      *
      * @return string
      */
-
     public function get(): string
     {
         return $this->document->saveXML();

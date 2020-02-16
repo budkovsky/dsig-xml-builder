@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c689e4b4163c4ca3164919eb10157fbf",
+    "content-hash": "84196a45d73d99ae4f6133ae312084f0",
     "packages": [
         {
             "name": "budkovsky/aid",

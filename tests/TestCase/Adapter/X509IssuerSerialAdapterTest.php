@@ -5,12 +5,12 @@ namespace Budkovsky\DsigXmlBuilder\Tests\TestCase\Adapter;
 
 use Budkovsky\DsigXmlBuilder\Adapter\DOMDocument\X509IssuerSerialAdapter;
 use Budkovsky\DsigXmlBuilder\Tests\Helper\ExampleEntity;
-use Budkovsky\DsigXmlBuilder\Tests\Partial\AdapterSchemaValidatorTestTrait;
+use Budkovsky\DsigXmlBuilder\Tests\Partial\AdapterTestTrait;
 use PHPUnit\Framework\TestCase;
 
 class X509IssuerSerialAdapterTest extends TestCase
 {
-    use AdapterSchemaValidatorTestTrait;
+    use AdapterTestTrait;
 
     public function setUp(): void
     {

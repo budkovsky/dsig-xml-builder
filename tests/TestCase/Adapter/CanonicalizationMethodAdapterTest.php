@@ -4,13 +4,13 @@ declare(strict_types = 1);
 namespace Budkovsky\DsigXmlBuilder\Tests\TestCase\Adapter;
 
 use Budkovsky\DsigXmlBuilder\Adapter\DOMDocument\CanonicalizationMethodAdapter;
-use Budkovsky\DsigXmlBuilder\Tests\Partial\AdapterSchemaValidatorTestTrait;
-use PHPUnit\Framework\TestCase;
 use Budkovsky\DsigXmlBuilder\Tests\Helper\ExampleEntity;
+use Budkovsky\DsigXmlBuilder\Tests\Partial\AdapterTestTrait;
+use PHPUnit\Framework\TestCase;
 
 class CanonicalizationMethodAdapterTest extends TestCase
 {
-    use AdapterSchemaValidatorTestTrait;
+    use AdapterTestTrait;
 
     public function setUp(): void
     {

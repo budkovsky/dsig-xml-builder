@@ -1,7 +1,7 @@
 <?php
 namespace Budkovsky\DsigXmlBuilder\Tests\TestCase\Entity;
 
-use Budkovsky\Aid\Collection\EntityCollection;
+use Budkovsky\DsigXmlBuilder\Collection\EntityCollection;
 use Budkovsky\Aid\Helper\RandomString;
 use Budkovsky\DsigXmlBuilder\Entity\TransformType;
 use Budkovsky\DsigXmlBuilder\Entity\SimpleType\Xpath;

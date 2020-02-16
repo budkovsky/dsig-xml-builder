@@ -2,6 +2,10 @@
 namespace Budkovsky\DsigXmlBuilder\Tests\Partial;
 
 use Budkovsky\Aid\Helper\EntityTest;
+use Budkovsky\DsigXmlBuilder\Abstraction\DSigTypeInterface;
+use Budkovsky\DsigXmlBuilder\Abstraction\AdapterAbstract;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit;
 
 trait EntityTestTrait
 {
@@ -32,9 +36,34 @@ trait EntityTestTrait
         );
     }
 
+    public function testCanSetAdapter(): void
+    {
+        $entity = $this->getEntity();
+        $entity->setAdapter($this->getAdapterMock());
+        $this->assertInstanceOf(AdapterAbstract::class, $entity->getAdapter());
+    }
+
+    protected function getEntity(): DSigTypeInterface
+    {
+        return new $this->class;
+    }
+
+    /**
+     * @return MockObject|AdapterAbstract
+     */
+    protected function getAdapterMock(): MockObject
+    {
+        return $this->createMock(AdapterAbstract::class);
+    }
+
     abstract public static function assertTrue($condition, string $message = ''): void;
 
     abstract public function testAreGettersNullable(): void;
 
     abstract public function testDoesGettersAndSettersWork(): void;
+
+    /**
+     * @see PHPUnit\Framework\TestCase::createMock()
+     */
+    abstract protected function createMock($originalClassName): MockObject;
 }

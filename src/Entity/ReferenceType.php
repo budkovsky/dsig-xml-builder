@@ -143,11 +143,11 @@ class ReferenceType implements DSigTypeInterface, StaticFactoryInterface
 
         return $this;
     }
+
     /**
      * Returns default adapter for ReferenceType entity
      * @return ReferenceAdapter
      */
-
     protected function getDefaultAdapter(): AdapterInterface
     {
         return new ReferenceAdapter();

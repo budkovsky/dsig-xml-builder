@@ -7,7 +7,7 @@ use Budkovsky\DsigXmlBuilder\Validator\Entity\SignaturePropertyValidator;
 use Budkovsky\DsigXmlBuilder\Exception\RestrictionException;
 use Budkovsky\DsigXmlBuilder\Entity\SignaturePropertyType;
 use Budkovsky\DsigXmlBuilder\Tests\Helper\ExampleEntity;
-use Budkovsky\Aid\Collection\EntityCollection;
+use Budkovsky\DsigXmlBuilder\Collection\EntityCollection;
 
 class SignaturePropertyValidatorTest extends TestCase
 {

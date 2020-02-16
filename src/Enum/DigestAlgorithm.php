@@ -12,7 +12,7 @@ use Budkovsky\DsigXmlBuilder\Exception\DigestAlgorithmException;
  */
 abstract class DigestAlgorithm extends EnumAbstract
 {
-    private const MAPPER = [
+    private static $mapper = [
         self::SHA1 => 'sha1',
         self::SHA224 => 'sha224',
         self::SHA256 => 'sha256',
@@ -44,6 +44,8 @@ abstract class DigestAlgorithm extends EnumAbstract
     /**
      * Maps DigestMethod algorithm to hash method
      *
+     * @SuppressWarnings(PHPMD.UndefinedVariable)
+     *
      * @param string $algorithm
      * @throws DigestAlgorithmException
      * @return string
@@ -54,6 +56,6 @@ abstract class DigestAlgorithm extends EnumAbstract
             throw new DigestAlgorithmException("Invalid algortihm for DigestMethod: `{$algorithm}`");
         }
 
-        return self::MAPPER[$algorithm];
+        return self::$mapper[$algorithm];
     }
 }
