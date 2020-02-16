@@ -12,8 +12,18 @@ use Budkovsky\Aid\Abstraction\AbstractFactoryInterface;
  */
 abstract class KeyValueTypeAbstract implements AbstractFactoryInterface
 {
+    /**
+     * Static factory for concrete KeyValueType classes
+     *
+     * @SuppressWarnings(PHPMD.MissingImport)
+     *
+     * @param string $type
+     * @throws FactoryException
+     * @return KeyValueTypeAbstract
+     */
     public static function factory(string $type): KeyValueTypeAbstract
     {
+        //TODO finish implementation
         if (!KeyValueChoice::isValid($type)) {
             throw new FactoryException(
                 "`$type` is not valid argument for KeyValueType factory"

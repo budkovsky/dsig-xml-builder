@@ -31,11 +31,6 @@
 	"repositories": [
 		{
 			"type": "git",
-			"url": "https://Budkovsky@github.com/budkovsky/extended-dom-element",
-			"name": "budkovsky/extended-dom-element"
-		},
-		{
-			"type": "git",
 			"url": "https://github.com/budkovsky/aid",
 			"name": "budkovsky/aid"
 		},

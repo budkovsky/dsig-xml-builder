@@ -21,7 +21,7 @@ trait AdapterSchemaValidatorTestTrait
             ->setNamespace(XmlNs::XML_DSIG_2000_09)
             ->setElementPrefix('ds:')
         ;
-        /** @var ExtendedDomElement $element */
+        /** @var \DomElement $element */
         $element = $adapter
             ->setDocument($document)
             ->setEntity($entity)

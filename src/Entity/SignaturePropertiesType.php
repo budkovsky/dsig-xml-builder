@@ -58,8 +58,8 @@ class SignaturePropertiesType implements DSigTypeInterface, StaticFactoryInterfa
     }
 
     /**
-	 * Setter for signature properties
-	 *
+     * Setter for signature properties
+     *
      * @param SignaturePropertyCollection $signatureProperties
      * @return SignaturePropertiesType
      */

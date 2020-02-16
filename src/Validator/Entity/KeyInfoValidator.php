@@ -19,6 +19,8 @@ use Budkovsky\DsigXmlBuilder\Enum\ValidationMessage;
 
 /**
  * Validator for KeyInfo entity
+ *
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class KeyInfoValidator extends ValidatorAbstract
 {
@@ -41,7 +43,7 @@ class KeyInfoValidator extends ValidatorAbstract
 
         if ($entity->getChildren()) {
             foreach ($entity->getChildren() as $child) {
-                /** @var KeyInfoChildInterface $child */
+                /** @var \Budkovsky\DsigXmlBuilder\Abstraction\KeyInfoChildInterface $child */
                 $this->validateKeyInfoChild($child);
             }
         }

@@ -120,8 +120,12 @@ trait ValidatorEntityTrait
      * @param string $childName1
      * @param string $childName2
      */
-    private function validatePairRestriction(?string $value1, ?string $value2, string $childName1, string $childName2): void
-    {
+    private function validatePairRestriction(
+        ?string $value1,
+        ?string $value2,
+        string $childName1,
+        string $childName2
+    ): void {
         $this->processValidationStep(
             ($value1 && $value2) || (!$value1 && !$value2),
             ValidationMessage::PAIR_RESTRICTION_FAIL,

@@ -28,6 +28,9 @@ use Budkovsky\OpenSslWrapper\Enum\KeyType;
 
 /**
  * Abstraction for RSA generators
+ *
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
+ * @SuppressWarnings(PHPMD.CyclomaticComplexity)
  */
 abstract class RSAGeneratorAbstract extends GeneratorAbstract
 {
@@ -246,7 +249,7 @@ abstract class RSAGeneratorAbstract extends GeneratorAbstract
         }
         if ($this->keystore->getExtraCerts()) {
             foreach ($this->keystore->getExtraCerts() as $extraCert) {
-                /** @var X509 $extraCert */
+                /** @var \Budkovsky\OpenSslWrapper\X509 $extraCert */
                 $x509Data->addChild(X509Certificate::create()->setSimpleContent(
                     Calculation::trimPemBody($extraCert->export())
                 ));

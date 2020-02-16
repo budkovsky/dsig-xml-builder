@@ -6,6 +6,7 @@ namespace Budkovsky\DsigXmlBuilder\Facade;
 use Budkovsky\DsigXmlBuilder\Abstraction\GeneratorAbstract;
 use Budkovsky\DsigXmlBuilder\Abstraction\RSAGeneratorAbstract;
 use Budkovsky\DsigXmlBuilder\Entity\TransformType;
+use DOMDocument;
 
 /**
  * Generator for RSA detached signature
@@ -44,7 +45,7 @@ class RSADetachedSignatureGenerator extends RSAGeneratorAbstract
      */
     protected function getDigestValueBase(): string
     {
-         $document = new \DOMDocument();
+         $document = new DOMDocument();
          $document->loadXML(file_get_contents($this->content));
 
         return $document->C14N();

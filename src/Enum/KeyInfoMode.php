@@ -1,7 +1,6 @@
 <?php
 namespace Budkovsky\DsigXmlBuilder\Enum;
 
-
 /**
  * Enumeration of KeyInfo mode
  */

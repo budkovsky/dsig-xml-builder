@@ -7,6 +7,8 @@ use Budkovsky\Aid\Abstraction\EntityInterface;
 use Budkovsky\DsigXmlBuilder\Exception\AdapterException;
 use Budkovsky\DsigXmlBuilder\Enum\Attribute;
 use Budkovsky\DsigXmlBuilder\Enum\XmlNs;
+use DOMDocument;
+use DOMElement;
 
 /**
  * Abstract adapter
@@ -16,13 +18,13 @@ abstract class AdapterAbstract implements AdapterInterface
     /** @var string */
     protected $entityType;
 
-    /** @var \DOMDocument */
+    /** @var DOMDocument */
     protected $document;
 
     /** @var EntityInterface */
     protected $entity;
 
-    /** @var \DOMElement */
+    /** @var DOMElement */
     protected $element;
 
     /** @var string */
@@ -55,7 +57,7 @@ abstract class AdapterAbstract implements AdapterInterface
      *
      * {@inheritdoc}
      */
-    public function setDocument(\DOMDocument $document): AdapterInterface
+    public function setDocument(DOMDocument $document): AdapterInterface
     {
         $this->document = $document;
 
@@ -106,7 +108,7 @@ abstract class AdapterAbstract implements AdapterInterface
      *
      * {@inheritdoc}
      */
-    public function getDOMDocument(): \DOMDocument
+    public function getDOMDocument(): DOMDocument
     {
         return $this->document;
     }
@@ -115,7 +117,7 @@ abstract class AdapterAbstract implements AdapterInterface
      *
      * {@inheritdoc}
      */
-    public function getDOMElement(): \DOMElement
+    public function getDOMElement(): DOMElement
     {
         return $this->element;
     }
@@ -171,9 +173,9 @@ abstract class AdapterAbstract implements AdapterInterface
      *
      * @param string $name
      * @param string $value
-     * @return \DOMElement
+     * @return DOMElement
      */
-    protected function getNewElement(string $name, string $value = ''): \DOMElement
+    protected function getNewElement(string $name, string $value = ''): DOMElement
     {
         return !empty($this->namespace)
             ? $this->document->createElementNS($this->namespace, $this->elementPrefix.$name, $value)
@@ -185,9 +187,9 @@ abstract class AdapterAbstract implements AdapterInterface
      * Create and return new DOMElement from entity but not append to main element
      *
      * @param DSigTypeInterface $entity
-     * @return \DOMElement
+     * @return DOMElement
      */
-    protected function getNewElementFromEntity(DSigTypeInterface $entity): \DOMElement
+    protected function getNewElementFromEntity(DSigTypeInterface $entity): DOMElement
     {
         return $entity->getAdapter()
             ->setDocument($this->getDOMDocument())

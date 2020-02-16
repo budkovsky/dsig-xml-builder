@@ -31,7 +31,6 @@ class X509DataValidator extends ValidatorAbstract
         /** @var \Budkovsky\DsigXmlBuilder\Entity\X509DataType $entity */
         if ($entity->getChildren()) {
             foreach ($entity->getChildren() as $child) {
-                /** @var X509DataChildInterface */
                 $this->validateX509DataChild($child);
             }
         }

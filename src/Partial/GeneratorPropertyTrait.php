@@ -11,6 +11,7 @@ use Budkovsky\DsigXmlBuilder\Enum\SignatureAlgorithm;
 use Budkovsky\DsigXmlBuilder\Exception\CanonicalizationAlgorithmException;
 use Budkovsky\DsigXmlBuilder\Exception\DigestAlgorithmException;
 use Budkovsky\DsigXmlBuilder\Exception\SignatureAlgorithmException;
+use DOMDocument;
 
 /**
  * Trait for generator with basic set of properties
@@ -63,7 +64,7 @@ trait GeneratorPropertyTrait
     {
 //         libxml_disable_entity_loader(true);
         $this->signatureEntity = new SignatureType();
-        $this->document = new \DOMDocument('1.0', 'utf-8');
+        $this->document = new DOMDocument('1.0', 'utf-8');
 //         $this->document->preserveWhiteSpace = false;
 //         $this->document->formatOutput = true;
 //         $this->document->substituteEntities = false;
@@ -256,7 +257,7 @@ trait GeneratorPropertyTrait
     /**
      * Setter for KeyInfo mode
      *
-     * @see KeyInfoMode
+     * @see \Budkovsky\DsigXmlBuilder\Enum\KeyInfoMode
      *
      * @param int $mode
      * @return self
