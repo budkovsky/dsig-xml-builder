@@ -1,8 +1,14 @@
 FROM debian:stable-slim
-WORKDIR "/app"
 
 # Fix debconf warnings upon build
 ARG DEBIAN_FRONTEND=noninteractive
+ARG USER_NAME=devops
+ARG USER_ID=1000
+ARG USER_GROUP_ID=1000
+ARG WORKDIR=/app
+
+WORKDIR ${WORKDIR}
+
 ENV TERM=linux
 
 RUN apt-get update \
@@ -21,6 +27,11 @@ RUN apt-get update \
 	&& curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* ~/.composer
+    
+RUN addgroup --gid ${USER_GROUP_ID} ${USER_NAME}
+RUN adduser --system --uid=${USER_ID} --gid=${USER_GROUP_ID} --home /home/${USER_NAME} --shell /bin/bash ${USER_NAME}
+
+USER ${USER_NAME}
 
 #CMD ["php", "-a"]
 #CMD ["tail", "-f", "/dev/null"]

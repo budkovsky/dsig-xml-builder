@@ -1,3 +1,7 @@
 #!/bin/sh
 CONTAINER_NAME="dsig-php71"
 DOCKERFILE_PATH="."
+WORKDIR="/app"
+USER_NAME=${USER}
+USER_ID=$(id -u)
+USER_GROUP_ID=$(id -g)

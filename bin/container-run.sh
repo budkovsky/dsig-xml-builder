@@ -12,7 +12,8 @@ fi
 #run container 
 docker run -t -d \
     -p 8088:8088 \
-    -v /$(pwd)://app -w //app \
+    -w /${WORKDIR} \
+    -v /$(pwd):/${WORKDIR} \
     -v /$(pwd)/xdebug.ini:/etc/php/7.1/cli/conf.d/20-xdebug.ini \
     --name=${CONTAINER_NAME} ${CONTAINER_NAME} \
     && echo "Container ${CONTAINER_NAME} created"
